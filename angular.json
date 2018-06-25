@@ -23,9 +23,40 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/css/normalize.css",
+              "src/assets/css/font-awesome.min.css",
+              "src/assets/css/fontello.css",
+              "src/assets/fonts/icon-7-stroke/css/pe-icon-7-stroke.css",
+              "src/assets/fonts/icon-7-stroke/css/helper.css",
+              "src/assets/css/animate.css",
+              "src/assets/css/bootstrap-select.min.css",
+              "src/assets/css/icheck.min_all.css",
+              "src/assets/css/price-range.css",
+              "src/assets/css/owl.carousel.css",
+              "src/assets/css/owl.theme.css",
+              "src/assets/css/owl.transitions.css",
+              "src/assets/css/wizard.css",
+              "src/assets/css/style.css",
+              "src/assets/css/responsive.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/modernizr-2.6.2.min.js",
+              "src/assets/js/jquery-1.10.2.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/js/bootstrap-select.min.js",
+              "src/assets/js/bootstrap-hover-dropdown.js",
+              "src/assets/js/easypiechart.min.js",
+              "src/assets/js/jquery.easypiechart.min.js",
+              "src/assets/js/owl.carousel.min.js",
+              "src/assets/js/wow.js",
+              "src/assets/js/icheck.min.js",
+              "src/assets/js/price-range.js",
+              "src/assets/js/jquery.bootstrap.wizard.js",
+              "src/assets/js/jquery.validate.min.js",
+              "src/assets/js/wizard.js",
+              "src/assets/js/main.js"
+            ]
           },
           "configurations": {
             "production": {
