@@ -19,8 +19,13 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LayoutModule} from '@angular/cdk/layout';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import {RouterModule, Routes} from '@angular/router';
 
 
+const appRoutes: Routes = [
+  {path: 'register', component: RegisterComponent},
+  {path: '', component: HomeComponent}
+];
 
 @NgModule({
   declarations: [
@@ -50,6 +55,7 @@ import { HomeComponent } from './components/home/home.component';
     MatNativeDateModule,
     MatGridListModule,
     MatMenuModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
