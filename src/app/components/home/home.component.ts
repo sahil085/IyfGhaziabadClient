@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
     // this.registrationConfirmation();
   }
 
+
   ngOnInit() {
   }
 

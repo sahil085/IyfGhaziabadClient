@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {Injectable, NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -15,7 +15,7 @@ import {
   MatSelectModule, MatSidenavModule, MatSnackBarModule, MatToolbarModule
 } from '@angular/material';
 import { RegisterComponent } from './components/register/register.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {LayoutModule} from '@angular/cdk/layout';
 import { LoginComponent } from './components/login/login.component';
@@ -25,12 +25,25 @@ import {RegistrationService} from './sevices/registration.service';
 import {ToasterModule} from 'angular5-toaster/dist';
 import {Observable, Subject} from 'rxjs';
 import { LogindialogComponent } from './logindialog/logindialog.component';
+import {HttpModule} from '@angular/http';
+import {AuthenticationService} from './services/authentication.service';
 
 
 const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: '', component: HomeComponent}
 ];
+
+@Injectable()
+export class XhrInterceptor implements HttpInterceptor {
+
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+    const xhr = req.clone({
+      headers: req.headers.set('X-Requested-With', 'XMLHttpRequest')
+    });
+    return next.handle(xhr);
+  }
+}
 
 @NgModule({
   declarations: [
@@ -45,6 +58,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
+    HttpModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
@@ -67,7 +81,7 @@ const appRoutes: Routes = [
     MatSnackBarModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [RegistrationService,{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
+  providers: [RegistrationService,{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},AuthenticationService],
   bootstrap: [AppComponent],
   entryComponents: [LogindialogComponent]
 })

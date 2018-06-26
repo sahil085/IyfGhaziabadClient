@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Http, Headers, RequestOptions, Response} from '@angular/http';
+
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -7,25 +9,26 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class AuthenticationService {
 
   authenticated = false;
+  apiUrl: string = environment.apiUrl;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: Http) {
   }
 
-  authenticate(credentials, callback) {
+  public logIn(user) {
 
-    const headers = new HttpHeaders(credentials ? {
-      authorization : 'Basic ' + btoa(credentials.username + ':' + credentials.password)
-    } : {});
+    const headers = new Headers();
+    headers.append('Accept', 'application/json');
+    // creating base64 encoded String from user name and password
+    console.log(user.password);
+    const base64Credential: string = btoa(user.username + ':' + user.password);
+    console.log(base64Credential);
+    headers.append('Authorization', 'Basic ' + base64Credential);
+   headers.append( 'Content-Type' , 'application/x-www-form-urlencoded');
+    const options = new RequestOptions();
+    options.headers = headers;
 
-    this.http.get('user', {headers: headers}).subscribe(response => {
-      if (response['name']) {
-        this.authenticated = true;
-      } else {
-        this.authenticated = false;
-      }
-      return callback && callback();
-    });
+    return this.http.get(this.apiUrl + '/account/login', options);
+
 
   }
-
 }

@@ -82,56 +82,57 @@ export class RegisterComponent implements OnInit {
 
      }
      formvalidation(): boolean {
-    console.log(this.userform.get('nearestIskconTemple').value);
-       if (this.userform.get('username').value == null) {
-         return false;
-       } else if (this.userform.get('password').value == null) {
-         return false;
-       } else if (this.userform.get('email').value == null || this.userform.get('email').hasError('email') == null)
-       {
-         return false;
-       } else if (this.userform.get('mobileNumber').value == null) {
-         return false;
-
-       }  else if (this.userform.get('isInitiated').value == null) {
-         return false;
-
-       }else if (this.userform.get('city').value == null)
-        {
-          return false;
-
-        } else if (this.userform.get('street').value == null)
-       {
-         return false;
-
-       } else if (this.userform.get('currentAddress').value == null)
-       {
-         return false;
-
-       } else if (this.userform.get('permanentAddress').value == null)
-       {
-         return false;
-
-       } else if (this.userform.get('nearestIskconTemple').value == null)
-       {
-         return false;
-
-       } else if (this.userform.get('accept').value == null || this.userform.get('accept').value === false
-        || this.userform.get('accept').value === "" )
-       {
-         return false;
-
-       }
-       else if (this.userform.get('roundsChant').value == null)
-       {
-         return false;
-
-       } else if (this.userform.get('gender').value == null) {
-         return false;
-
-       } else{
-         return true;
-       }
+    // console.log(this.userform.get('nearestIskconTemple').value);
+    //    if (this.userform.get('username').value == null) {
+    //      return false;
+    //    } else if (this.userform.get('password').value == null) {
+    //      return false;
+    //    } else if (this.userform.get('email').value == null || this.userform.get('email').hasError('email') == null)
+    //    {
+    //      return false;
+    //    } else if (this.userform.get('mobileNumber').value == null) {
+    //      return false;
+    //
+    //    }  else if (this.userform.get('isInitiated').value == null) {
+    //      return false;
+    //
+    //    }else if (this.userform.get('city').value == null)
+    //     {
+    //       return false;
+    //
+    //     } else if (this.userform.get('street').value == null)
+    //    {
+    //      return false;
+    //
+    //    } else if (this.userform.get('currentAddress').value == null)
+    //    {
+    //      return false;
+    //
+    //    } else if (this.userform.get('permanentAddress').value == null)
+    //    {
+    //      return false;
+    //
+    //    } else if (this.userform.get('nearestIskconTemple').value == null)
+    //    {
+    //      return false;
+    //
+    //    } else if (this.userform.get('accept').value == null || this.userform.get('accept').value === false
+    //     || this.userform.get('accept').value === "" )
+    //    {
+    //      return false;
+    //
+    //    }
+    //    else if (this.userform.get('roundsChant').value == null)
+    //    {
+    //      return false;
+    //
+    //    } else if (this.userform.get('gender').value == null) {
+    //      return false;
+    //
+    //    } else{
+    //      return true;
+    //    }
+       return true;
      }
 
 }

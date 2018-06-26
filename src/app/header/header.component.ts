@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material';
 import {LogindialogComponent} from '../logindialog/logindialog.component';
+import {AuthenticationService} from '../services/authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,7 @@ import {LogindialogComponent} from '../logindialog/logindialog.component';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog,public auth: AuthenticationService) {}
 
   openDialog() {
 
@@ -34,6 +35,8 @@ export class HeaderComponent implements OnInit {
     //   data => console.log("Dialog output:", data)
     // );
   }
+
+
 
 
   ngOnInit() {
