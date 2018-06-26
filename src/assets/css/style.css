@@ -2839,6 +2839,7 @@ background: rgba(100, 100, 100, 0.8) none repeat scroll 0% 0%;
 padding-top: 7px;
 }
 .single-footer{
+  font-weight: bold;
     margin-top: 35px
 }
 .footer img{
