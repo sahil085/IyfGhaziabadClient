@@ -20,7 +20,7 @@ import {LayoutModule} from '@angular/cdk/layout';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import {RouterModule, Routes} from '@angular/router';
-import {RegistrationServiceService} from './sevices/registration-service.service';
+import {RegistrationService} from './sevices/registration.service';
 
 
 const appRoutes: Routes = [
@@ -56,7 +56,7 @@ const appRoutes: Routes = [
     MatNativeDateModule,
     MatGridListModule,
     MatMenuModule,
-    RegistrationServiceService,
+    RegistrationService,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

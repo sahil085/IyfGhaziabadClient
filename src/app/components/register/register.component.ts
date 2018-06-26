@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {RegistrationServiceService} from '../../sevices/registration-service.service';
+import {RegistrationService, RegistrationServiceService} from '../../sevices/registration-service.service';
 import {User} from '../../User';
 
 @Component({
@@ -14,7 +14,8 @@ export class RegisterComponent implements OnInit {
   public userform: FormGroup;
   public usr: User;
 
-  constructor( private formBuilder: FormBuilder) { }
+  constructor( private formBuilder: FormBuilder,
+               private registrationService: RegistrationService) { }
 
   ngOnInit() {
     this.userform = this.formBuilder.group({
@@ -38,12 +39,11 @@ export class RegisterComponent implements OnInit {
     });
   }
 
- // Prabhu yahaa per savenewuser m thoda problem hai
 
   createUser()
   {
 console.log(this.userform.value);
-     RegistrationServiceService.saveNewUser(this.userform.value).subscribe( user =>
+     this.registrationService.saveNewUser(this.userform.value).subscribe( user =>
       this.usr = user
     );
   }
