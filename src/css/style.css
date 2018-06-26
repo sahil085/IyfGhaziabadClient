@@ -15,7 +15,9 @@ body {
     position: relative;
   background-color: black;
 }
-
+a, a:active, a:focus {
+  outline: none;
+}
 .divcenter{
     margin: 0 auto;
     overflow: hidden;
@@ -770,7 +772,7 @@ label small{
     border: medium none;
     color: #fff;
     font-size: 16px;
-    padding: 8px 20px;
+    padding: 8px 10px;
     border-radius: 2px;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
@@ -787,7 +789,7 @@ label small{
 }
 .navbar{
     margin-bottom: 0px;
-    min-height: 100px;
+    /*min-height: px;*/
 }
 .navbar-default {
     background-image: none;
@@ -796,9 +798,9 @@ label small{
     border-radius: 4px;
     box-shadow: none;
 }
-.navbar .container{
-    padding-top: 15px
-}
+/*.navbar .container{*/
+    /*padding-top: 0px*/
+/*}*/
 .navbar-default {
     background-image: none;
     background-color: #FFF;
@@ -841,7 +843,7 @@ label small{
     left: auto;
 }
 .yamm .yamm-content {
-    padding: 20px 30px;
+    padding: 10px 20px;
 }
 @media (max-width: 767px) {
     .yamm .yamm-content {
@@ -887,11 +889,12 @@ label small{
     left: auto;
     right: auto;
 }
+
 .navbar .yamm-content h5 {
     font-size: 18px;
     font-weight: 400;
     text-transform: uppercase;
-    padding-bottom: 10px;
+    padding-bottom: 0px;
     border-bottom: dotted 1px #555555;
 }
 @media (max-width: 767px) {
@@ -919,7 +922,7 @@ label small{
     color: #FDC600;
     text-decoration: none;
 }
-.navbar .yamm-content .banner {
+.yamm-content .banner {
     margin-bottom: 10px;
 }
 

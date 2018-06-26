@@ -4,7 +4,7 @@
 }
 
 body {
-  background-image: url('src/assets/img/bgkrishnaimgae.jpg');
+  background-image: url('/assets/img/bgkrishnaimgae.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

@@ -1743,7 +1743,7 @@ proerty-th
     position: relative;
 }
 .proerty-th .proerty-item  .item-entry h5::after {
-    background: transparent url("../../assets/img/chevron-down.png") no-repeat scroll center center;
+    /*background: transparent url("../../assets/img/chevron-down.png") no-repeat scroll center center;*/
     width: 15px;
     left: 20px;
     height: 7px;
@@ -2820,16 +2820,16 @@ padding-bottom: 15px;
 /*FOOOTER*/
 .footer-area{
 border-top: 1px solid #D1D1D1;
-background: #555 url("../../assets/img/bg-footer.jpg") repeat scroll 0% 0%;
-color: #535353;
+background: #fff url("../../assets/img/demo/peoples.jpg") repeat scroll 0% 0%;
+color: #ffffff;
 }
 .footer{
 padding: 0px 0px 60px;
-background: rgba(255, 255, 255, 0.89) none repeat scroll 0% 0%;
+background: rgba(100, 100, 100, 0.8) none repeat scroll 0% 0%;
 }
 .footer ul li i {
     padding-right: 10px;
-    color: #000;
+    color: #ffffff;
 }
 .footer-copy{
     background: rgba(213, 213, 213, 0.9) none repeat scroll 0% 0%;
@@ -2850,7 +2850,7 @@ padding-top: 7px;
     padding-bottom: 20px;
 }
 .footer h4{
-    color: #717171;
+    color: #ffffff;
     font-weight: 400;
     margin-top: 0px;
     font-size: 20px;
@@ -2894,7 +2894,7 @@ ul.footer-adress li {
     margin-bottom: -4px;
 }
 .footer ul li a{
-color: #535353;
+color: #ffffff;
 font-weight: 500;
 text-transform: uppercase;
 font-size: 13px;
@@ -2912,7 +2912,7 @@ font-size: 13px;
     font-size: 13px;
 }
 .footer-copy span a{
-    color: #000;
+    color: #ffffff;
     font-weight: 500;
 }
 .footer img{
