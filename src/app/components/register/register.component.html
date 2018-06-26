@@ -1,5 +1,4 @@
  <!--<app-header></app-header>-->
-
 <div class="row">
 <div class="page-head">
   <div class="container">
@@ -101,11 +100,17 @@
                     </div>
                     <div class="form-group">
                       <label>Password <small>(required)</small></label>
-                      <input name="password" formControlName="password" type="password" class="form-control" placeholder="Create Your Password">
+                      <input required name="password" formControlName="password" type="password" class="form-control" placeholder="Create Your Password">
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" >
                       <label>Gender :</label>
+                      <!--<mat-card style="height: 2%">-->
+                      <!--<mat-select style="background-color: white" [required]="true">-->
+                        <!--<mat-option value="Male">Male</mat-option>-->
+                        <!--<mat-option value="Female">Female</mat-option>-->
+                      <!--</mat-select>-->
+                      <!--</mat-card>-->
                       <select required name="gender" formControlName="gender" id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Gender">
                         <option>Male</option>
                         <option>Female</option>
@@ -152,7 +157,7 @@
                     </div>
                     <div class="form-group">
                       <label>Your Street<small> (required)</small></label>
-                      <select required name="street" formControlName="street" id="lunchBegin" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Stree">
+                      <select required name="street" formControlName="street" id="lunchBegin" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Street">
                         <option>Pillakhua</option>
                         <option>Raj Nagar</option>
 
@@ -186,14 +191,14 @@
 
                     <div class="form-group">
                       <label>Your Facilitator Name<small> (Optional)</small></label>
-                      <select required name="FacilitatorName" formControlName="FacilitatorName" id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="None-Selected">
+                      <select required name="facilitatorName" formControlName="facilitatorName" id="lunchBe" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="None-Selected">
                         <option>HG Charu Govind Prabhu Ji</option>
                         <option>HG Sarv Mangal Prabhu Ji</option>
                       </select>
                     </div>
                     <div class="form-group">
                       <label>Initiated <small>(Are You Deekshit ?)</small></label>
-                      <select required name="isInitiated" formControlName="isInitiated" id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="None-Selected">
+                      <select required name="isInitiated" formControlName="isInitiated" id="lunBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="None-Selected">
                         <option>Yes</option>
                         <option>No</option>
                       </select>
@@ -221,7 +226,7 @@
 
                       <div class="checkbox">
                         <label>
-                          <input type="checkbox" required/> <strong>Accept termes and conditions.</strong>
+                          <input type="checkbox" value="true" name="accept" formControlName="accept" required/> &nbsp; <strong>Accept termes and conditions.</strong>
                         </label>
                       </div>
 
@@ -235,8 +240,12 @@
 
             <div class="wizard-footer">
               <div class="pull-right">
+                <div *ngIf="signUpProcess === true">
+                  <mat-progress-spinner></mat-progress-spinner>
+                </div>
                 <input type='button' class='btn btn-next btn-primary' name='next' value='Next' />
                 <input type='submit' class='btn btn-finish btn-primary ' name='finish' value='Finish' />
+
               </div>
 
               <div class="pull-left">

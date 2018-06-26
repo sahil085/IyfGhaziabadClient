@@ -4,14 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {
+  MAT_DIALOG_DEFAULT_OPTIONS,
   MatAutocompleteModule,
-  MatButtonModule, MatCardModule,
+  MatButtonModule, MatCardModule, MatDialogModule,
   MatGridListModule, MatIconModule,
   MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule,
-  MatOptionModule,
-  MatSelectModule, MatSidenavModule, MatToolbarModule
+  MatOptionModule, MatProgressSpinnerModule,
+  MatSelectModule, MatSidenavModule, MatSnackBarModule, MatToolbarModule
 } from '@angular/material';
 import { RegisterComponent } from './components/register/register.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -21,6 +22,9 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import {RouterModule, Routes} from '@angular/router';
 import {RegistrationService} from './sevices/registration.service';
+import {ToasterModule} from 'angular5-toaster/dist';
+import {Observable, Subject} from 'rxjs';
+import { LogindialogComponent } from './logindialog/logindialog.component';
 
 
 const appRoutes: Routes = [
@@ -35,7 +39,8 @@ const appRoutes: Routes = [
     FooterComponent,
     RegisterComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    LogindialogComponent
   ],
   imports: [
     BrowserModule,
@@ -56,10 +61,14 @@ const appRoutes: Routes = [
     MatNativeDateModule,
     MatGridListModule,
     MatMenuModule,
-    RegistrationService,
+    MatDialogModule,
+    NoopAnimationsModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [RegistrationService,{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
+  bootstrap: [AppComponent],
+  entryComponents: [LogindialogComponent]
 })
 export class AppModule { }
