@@ -23,7 +23,6 @@ export class LogindialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data) {
     this.username = data.username;
     this.password = data.password;
-
   }
 
   ngOnInit() {

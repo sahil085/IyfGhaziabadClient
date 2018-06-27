@@ -21,6 +21,7 @@
     <div class="collapse navbar-collapse yamm" id="navigation">
       <div class="button navbar-right">
         <button *ngIf='isAuthenticated' class="navbar-btn nav-button wow bounceInRight login" (click)="logout()" data-wow-delay="0.45s"><strong>Logout</strong></button>
+        <a href="/admin"><button  class="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.45s"><strong>Admin Panel</strong></button></a>
         <button *ngIf='!isAuthenticated' class="navbar-btn nav-button wow bounceInRight login" (click)="openDialog()" data-wow-delay="0.45s"><strong>Login</strong></button>
         <a href="register"> <button class="navbar-btn nav-button wow fadeInRight"  data-wow-delay="0.48s">Register</button></a>
       </div>

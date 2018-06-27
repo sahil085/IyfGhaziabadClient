@@ -27,11 +27,27 @@ import {Observable, Subject} from 'rxjs';
 import { LogindialogComponent } from './logindialog/logindialog.component';
 import {HttpModule} from '@angular/http';
 import {AuthenticationService} from './services/authentication.service';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { CreateCourseComponent } from './components/create-course/create-course.component';
+import { ViewCourseComponent } from './components/view-course/view-course.component';
+import { CreateSessionComponent } from './components/create-session/create-session.component';
+import { CreateSeminarComponent } from './components/create-seminar/create-seminar.component';
+import { ViewSeminarComponent } from './components/view-seminar/view-seminar.component';
+import { ViewSessionComponent } from './components/view-session/view-session.component';
+import * as path from 'path';
 
 
 const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
-  {path: '', component: HomeComponent}
+  {path: '', component: HomeComponent},
+  {path: 'admin', component: AdminPanelComponent},
+  {path: 'create-course', component: CreateCourseComponent},
+  {path: 'create-session', component: CreateSessionComponent},
+  {path: 'create-seminar', component: CreateSeminarComponent},
+  {path: 'view-course', component: ViewCourseComponent},
+  {path: 'view-session', component: ViewSessionComponent},
+  {path: 'view-seminar', component: ViewSeminarComponent}
+
 ];
 
 @Injectable()
@@ -53,7 +69,14 @@ export class XhrInterceptor implements HttpInterceptor {
     RegisterComponent,
     LoginComponent,
     HomeComponent,
-    LogindialogComponent
+    LogindialogComponent,
+    AdminPanelComponent,
+    CreateCourseComponent,
+    ViewCourseComponent,
+    CreateSessionComponent,
+    CreateSeminarComponent,
+    ViewSeminarComponent,
+    ViewSessionComponent
   ],
   imports: [
     BrowserModule,
@@ -86,3 +109,4 @@ export class XhrInterceptor implements HttpInterceptor {
   entryComponents: [LogindialogComponent]
 })
 export class AppModule { }
+

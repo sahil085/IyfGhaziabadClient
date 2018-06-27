@@ -34,8 +34,8 @@
     "popper.js": "^1.14.3",
     "rxjs": "^6.0.0",
     "rxjs-compat": "^6.2.1",
-    "zone.js": "^0.8.26",
-    "typescript": "~2.7.2"
+    "typescript": "~2.7.2",
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.8",
@@ -62,4 +62,5 @@
   "engines": {
     "node": "10.4.1",
     "npm": "6.1.0"
-  }}
+  }
+}
