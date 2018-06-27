@@ -1,5 +1,6 @@
-import {FormControl, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import {AdminCourseService} from '../../services/admin-course.service';
 
 @Component({
   selector: 'app-create-course',
@@ -8,15 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateCourseComponent implements OnInit {
 
-  constructor() { }
+  public courseForm : FormGroup;
 
-  title = new FormControl('', [Validators.required]);
-
-  getErrorMessage() {
-    return this.title.hasError('required') ? 'You must enter a title' :
-      '';
+  constructor(private fb: FormBuilder,
+              public adminCourseService: AdminCourseService) {
+    this.courseForm = this.fb.group({
+      title: ['',Validators.required],
+      description: ['',Validators.required],
+      vedicLevel: ['',Validators.required],
+      courseType: ['',Validators.required],
+      gender: ['',Validators.required]
+    })
   }
+
+
+  public createCourse(){
+    console.log(this.courseForm.value);
+    this.adminCourseService.createCourseService(this.courseForm.value).subscribe(res => {
+      console.log(res);
+    });
+  }
+
   ngOnInit() {
+
+
   }
 }
 

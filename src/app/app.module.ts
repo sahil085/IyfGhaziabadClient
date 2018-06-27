@@ -34,6 +34,7 @@ import { CreateSessionComponent } from './components/create-session/create-sessi
 import { CreateSeminarComponent } from './components/create-seminar/create-seminar.component';
 import { ViewSeminarComponent } from './components/view-seminar/view-seminar.component';
 import { ViewSessionComponent } from './components/view-session/view-session.component';
+import {AdminCourseService} from './services/admin-course.service';
 import * as path from 'path';
 
 
@@ -104,7 +105,7 @@ export class XhrInterceptor implements HttpInterceptor {
     MatSnackBarModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [RegistrationService,{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},AuthenticationService],
+  providers: [AdminCourseService ,RegistrationService,{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},AuthenticationService],
   bootstrap: [AppComponent],
   entryComponents: [LogindialogComponent]
 })
