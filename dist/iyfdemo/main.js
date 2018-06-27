@@ -70,11 +70,7 @@ var AppComponent = /** @class */ (function () {
     function AppComponent() {
         this.title = 'app';
     }
-    AppComponent_1 = AppComponent;
-    AppComponent.refrence = AppComponent_1;
-    AppComponent.userDetails = [];
-    AppComponent.userRole = [];
-    AppComponent = AppComponent_1 = __decorate([
+    AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-root',
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
@@ -83,7 +79,6 @@ var AppComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], AppComponent);
     return AppComponent;
-    var AppComponent_1;
 }());
 
 
@@ -458,7 +453,7 @@ var RegisterComponent = /** @class */ (function () {
                         duration: 2000,
                     });
                     setTimeout(function () {
-                        window.location.href = 'http://localhost:4200';
+                        location.reload();
                     }, 2000);
                 }
                 else {
@@ -661,7 +656,7 @@ var HeaderComponent = /** @class */ (function () {
         this.dialog = dialog;
         this.auth = auth;
         this.appComp = appComp;
-        this.isAuthenticated = 'false';
+        this.isAuthenticated = false;
     }
     HeaderComponent.prototype.openDialog = function () {
         var dialogConfig = new _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialogConfig"]();
@@ -684,13 +679,15 @@ var HeaderComponent = /** @class */ (function () {
     };
     HeaderComponent.prototype.ngOnInit = function () {
         console.log("header");
-        this.isAuthenticated = localStorage.getItem("isAuthenticated");
+        var authentication = localStorage.getItem("isAuthenticated");
         console.log(this.isAuthenticated);
-        if (this.isAuthenticated == null) {
-            this.isAuthenticated = 'false';
+        if (authentication == null) {
+            this.isAuthenticated = false;
+            console.log(this.isAuthenticated);
         }
-        if (this.isAuthenticated != null) {
-            this.isAuthenticated = 'true';
+        else {
+            this.isAuthenticated = true;
+            console.log(this.isAuthenticated);
         }
     };
     HeaderComponent.prototype.logout = function () {
