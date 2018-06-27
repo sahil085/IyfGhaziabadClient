@@ -8,9 +8,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'app';
 
-  static refrence = AppComponent;
-  static userDetails: any = [];
-  static userRole: any = [];
 
   constructor()
   {

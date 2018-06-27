@@ -43,7 +43,7 @@ export class LogindialogComponent implements OnInit {
       this.auth.logIn(this.loginForm.value).subscribe(data=>{
 
           localStorage.setItem('currentUser', data.json().principal);
-          localStorage.setItem('isAuthenticated', true);
+          localStorage.setItem('isAuthenticated', 'true');
       window.location.href = "";
         },err=>{
           console.log(err);

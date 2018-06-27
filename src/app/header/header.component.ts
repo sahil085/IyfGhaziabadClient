@@ -10,7 +10,7 @@ import {AppComponent} from '../app.component';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  isAuthenticated: boolean = false;
+  public  isAuthenticated:boolean = false;
   constructor(public dialog: MatDialog,public auth: AuthenticationService,public appComp: AppComponent) {}
 
   openDialog() {
@@ -43,14 +43,16 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
    console.log("header");
     this.isAuthenticated = localStorage.getItem("isAuthenticated");
+
     console.log(this.isAuthenticated);
     if(this.isAuthenticated == null)
     {
       this.isAuthenticated = false;
-    }
-    if(this.isAuthenticated == null)
+      console.log(this.isAuthenticated);
+    } else
     {
-      this.isAuthenticated = false;
+      this.isAuthenticated = true;
+      console.log(this.isAuthenticated);
     }
 
 
