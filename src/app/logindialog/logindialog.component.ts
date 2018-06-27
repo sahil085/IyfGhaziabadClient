@@ -12,6 +12,7 @@ export class LogindialogComponent implements OnInit {
   public loginForm: FormGroup;
  public username: string;
   public password: string;
+  public invalidMessage: string;
   constructor(
     private auth: AuthenticationService,
     private fb: FormBuilder,
@@ -24,20 +25,31 @@ export class LogindialogComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.email]]
+      username: [this.username , [Validators.required, Validators.email]],
+      password: [this.password , Validators.required]
     });
   }
 
   login(){
-    console.log(this.loginForm.value);
-    this.auth.logIn(this.loginForm.value).subscribe(data=>{
-          console.log(data);
+    if (this.loginForm.invalid) {
+      this.loginForm.get('username').markAsTouched();
+      this.loginForm.get('password').markAsTouched();
+      return;
+    }else {
+      console.log(this.loginForm.invalid);
+      this.auth.logIn(this.loginForm.value).subscribe(data=>{
+          this.invalidMessage = null;
         },err=>{
-      console.log(err);
+          console.log(err);
+          if(err.status === 401)
+          {
+            this.invalidMessage = "EmailId Or Password Is Incorrect";
+          }
           // this.errorMessage="error :  Username or password is incorrect";
         }
-      )
+      );
+    }
+
   }
 
   close() {
