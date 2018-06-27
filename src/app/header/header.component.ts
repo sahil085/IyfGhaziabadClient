@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material';
 import {LogindialogComponent} from '../logindialog/logindialog.component';
 import {AuthenticationService} from '../services/authentication.service';
+import {AppComponent} from '../app.component';
 
 @Component({
   selector: 'app-header',
@@ -9,15 +10,15 @@ import {AuthenticationService} from '../services/authentication.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor(public dialog: MatDialog,public auth: AuthenticationService) {}
+  isAuthenticated: boolean = false;
+  constructor(public dialog: MatDialog,public auth: AuthenticationService,public appComp: AppComponent) {}
 
   openDialog() {
 
     const dialogConfig = new MatDialogConfig();
 
-    dialogConfig.disableClose = false;
-    dialogConfig.autoFocus = false;
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
     // dialogConfig.position = {
     //   'top': '0',
     //   left: '0'
@@ -28,7 +29,7 @@ export class HeaderComponent implements OnInit {
     };
 
     this.dialog.open(LogindialogComponent, dialogConfig);
-    //
+
     // const dialogRef = this.dialog.open(LogindialogComponent, dialogConfig);
     //
     // dialogRef.afterClosed().subscribe(
@@ -40,6 +41,25 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit() {
+   console.log("header");
+    this.isAuthenticated = localStorage.getItem("isAuthenticated");
+    console.log(this.isAuthenticated);
+    if(this.isAuthenticated == null)
+    {
+      this.isAuthenticated = false;
+    }
+    if(this.isAuthenticated == null)
+    {
+      this.isAuthenticated = false;
+    }
+
+
+  }
+
+  logout()
+  {
+    console.log("logout");
+    this.auth.logout();
   }
 
 }

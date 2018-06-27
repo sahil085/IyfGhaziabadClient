@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MatSnackBar} from '@angular/material';
 import {RegisterComponent} from '../register/register.component';
+import {AppComponent} from '../../app.component';
+import {HeaderComponent} from '../../header/header.component';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +22,7 @@ export class HomeComponent implements OnInit {
   //
   //   }
   // }
-  constructor(public snackBar: MatSnackBar) {
+  constructor(public snackBar: MatSnackBar,public appComp: AppComponent) {
 
     // this.registrationConfirmation();
   }

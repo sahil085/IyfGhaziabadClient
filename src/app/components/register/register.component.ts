@@ -67,9 +67,9 @@ export class RegisterComponent implements OnInit {
               this.snackBar.open(response, 'Hare krishna', {
                 duration: 2000,
               });
-              // setTimeout(function () {
-              //   window.location.href='http://localhost:4200';
-              // },2000);
+              setTimeout(function () {
+                window.location.href='http://localhost:4200';
+              },2000);
             } else {
               this.isSignupSuccess = false;
               this.signupProcess= false;

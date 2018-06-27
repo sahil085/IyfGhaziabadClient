@@ -2,6 +2,9 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {AuthenticationService} from '../services/authentication.service';
+import {AppComponent} from '../app.component';
+import {HeaderComponent} from '../header/header.component';
+import {HomeComponent} from '../components/home/home.component';
 
 @Component({
   selector: 'app-logindialog',
@@ -38,7 +41,10 @@ export class LogindialogComponent implements OnInit {
     }else {
       console.log(this.loginForm.invalid);
       this.auth.logIn(this.loginForm.value).subscribe(data=>{
-          this.invalidMessage = null;
+
+          localStorage.setItem('currentUser', data.json().principal);
+          localStorage.setItem('isAuthenticated', true);
+      window.location.href = "";
         },err=>{
           console.log(err);
           if(err.status === 401)

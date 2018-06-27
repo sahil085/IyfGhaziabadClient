@@ -2,16 +2,17 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response} from '@angular/http';
 
 import { environment } from '../../environments/environment';
+import {MatSnackBar} from '@angular/material';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  authenticated = false;
+  authenticated : boolean = false;
   apiUrl: string = environment.apiUrl;
 
-  constructor(private http: Http) {
+  constructor(private http: Http,public snackBar: MatSnackBar) {
   }
 
   public logIn(user) {
@@ -31,4 +32,31 @@ export class AuthenticationService {
 
 
   }
+
+  public logout()
+  {
+    this.http.post(this.apiUrl + '/account/logout',{}).subscribe( resp => {
+
+      if(resp.status == 200 )
+      {
+        localStorage.removeItem("isAuthenticated");
+        this.snackBar.open("Logout Successfully", 'Hare krishna', {
+          duration: 2000,
+          verticalPosition: 'top',
+          horizontalPosition: 'center'
+        });
+        setTimeout(function () {
+          window.location.href="";
+        },2000);
+      }
+    },error1 => {
+      this.snackBar.open("Logout Error Please try Again", 'Hare krishna', {
+        duration: 2000,
+        verticalPosition: 'top',
+        horizontalPosition: 'center'
+      });
+      }
+    );
+  }
 }
+
