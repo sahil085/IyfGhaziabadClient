@@ -56,7 +56,10 @@ export class XhrInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     const xhr = req.clone({
-      headers: req.headers.set('X-Requested-With', 'XMLHttpRequest')
+      setHeaders: {
+        'X-Requested-With' : 'XMLHttpRequest',
+        'Authorization' : 'Basic ' + localStorage.getItem('Authorization')
+      }
     });
     return next.handle(xhr);
   }
@@ -65,6 +68,7 @@ export class XhrInterceptor implements HttpInterceptor {
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     HeaderComponent,
     FooterComponent,
     RegisterComponent,
@@ -105,7 +109,14 @@ export class XhrInterceptor implements HttpInterceptor {
     MatSnackBarModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AdminCourseService ,RegistrationService,{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},AuthenticationService],
+  providers: [RegistrationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: XhrInterceptor,
+      multi: true
+    },
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+    , AuthenticationService],
   bootstrap: [AppComponent],
   entryComponents: [LogindialogComponent]
 })

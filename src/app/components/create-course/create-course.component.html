@@ -11,8 +11,8 @@
       <form [formGroup]="courseForm" >
         <div class="example-container">
         <mat-form-field>
-          <input matInput placeholder="Course Title" formControlName="title" required >
-          <mat-error *ngIf="courseForm.get('title').hasError('required')">
+          <input matInput placeholder="Course Title" formControlName="tittle" required >
+          <mat-error *ngIf="courseForm.get('tittle').hasError('required')">
             Please Enter Course Title
           </mat-error>
 
@@ -62,6 +62,17 @@
             Please Enter Gender of allowed Candidates
           </mat-error>
         </mat-form-field>
+
+          <mat-form-field>
+            <mat-select placeholder="Gender of allowed candidates" formControlName="duration" required>
+              <mat-option value="2 - 6 months">2 - 6 months</mat-option>
+              <mat-option value="female">Female</mat-option>
+            </mat-select>
+            <mat-error *ngIf="courseForm.get('description').hasError('required')">
+              Please Enter Gender of allowed Candidates
+            </mat-error>
+          </mat-form-field>
+
 
 
         </div>

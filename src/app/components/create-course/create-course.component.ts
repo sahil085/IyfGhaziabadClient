@@ -12,14 +12,15 @@ export class CreateCourseComponent implements OnInit {
   public courseForm : FormGroup;
 
   constructor(private fb: FormBuilder,
-              public adminCourseService: AdminCourseService) {
+              private adminCourseService: AdminCourseService) {
     this.courseForm = this.fb.group({
-      title: ['',Validators.required],
+      tittle: ['',Validators.required],
       description: ['',Validators.required],
       vedicLevel: ['',Validators.required],
       courseType: ['',Validators.required],
-      gender: ['',Validators.required]
-    })
+      gender: ['',Validators.required],
+      duration: ['',Validators.required]
+    });
   }
 
 
