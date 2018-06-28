@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {config} from 'rxjs';
 
 @Component({
   selector: 'app-create-seminar',
@@ -31,6 +32,7 @@ export class CreateSeminarComponent implements OnInit {
     // });
   }
   ngOnInit() {
+  private config = { hour: 7, minute: 15, meriden: 'PM', format: 12 };
   }
 
 }

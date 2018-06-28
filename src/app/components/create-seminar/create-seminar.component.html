@@ -41,16 +41,20 @@
                   <!--</mat-error>-->
                 </mat-form-field>
 
-                <div>
+
                   <mat-form-field>
-                    <input matInput placeholder="Seminar Date" formControlName="date" type="date" required>
+                    <input (click)="picker.open()" matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <!--<input matInput placeholder="Seminar Date" formControlName="date" type="date" required>-->
                     <mat-error *ngIf="seminarForm.get('date').hasError('required')">
                       Please Enter Seminar Date
                     </mat-error>
                   </mat-form-field>
 
-                  <mat-form-field>
-                    <input matInput placeholder="From" formControlName="timeFrom" type="time" required>
+                  <mat-form-field class="timer">
+                    <timepicker color="primary" [(userTime)]="exportTime"></timepicker>
+                    <!--<input matInput placeholder="From" formControlName="timeFrom" type="time" required>-->
                     <mat-error *ngIf="seminarForm.get('timeFrom').hasError('required')">
                       When will seminar start?
                     </mat-error>
@@ -62,7 +66,6 @@
                       When will seminar end?
                     </mat-error>
                   </mat-form-field>
-                </div>
 
                 <mat-form-field>
                   <input matInput placeholder="Venue" formControlName="venue" type="text" required>

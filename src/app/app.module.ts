@@ -8,7 +8,7 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-b
 import {
   MAT_DIALOG_DEFAULT_OPTIONS,
   MatAutocompleteModule,
-  MatButtonModule, MatCardModule, MatDialogModule,
+  MatButtonModule, MatCardModule, MatDatepickerModule, MatDialogModule,
   MatGridListModule, MatIconModule,
   MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule,
   MatOptionModule, MatProgressSpinnerModule,
@@ -37,6 +37,8 @@ import { ViewSessionComponent } from './components/view-session/view-session.com
 import {AdminCourseService} from './services/admin-course.service';
 import * as path from 'path';
 import { QuotesCarouselComponent } from './components/quotes-carousel/quotes-carousel.component';
+import {Ng5TimePickerModule} from 'ng5-time-picker';
+
 
 
 const appRoutes: Routes = [
@@ -91,6 +93,7 @@ export class XhrInterceptor implements HttpInterceptor {
     MatInputModule,
     MatListModule,
     MatToolbarModule,
+    MatDatepickerModule,
     FormsModule,
     ReactiveFormsModule,
     LayoutModule,
