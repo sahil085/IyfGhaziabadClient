@@ -28,6 +28,8 @@ export class AuthenticationService {
     const options = new RequestOptions();
     options.headers = headers;
 
+    localStorage.setItem('Authorization',base64Credential);
+
     return this.http.get(this.apiUrl + '/account/login', options);
 
 
