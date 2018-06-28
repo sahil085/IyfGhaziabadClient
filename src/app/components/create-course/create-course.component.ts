@@ -2,6 +2,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import {AdminCourseService} from '../../services/admin-course.service';
 import {MatSnackBar} from '@angular/material';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-course',
@@ -36,8 +37,8 @@ export class CreateCourseComponent implements OnInit {
         horizontalPosition: 'center'
       });
     }else{
-      this.adminCourseService.createCourseService(this.courseForm.value).subscribe(response => {
-        this.snackBar.open(response.response, 'Hare krishna', {
+      this.adminCourseService.createCourseService(this.courseForm.value).subscribe( resp => {
+        this.snackBar.open(resp["response"], 'Hare krishna', {
           duration: 3000,
           verticalPosition: 'top',
           horizontalPosition: 'center'
