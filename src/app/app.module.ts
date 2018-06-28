@@ -36,6 +36,7 @@ import { ViewSeminarComponent } from './components/view-seminar/view-seminar.com
 import { ViewSessionComponent } from './components/view-session/view-session.component';
 import {AdminCourseService} from './services/admin-course.service';
 import * as path from 'path';
+import { QuotesCarouselComponent } from './components/quotes-carousel/quotes-carousel.component';
 
 
 const appRoutes: Routes = [
@@ -77,7 +78,8 @@ export class XhrInterceptor implements HttpInterceptor {
     CreateSessionComponent,
     CreateSeminarComponent,
     ViewSeminarComponent,
-    ViewSessionComponent
+    ViewSessionComponent,
+    QuotesCarouselComponent
   ],
   imports: [
     BrowserModule,

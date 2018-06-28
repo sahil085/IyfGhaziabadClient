@@ -20,7 +20,7 @@ export class CreateSeminarComponent implements OnInit {
       timeTill: ['',Validators.required],
       venue: ['',Validators.required],
       category: '',
-      seats: ['',Validators.max(150)],
+      seats: ['',[Validators.max(150),Validators.min(10)]]
     })
   }
 
