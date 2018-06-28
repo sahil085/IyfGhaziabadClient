@@ -42,6 +42,7 @@ export class AuthenticationService {
       if(resp.status == 200 )
       {
         localStorage.removeItem("isAuthenticated");
+        localStorage.removeItem("Authorization");
         this.snackBar.open("Logout Successfully", 'Hare krishna', {
           duration: 2000,
           verticalPosition: 'top',
