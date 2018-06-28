@@ -32,7 +32,6 @@ export class CreateSeminarComponent implements OnInit {
     // });
   }
   ngOnInit() {
-  private config = { hour: 7, minute: 15, meriden: 'PM', format: 12 };
   }
 
 }
