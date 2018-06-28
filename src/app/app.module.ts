@@ -37,6 +37,8 @@ import { ViewSessionComponent } from './components/view-session/view-session.com
 import {AdminCourseService} from './services/admin-course.service';
 import * as path from 'path';
 import { QuotesCarouselComponent } from './components/quotes-carousel/quotes-carousel.component';
+import {AdminSeminarService} from './services/admin-seminar.service';
+import {AdminSessionService} from './services/admin-session.service';
 
 
 const appRoutes: Routes = [
@@ -107,7 +109,7 @@ export class XhrInterceptor implements HttpInterceptor {
     MatSnackBarModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AdminCourseService ,RegistrationService,{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},AuthenticationService],
+  providers: [AdminCourseService, AdminSeminarService, AdminSessionService, RegistrationService,{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},AuthenticationService],
   bootstrap: [AppComponent],
   entryComponents: [LogindialogComponent]
 })
