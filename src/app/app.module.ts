@@ -55,13 +55,22 @@ const appRoutes: Routes = [
 export class XhrInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    const xhr = req.clone({
-      setHeaders: {
-        'X-Requested-With' : 'XMLHttpRequest',
-        'Authorization' : 'Basic ' + localStorage.getItem('Authorization')
-      }
-    });
-    return next.handle(xhr);
+    if ( localStorage.getItem('Authorization') == null) {
+      const xhr = req.clone({
+        setHeaders: {
+          'X-Requested-With' : 'XMLHttpRequest'
+        }
+      });
+      return next.handle(xhr);
+    } else {
+      const xhr = req.clone({
+        setHeaders: {
+          'X-Requested-With' : 'XMLHttpRequest',
+          'Authorization' : 'Basic ' + localStorage.getItem('Authorization')
+        }
+      });
+      return next.handle(xhr);
+    }
   }
 }
 
