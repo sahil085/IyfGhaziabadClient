@@ -37,6 +37,7 @@ import { ViewSessionComponent } from './components/view-session/view-session.com
 import {AdminCourseService} from './services/admin-course.service';
 import * as path from 'path';
 import { QuotesCarouselComponent } from './components/quotes-carousel/quotes-carousel.component';
+import {AmazingTimePickerModule} from 'amazing-time-picker';
 
 
 
@@ -101,6 +102,7 @@ export class XhrInterceptor implements HttpInterceptor {
     HttpClientModule,
     HttpModule,
     BrowserAnimationsModule,
+    AmazingTimePickerModule,
     MatButtonModule,
     MatCardModule,
     MatInputModule,

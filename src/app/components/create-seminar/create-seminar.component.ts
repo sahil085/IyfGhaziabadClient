@@ -16,16 +16,16 @@ export class CreateSeminarComponent implements OnInit {
 
     this.seminarForm = this.fb.group({
       title: ['',Validators.required],
-      description: ['',Validators.required],
+      seminarDescription: ['',Validators.required],
       speakerName: ['',Validators.required],
-      designation: '',
+      speakerDescription: ['', Validators.required],
       date: ['',Validators.required],
-      timeFrom: ['',Validators.required],
-      timeTill: ['',Validators.required],
+      startTime: ['',Validators.required],
+      endTime: ['',Validators.required],
       venue: ['',Validators.required],
       category: '',
-      seats: ['',[Validators.max(150),Validators.min(10)]]
-    })
+      TotalNumberOfSeats: ['', [Validators.max(150), Validators.min(10)]]
+    });
   }
 
   public createSeminar(){
@@ -43,9 +43,9 @@ export class CreateSeminarComponent implements OnInit {
           verticalPosition: 'top',
           horizontalPosition: 'center'
         });
-        setTimeout(function () {
-          window.location.href='create-seminar';
-        },2000);
+        // setTimeout(function () {
+        //   window.location.href='create-seminar';
+        // },2000);
       });
     }
   }
