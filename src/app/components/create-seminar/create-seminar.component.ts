@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {config} from 'rxjs';
 import {AdminSeminarService} from '../../services/admin-seminar.service';
 import {MatSnackBar} from '@angular/material';
+import {AmazingTimePickerService} from 'amazing-time-picker';
 
 @Component({
   selector: 'app-create-seminar',
@@ -11,7 +12,9 @@ import {MatSnackBar} from '@angular/material';
 })
 export class CreateSeminarComponent implements OnInit {
   public seminarForm: FormGroup;
-  constructor(private fb: FormBuilder,private adminSeminarService: AdminSeminarService,
+  constructor(private fb: FormBuilder,
+              private atp: AmazingTimePickerService,
+              private adminSeminarService: AdminSeminarService,
               public snackBar: MatSnackBar) {
 
     this.seminarForm = this.fb.group({
@@ -24,7 +27,7 @@ export class CreateSeminarComponent implements OnInit {
       endTime: ['',Validators.required],
       venue: ['',Validators.required],
       category: '',
-      TotalNumberOfSeats: ['', [Validators.max(150), Validators.min(10)]]
+      totalNumberOfSeats: ['', [Validators.max(150), Validators.min(10)]]
     });
   }
 
@@ -43,12 +46,13 @@ export class CreateSeminarComponent implements OnInit {
           verticalPosition: 'top',
           horizontalPosition: 'center'
         });
-        // setTimeout(function () {
-        //   window.location.href='create-seminar';
-        // },2000);
+        setTimeout(function () {
+          window.location.href='create-seminar';
+        },2000);
       });
     }
   }
+
   ngOnInit() {
   }
 

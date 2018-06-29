@@ -54,7 +54,7 @@
 
                   <mat-form-field >
                     <!--<timepicker color="primary" [(userTime)]="exportTime"></timepicker>-->
-                    <input matInput atp-time-picker value="19:00" formControlName="startTime"/>
+                    <input placeholder="Start Time" matInput atp-time-picker value="11:00"  formControlName="startTime"/>
                     <!--<input matInput placeholder="From" formControlName="startTime" type="time" required>-->
                     <mat-error *ngIf="seminarForm.get('startTime').hasError('required')">
                       When will seminar start?
@@ -62,7 +62,7 @@
                   </mat-form-field>
 
                   <mat-form-field>
-                    <input matInput atp-time-picker value="19:00" formControlName="endTime"/>
+                    <input placeholder="End Time" matInput atp-time-picker value="19:00" formControlName="endTime"/>
                     <!--<input matInput placeholder="Till" formControlName="endTime" type="time" required>-->
                     <mat-error *ngIf="seminarForm.get('endTime').hasError('required')">
                       When will seminar end?
@@ -88,11 +88,11 @@
 
 
                 <mat-form-field>
-                  <input matInput placeholder="No. of Seats" formControlName="TotalNumberOfSeats" type="number" >
-                  <mat-error *ngIf="seminarForm.get('TotalNumberOfSeats').hasError('min')">
+                  <input matInput placeholder="No. of Seats" formControlName="totalNumberOfSeats" type="text" >
+                  <mat-error *ngIf="seminarForm.get('totalNumberOfSeats').hasError('min')">
                     Minimum 10 Seats
                   </mat-error>
-                  <mat-error *ngIf="seminarForm.get('TotalNumberOfSeats').hasError('max')">
+                  <mat-error *ngIf="seminarForm.get('totalNumberOfSeats').hasError('max')">
                     Max 150 seats
                   </mat-error>
                 </mat-form-field>
