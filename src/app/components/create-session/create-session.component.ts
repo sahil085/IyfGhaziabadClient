@@ -9,8 +9,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class CreateSessionComponent implements OnInit {
   public sessionForm: FormGroup;
 
-  constructor(private fb: FormBuilder,
-              public createSession: ) {
+  constructor(private fb: FormBuilder) {
 
     this.sessionForm = this.fb.group({
       title: ['', Validators.required],

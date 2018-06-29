@@ -8,7 +8,7 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-b
 import {
   MAT_DIALOG_DEFAULT_OPTIONS,
   MatAutocompleteModule,
-  MatButtonModule, MatCardModule, MatDialogModule,
+  MatButtonModule, MatCardModule, MatDatepickerModule, MatDialogModule,
   MatGridListModule, MatIconModule,
   MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule,
   MatOptionModule, MatProgressSpinnerModule,
@@ -37,8 +37,8 @@ import { ViewSessionComponent } from './components/view-session/view-session.com
 import {AdminCourseService} from './services/admin-course.service';
 import * as path from 'path';
 import { QuotesCarouselComponent } from './components/quotes-carousel/quotes-carousel.component';
-import {AdminSeminarService} from './services/admin-seminar.service';
-import {AdminSessionService} from './services/admin-session.service';
+import {AmazingTimePickerModule} from 'amazing-time-picker';
+
 
 
 const appRoutes: Routes = [
@@ -58,16 +58,30 @@ const appRoutes: Routes = [
 export class XhrInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    const xhr = req.clone({
-      headers: req.headers.set('X-Requested-With', 'XMLHttpRequest')
-    });
-    return next.handle(xhr);
+    console.log(localStorage.getItem('Authorization'));
+    if ( localStorage.getItem('Authorization') == null) {
+      const xhr = req.clone({
+        setHeaders: {
+          'X-Requested-With' : 'XMLHttpRequest'
+        }
+      });
+      return next.handle(xhr);
+    } else {
+      const xhr = req.clone({
+        setHeaders: {
+          'X-Requested-With' : 'XMLHttpRequest',
+          'Authorization' : 'Basic ' + localStorage.getItem('Authorization')
+        }
+      });
+      return next.handle(xhr);
+    }
   }
 }
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     HeaderComponent,
     FooterComponent,
     RegisterComponent,
@@ -88,11 +102,13 @@ export class XhrInterceptor implements HttpInterceptor {
     HttpClientModule,
     HttpModule,
     BrowserAnimationsModule,
+    AmazingTimePickerModule,
     MatButtonModule,
     MatCardModule,
     MatInputModule,
     MatListModule,
     MatToolbarModule,
+    MatDatepickerModule,
     FormsModule,
     ReactiveFormsModule,
     LayoutModule,
@@ -109,7 +125,14 @@ export class XhrInterceptor implements HttpInterceptor {
     MatSnackBarModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [AdminCourseService, AdminSeminarService, AdminSessionService, RegistrationService,{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},AuthenticationService],
+  providers: [RegistrationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: XhrInterceptor,
+      multi: true
+    },
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+    , AuthenticationService],
   bootstrap: [AppComponent],
   entryComponents: [LogindialogComponent]
 })

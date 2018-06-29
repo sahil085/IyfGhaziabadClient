@@ -16,6 +16,7 @@ export class RegistrationService {
 
 
   public saveNewUser(data) {
+    localStorage.removeItem("Authorization");
     return this.http.put(this.apiUrl + '/account/register', data , {responseType: 'text'});
   }
 }
