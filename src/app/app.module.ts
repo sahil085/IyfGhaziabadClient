@@ -8,7 +8,7 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-b
 import {
   MAT_DIALOG_DEFAULT_OPTIONS,
   MatAutocompleteModule,
-  MatButtonModule, MatCardModule, MatDialogModule,
+  MatButtonModule, MatCardModule, MatDatepickerModule, MatDialogModule,
   MatGridListModule, MatIconModule,
   MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule,
   MatOptionModule, MatProgressSpinnerModule,
@@ -36,6 +36,8 @@ import { ViewSeminarComponent } from './components/view-seminar/view-seminar.com
 import { ViewSessionComponent } from './components/view-session/view-session.component';
 import {AdminCourseService} from './services/admin-course.service';
 import * as path from 'path';
+import { QuotesCarouselComponent } from './components/quotes-carousel/quotes-carousel.component';
+
 
 
 const appRoutes: Routes = [
@@ -91,7 +93,8 @@ export class XhrInterceptor implements HttpInterceptor {
     CreateSessionComponent,
     CreateSeminarComponent,
     ViewSeminarComponent,
-    ViewSessionComponent
+    ViewSessionComponent,
+    QuotesCarouselComponent
   ],
   imports: [
     BrowserModule,
@@ -103,6 +106,7 @@ export class XhrInterceptor implements HttpInterceptor {
     MatInputModule,
     MatListModule,
     MatToolbarModule,
+    MatDatepickerModule,
     FormsModule,
     ReactiveFormsModule,
     LayoutModule,

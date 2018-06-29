@@ -6,3 +6,8 @@
 .example-container > * {
   width: 100%;
 }
+
+button{
+  background-color: #FDC600;
+  font-weight: bold;
+}
