@@ -37,6 +37,11 @@ import { ViewSessionComponent } from './components/view-session/view-session.com
 import {AdminCourseService} from './services/admin-course.service';
 import * as path from 'path';
 import { QuotesCarouselComponent } from './components/quotes-carousel/quotes-carousel.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { UpcomingSeminarListComponent } from './components/upcoming-seminar-list/upcoming-seminar-list.component';
+import { UpcomingSessionListComponent } from './components/upcoming-session-list/upcoming-session-list.component';
+import { RecentSessionListComponent } from './components/recent-session-list/recent-session-list.component';
+import { RecentSeminarListComponent } from './components/recent-seminar-list/recent-seminar-list.component';
 
 
 
@@ -47,9 +52,15 @@ const appRoutes: Routes = [
   {path: 'create-course', component: CreateCourseComponent},
   {path: 'create-session', component: CreateSessionComponent},
   {path: 'create-seminar', component: CreateSeminarComponent},
+  {path: 'dashboard', component: DashboardComponent},
+  {path: 'recent-seminar-list', component: RecentSeminarListComponent},
+  {path: 'recent-session-list', component: RecentSessionListComponent},
+  {path: 'upcoming-seminar-list', component: UpcomingSeminarListComponent},
+  {path: 'upcoming-session-list', component: UpcomingSessionListComponent},
   {path: 'view-course', component: ViewCourseComponent},
   {path: 'view-session', component: ViewSessionComponent},
   {path: 'view-seminar', component: ViewSeminarComponent}
+
 
 ];
 
@@ -80,6 +91,7 @@ export class XhrInterceptor implements HttpInterceptor {
 @NgModule({
   declarations: [
     AppComponent,
+    DashboardComponent,
     HeaderComponent,
     HeaderComponent,
     FooterComponent,
@@ -94,7 +106,12 @@ export class XhrInterceptor implements HttpInterceptor {
     CreateSeminarComponent,
     ViewSeminarComponent,
     ViewSessionComponent,
-    QuotesCarouselComponent
+    QuotesCarouselComponent,
+    DashboardComponent,
+    UpcomingSeminarListComponent,
+    UpcomingSessionListComponent,
+    RecentSessionListComponent,
+    RecentSeminarListComponent
   ],
   imports: [
     BrowserModule,
