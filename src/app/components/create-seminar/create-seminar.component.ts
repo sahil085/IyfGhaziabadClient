@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {config} from 'rxjs';
+import {AdminSeminarService} from '../../services/admin-seminar.service';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-create-seminar',
@@ -9,7 +11,8 @@ import {config} from 'rxjs';
 })
 export class CreateSeminarComponent implements OnInit {
   public seminarForm: FormGroup;
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private adminSeminarService: AdminSeminarService,
+              public snackBar: MatSnackBar) {
 
     this.seminarForm = this.fb.group({
       title: ['',Validators.required],
@@ -27,9 +30,24 @@ export class CreateSeminarComponent implements OnInit {
 
   public createSeminar(){
     console.log(this.seminarForm.value);
-    // this.adminCourseService.createCourseService(this.courseForm.value).subscribe(res => {
-    //   console.log(res);
-    // });
+    if(this.seminarForm.invalid){
+      this.snackBar.open(' Please Fill All Form Fields', 'Hare krishna', {
+        duration: 3000,
+        verticalPosition: 'top',
+        horizontalPosition: 'center'
+      });
+    }else{
+      this.adminSeminarService.createSeminarService(this.seminarForm.value).subscribe( resp => {
+        this.snackBar.open(resp["response"], 'Hare krishna', {
+          duration: 3000,
+          verticalPosition: 'top',
+          horizontalPosition: 'center'
+        });
+        setTimeout(function () {
+          window.location.href='create-seminar';
+        },2000);
+      });
+    }
   }
   ngOnInit() {
   }
