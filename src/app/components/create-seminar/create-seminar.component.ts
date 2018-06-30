@@ -53,26 +53,26 @@ export class CreateSeminarComponent implements OnInit {
     }
   }
 
-  public createSeminar() {
+  public createSeminar(){
     console.log(this.seminarForm.value);
-    if(this.seminarForm.invalid){
-      this.snackBar.open(' Please Fill All Form Fields', 'Hare krishna', {
-        duration: 3000,
-        verticalPosition: 'top',
-        horizontalPosition: 'center'
-      });
-    }else{
-      this.adminSeminarService.createSeminarService(this.seminarForm.value).subscribe( resp => {
-        this.snackBar.open(resp["response"], 'Hare krishna', {
-          duration: 3000,
-          verticalPosition: 'top',
-          horizontalPosition: 'center'
-        });
-      //   setTimeout(function () {
-      //     window.location.href='create-seminar';
-      //   },2000);
-      });
-    }
+    // if(this.seminarForm.invalid){
+    //   this.snackBar.open(' Please Fill All Form Fields', 'Hare krishna', {
+    //     duration: 3000,
+    //     verticalPosition: 'top',
+    //     horizontalPosition: 'center'
+    //   });
+    // }else{
+    //   this.adminSeminarService.createSeminarService(this.seminarForm.value).subscribe( resp => {
+    //     this.snackBar.open(resp["response"], 'Hare krishna', {
+    //       duration: 3000,
+    //       verticalPosition: 'top',
+    //       horizontalPosition: 'center'
+    //     });
+    //   //   setTimeout(function () {
+    //   //     window.location.href='create-seminar';
+    //   //   },2000);
+    //   });
+    // }
   }
 
   ngOnInit() {

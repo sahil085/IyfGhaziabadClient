@@ -109,10 +109,7 @@ export class XhrInterceptor implements HttpInterceptor {
     ViewSessionComponent,
     QuotesCarouselComponent,
     DashboardComponent,
-    RecentSeminarListComponent,
-    RecentSessionListComponent,
-    UpcomingSeminarListComponent,
-    UpcomingSessionListComponent
+    RecentSeminarListComponent
   ],
   imports: [
     BrowserModule,
