@@ -45,7 +45,7 @@ import { UpcomingSessionListComponent } from './components/upcoming-session-list
 import { RecentSessionListComponent } from './components/recent-session-list/recent-session-list.component';
 import { RecentSeminarListComponent } from './components/recent-seminar-list/recent-seminar-list.component';
 import {MatPaginatorModule, MatSortModule, MatTableDataSource} from '@angular/material';
-import {ViewChild} from '@angular/core';
+
 
 
 const appRoutes: Routes = [
@@ -109,7 +109,10 @@ export class XhrInterceptor implements HttpInterceptor {
     ViewSessionComponent,
     QuotesCarouselComponent,
     DashboardComponent,
-    RecentSeminarListComponent
+    RecentSeminarListComponent,
+    RecentSessionListComponent,
+    UpcomingSeminarListComponent,
+    UpcomingSessionListComponent
   ],
   imports: [
     BrowserModule,
@@ -141,6 +144,7 @@ export class XhrInterceptor implements HttpInterceptor {
     MatSnackBarModule,
     NoopAnimationsModule,
     ReactiveFormsModule,
+    MatPaginatorModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [RegistrationService,
