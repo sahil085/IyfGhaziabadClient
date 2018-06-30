@@ -12,7 +12,7 @@ import {
   MatGridListModule, MatIconModule,
   MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule,
   MatOptionModule, MatProgressSpinnerModule,
-  MatSelectModule, MatSidenavModule, MatSnackBarModule, MatTableDataSource, MatToolbarModule
+  MatSelectModule, MatSidenavModule, MatSnackBarModule, MatToolbarModule
 } from '@angular/material';
 import { RegisterComponent } from './components/register/register.component';
 import {HTTP_INTERCEPTORS, HttpClientModule, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
@@ -37,6 +37,8 @@ import { ViewSessionComponent } from './components/view-session/view-session.com
 import {AdminCourseService} from './services/admin-course.service';
 import * as path from 'path';
 import { QuotesCarouselComponent } from './components/quotes-carousel/quotes-carousel.component';
+import {AmazingTimePickerModule} from 'amazing-time-picker';
+
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UpcomingSeminarListComponent } from './components/upcoming-seminar-list/upcoming-seminar-list.component';
 import { UpcomingSessionListComponent } from './components/upcoming-session-list/upcoming-session-list.component';
@@ -61,7 +63,6 @@ const appRoutes: Routes = [
   {path: 'view-course', component: ViewCourseComponent},
   {path: 'view-session', component: ViewSessionComponent},
   {path: 'view-seminar', component: ViewSeminarComponent}
-
 
 ];
 
@@ -92,7 +93,6 @@ export class XhrInterceptor implements HttpInterceptor {
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
     HeaderComponent,
     HeaderComponent,
     FooterComponent,
@@ -109,41 +109,39 @@ export class XhrInterceptor implements HttpInterceptor {
     ViewSessionComponent,
     QuotesCarouselComponent,
     DashboardComponent,
-    UpcomingSeminarListComponent,
-    UpcomingSessionListComponent,
-    RecentSessionListComponent,
     RecentSeminarListComponent
   ],
   imports: [
-    BrowserAnimationsModule,
     BrowserModule,
-    FormsModule,
     HttpClientModule,
     HttpModule,
-    LayoutModule,
+    BrowserAnimationsModule,
+    AmazingTimePickerModule,
     MatButtonModule,
     MatCardModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatGridListModule,
-    MatIconModule,
     MatInputModule,
     MatListModule,
-    MatMenuModule,
-    MatNativeDateModule,
+    MatToolbarModule,
+    MatDatepickerModule,
+    FormsModule,
+    ReactiveFormsModule,
+    LayoutModule,
+    MatSidenavModule,
+    MatIconModule,
     MatOptionModule,
-    MatPaginatorModule,
+    MatSelectModule,
+    MatNativeDateModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatDialogModule,
+    NoopAnimationsModule,
     MatProgressSpinnerModule,
     MatSelectModule,
     MatSidenavModule,
     MatSnackBarModule,
-    MatSortModule,
-    MatTableDataSource,
-    MatToolbarModule,
     NoopAnimationsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes),
-    ViewChild
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [RegistrationService,
     {

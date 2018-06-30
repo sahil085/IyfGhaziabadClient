@@ -21,8 +21,8 @@
 
 
                 <mat-form-field>
-                  <input matInput placeholder="Seminar Description" formControlName="description" type="text" required>
-                  <mat-error *ngIf="seminarForm.get('description').hasError('required')">
+                  <input matInput placeholder="Seminar Description" formControlName="seminarDescription" type="text" required>
+                  <mat-error *ngIf="seminarForm.get('seminarDescription').hasError('required')">
                     Please Enter Seminar Description
                   </mat-error>
                 </mat-form-field>
@@ -35,15 +35,15 @@
                 </mat-form-field>
 
                 <mat-form-field>
-                  <input matInput placeholder="Speaker Designation" formControlName="designation" type="text">
-                  <!--<mat-error *ngIf="courseForm.get('designation').hasError('required')">-->
-                    <!--Please Enter Speaker Designation-->
-                  <!--</mat-error>-->
+                  <input matInput placeholder="Speaker Designation" formControlName="speakerDescription" type="text">
+                  <mat-error *ngIf="seminarForm.get('speakerDescription').hasError('required')">
+                    Please Enter Speaker Description
+                  </mat-error>
                 </mat-form-field>
 
 
                   <mat-form-field>
-                    <input (click)="picker.open()" matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date">
+                    <input (focus)="picker.open()" (click)="picker.open()" matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                     <!--<input matInput placeholder="Seminar Date" formControlName="date" type="date" required>-->
@@ -52,17 +52,19 @@
                     </mat-error>
                   </mat-form-field>
 
-                  <mat-form-field class="timer">
+                  <mat-form-field >
                     <!--<timepicker color="primary" [(userTime)]="exportTime"></timepicker>-->
-                    <input matInput placeholder="From" formControlName="timeFrom" type="time" required>
-                    <mat-error *ngIf="seminarForm.get('timeFrom').hasError('required')">
+                    <input placeholder="Start Time" matInput atp-time-picker value="11:00"  formControlName="startTime"/>
+                    <!--<input matInput placeholder="From" formControlName="startTime" type="time" required>-->
+                    <mat-error *ngIf="seminarForm.get('startTime').hasError('required')">
                       When will seminar start?
                     </mat-error>
                   </mat-form-field>
 
                   <mat-form-field>
-                    <input matInput placeholder="Till" formControlName="timeTill" type="time" required>
-                    <mat-error *ngIf="seminarForm.get('timeTill').hasError('required')">
+                    <input placeholder="End Time" matInput atp-time-picker value="19:00" formControlName="endTime"/>
+                    <!--<input matInput placeholder="Till" formControlName="endTime" type="time" required>-->
+                    <mat-error *ngIf="seminarForm.get('endTime').hasError('required')">
                       When will seminar end?
                     </mat-error>
                   </mat-form-field>
@@ -86,10 +88,18 @@
 
 
                 <mat-form-field>
-                  <input matInput placeholder="No. of Seats" formControlName="seats" type="number" >
-                  <mat-error *ngIf="seminarForm.get('seats').hasError('number')">
-                    Please enter in numbers
+                  <input matInput placeholder="No. of Seats" formControlName="totalNumberOfSeats" type="text" >
+                  <mat-error *ngIf="seminarForm.get('totalNumberOfSeats').hasError('min')">
+                    Minimum 10 Seats
                   </mat-error>
+                  <mat-error *ngIf="seminarForm.get('totalNumberOfSeats').hasError('max')">
+                    Max 150 seats
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <label for="avatar">Poster / Thumbnail</label>
+                    <input type="file" id="avatar" (change)="onFileChange($event)" #fileInput>
                 </mat-form-field>
 
 
