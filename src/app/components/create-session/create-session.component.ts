@@ -20,6 +20,7 @@ export class CreateSessionComponent implements OnInit {
       timeFrom: ['', Validators.required],
       timeTill: ['', Validators.required],
       venue: ['', Validators.required],
+      iskconCentre: ['',Validators.required],
       seats: ['', [Validators.max(150),Validators.min(10)]]
     })
   }

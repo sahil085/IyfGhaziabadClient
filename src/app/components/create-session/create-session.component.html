@@ -60,7 +60,17 @@
                 <mat-form-field>
                   <input matInput placeholder="Venue" formControlName="venue" type="text" required>
                   <mat-error *ngIf="sessionForm.get('venue').hasError('required')">
-                    Please Enter the Session Venue
+                    Please Enter the ISKCON Centre
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-select placeholder="ISKCON Centre" formControlName="iskconCentre" >
+                    <mat-option value="ISKCON Delhi">ISKCON Delhi</mat-option>
+                    <mat-option value="ISKCON Ghaziabad">ISKCON Ghaziabad</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="sessionForm.get('iskconCentre').hasError('required')">
+                    Please Select Iskcon centre
                   </mat-error>
                 </mat-form-field>
 
