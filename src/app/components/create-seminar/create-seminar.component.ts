@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {config} from 'rxjs';
 import {AdminSeminarService} from '../../services/admin-seminar.service';
@@ -12,12 +12,15 @@ import {AmazingTimePickerService} from 'amazing-time-picker';
 })
 export class CreateSeminarComponent implements OnInit {
   public seminarForm: FormGroup;
+
   constructor(private fb: FormBuilder,
+              private cd: ChangeDetectorRef,
               private atp: AmazingTimePickerService,
               private adminSeminarService: AdminSeminarService,
               public snackBar: MatSnackBar) {
 
     this.seminarForm = this.fb.group({
+      file: [null, Validators.required],
       title: ['',Validators.required],
       seminarDescription: ['',Validators.required],
       speakerName: ['',Validators.required],
@@ -31,7 +34,26 @@ export class CreateSeminarComponent implements OnInit {
     });
   }
 
-  public createSeminar(){
+
+  onFileChange(event) {
+    const reader = new FileReader();
+
+    if(event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        this.seminarForm.patchValue({
+          file: reader.result
+        });
+
+        // need to run CD since file load runs outside of zone
+        this.cd.markForCheck();
+      };
+    }
+  }
+
+  public createSeminar() {
     console.log(this.seminarForm.value);
     if(this.seminarForm.invalid){
       this.snackBar.open(' Please Fill All Form Fields', 'Hare krishna', {
@@ -46,9 +68,9 @@ export class CreateSeminarComponent implements OnInit {
           verticalPosition: 'top',
           horizontalPosition: 'center'
         });
-        setTimeout(function () {
-          window.location.href='create-seminar';
-        },2000);
+      //   setTimeout(function () {
+      //     window.location.href='create-seminar';
+      //   },2000);
       });
     }
   }
