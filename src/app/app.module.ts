@@ -12,7 +12,7 @@ import {
   MatGridListModule, MatIconModule,
   MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule,
   MatOptionModule, MatProgressSpinnerModule,
-  MatSelectModule, MatSidenavModule, MatSnackBarModule, MatToolbarModule
+  MatSelectModule, MatSidenavModule, MatSnackBarModule, MatTableDataSource, MatToolbarModule
 } from '@angular/material';
 import { RegisterComponent } from './components/register/register.component';
 import {HTTP_INTERCEPTORS, HttpClientModule, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
@@ -42,7 +42,8 @@ import { UpcomingSeminarListComponent } from './components/upcoming-seminar-list
 import { UpcomingSessionListComponent } from './components/upcoming-session-list/upcoming-session-list.component';
 import { RecentSessionListComponent } from './components/recent-session-list/recent-session-list.component';
 import { RecentSeminarListComponent } from './components/recent-seminar-list/recent-seminar-list.component';
-
+import {MatPaginatorModule, MatSortModule, MatTableDataSource} from '@angular/material';
+import {ViewChild} from '@angular/core';
 
 
 const appRoutes: Routes = [
@@ -114,31 +115,35 @@ export class XhrInterceptor implements HttpInterceptor {
     RecentSeminarListComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     HttpModule,
-    BrowserAnimationsModule,
+    LayoutModule,
     MatButtonModule,
     MatCardModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatGridListModule,
+    MatIconModule,
     MatInputModule,
     MatListModule,
-    MatToolbarModule,
-    MatDatepickerModule,
-    FormsModule,
-    ReactiveFormsModule,
-    LayoutModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatOptionModule,
-    MatSelectModule,
-    MatNativeDateModule,
-    MatGridListModule,
     MatMenuModule,
-    MatDialogModule,
-    NoopAnimationsModule,
+    MatNativeDateModule,
+    MatOptionModule,
+    MatPaginatorModule,
     MatProgressSpinnerModule,
+    MatSelectModule,
+    MatSidenavModule,
     MatSnackBarModule,
-    RouterModule.forRoot(appRoutes)
+    MatSortModule,
+    MatTableDataSource,
+    MatToolbarModule,
+    NoopAnimationsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(appRoutes),
+    ViewChild
   ],
   providers: [RegistrationService,
     {

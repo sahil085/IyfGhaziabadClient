@@ -1,62 +1,102 @@
-<div class="row">
-  <div class="content-area home-area-1 recent-property" style="background-color: #FCFCFC; padding-bottom: 55px;">
-    <div class="container">
+<!--<div class="row">-->
+  <!--<div class="content-area home-area-1 recent-property" style="background-color: #FCFCFC; padding-bottom: 55px;">-->
+    <!--<div class="container">-->
+      <!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+
+
       <!--<div class="row">-->
+        <!--<div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">-->
+          <!--&lt;!&ndash; /.feature title &ndash;&gt;-->
+          <!--<h2 style="color: black">Recent seminars</h2>-->
+          <!--&lt;!&ndash;<app-quotes-carousel></app-quotes-carousel>&ndash;&gt;-->
+          <!--&lt;!&ndash;<p>Seminars aimed towards giving a deeper and much more meaningful prespective to world events, our work and our Life itself.</p>&ndash;&gt;-->
+        <!--</div>-->
+        <!--<div class="proerty-th">-->
+          <!--<div class="col-sm-6 col-md-4 p0">-->
+            <!--<div class="box-two proerty-item">-->
+              <!--<div class="item-thumb">-->
+                <!--<a href="#" ><img src="assets/img/seminar/3.png"></a>-->
+              <!--</div>-->
+              <!--<div class="item-entry overflow">-->
+                <!--<h5><a href="#" > Seminar 1 </a></h5>-->
+                <!--&lt;!&ndash;<div class="dot-hr"></div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<span class="pull-left"><b>Area :</b> 120m </span>&ndash;&gt;-->
+                <!--&lt;!&ndash;<span class="proerty-price pull-right">$ 300,000</span>&ndash;&gt;-->
+              <!--</div>-->
+              <!--<a href="#"> <button mat-flat-button data-wow-delay="0.45s"><strong>More details</strong></button></a>-->
+              <!--&lt;!&ndash;<a href="/view-course"> <button mat-raised-button data-wow-delay="0.45s"><strong>View</strong></button></a>&ndash;&gt;-->
+            <!--</div>-->
+          <!--</div>-->
+
+          <!--<div class="col-sm-6 col-md-4 p0">-->
+            <!--<div class="box-two proerty-item">-->
+              <!--<div class="item-thumb">-->
+                <!--<a href="#" ><img src="assets/img/seminar/5.png"></a>-->
+              <!--</div>-->
+              <!--<div class="item-entry overflow">-->
+                <!--<h5><a href="#" > Seminar 2 </a></h5>-->
+              <!--</div>-->
+
+              <!--<a href="#"> <button mat-flat-button  data-wow-delay="0.45s"><strong>More details</strong></button></a>-->
+              <!--&lt;!&ndash;<a href="/view-session"> <button mat-raised-button data-wow-delay="0.45s"><strong>View</strong></button></a>&ndash;&gt;-->
+            <!--</div>-->
+          <!--</div>-->
+
+          <!--<div class="col-sm-6 col-md-4 p0">-->
+            <!--<div class="box-two proerty-item">-->
+              <!--<div class="item-thumb">-->
+                <!--<a href="#" ><img src="assets/img/seminar/7.png"></a>-->
+              <!--</div>-->
+              <!--<div class="item-entry overflow">-->
+                <!--<h5><a href="#" > Seminar 3 </a></h5>-->
+              <!--</div>-->
+
+              <!--<a href="#"> <button mat-flat-button  data-wow-delay="0.45s"><strong>More details</strong></button></a>-->
+              <!--&lt;!&ndash;<a href="/view-seminar"> <button mat-raised-button data-wow-delay="0.45s"><strong>View</strong></button></a>&ndash;&gt;-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
 
 
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
-          <!-- /.feature title -->
-          <h2 style="color: black">Recent seminars</h2>
-          <!--<app-quotes-carousel></app-quotes-carousel>-->
-          <!--<p>Seminars aimed towards giving a deeper and much more meaningful prespective to world events, our work and our Life itself.</p>-->
-        </div>
-        <div class="proerty-th">
-          <div class="col-sm-6 col-md-4 p0">
-            <div class="box-two proerty-item">
-              <div class="item-thumb">
-                <a href="#" ><img src="assets/img/seminar/3.png"></a>
-              </div>
-              <div class="item-entry overflow">
-                <h5><a href="#" > Seminar 1 </a></h5>
-                <!--<div class="dot-hr"></div>-->
-                <!--<span class="pull-left"><b>Area :</b> 120m </span>-->
-                <!--<span class="proerty-price pull-right">$ 300,000</span>-->
-              </div>
-              <a href="#"> <button mat-flat-button data-wow-delay="0.45s"><strong>More details</strong></button></a>
-              <!--<a href="/view-course"> <button mat-raised-button data-wow-delay="0.45s"><strong>View</strong></button></a>-->
-            </div>
-          </div>
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
 
-          <div class="col-sm-6 col-md-4 p0">
-            <div class="box-two proerty-item">
-              <div class="item-thumb">
-                <a href="#" ><img src="assets/img/seminar/5.png"></a>
-              </div>
-              <div class="item-entry overflow">
-                <h5><a href="#" > Seminar 2 </a></h5>
-              </div>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
 
-              <a href="#"> <button mat-flat-button  data-wow-delay="0.45s"><strong>More details</strong></button></a>
-              <!--<a href="/view-session"> <button mat-raised-button data-wow-delay="0.45s"><strong>View</strong></button></a>-->
-            </div>
-          </div>
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+    </ng-container>
 
-          <div class="col-sm-6 col-md-4 p0">
-            <div class="box-two proerty-item">
-              <div class="item-thumb">
-                <a href="#" ><img src="assets/img/seminar/7.png"></a>
-              </div>
-              <div class="item-entry overflow">
-                <h5><a href="#" > Seminar 3 </a></h5>
-              </div>
+    <!-- Progress Column -->
+    <ng-container matColumnDef="progress">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Progress </th>
+      <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+    </ng-container>
 
-              <a href="#"> <button mat-flat-button  data-wow-delay="0.45s"><strong>More details</strong></button></a>
-              <!--<a href="/view-seminar"> <button mat-raised-button data-wow-delay="0.45s"><strong>View</strong></button></a>-->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="color">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Color </th>
+      <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </div>

@@ -2,3 +2,16 @@
   margin: 8px;
   background-color: #FDC600;
 }
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
