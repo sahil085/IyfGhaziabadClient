@@ -1,0 +1,8 @@
+.cancelseatforseminarform {
+  display: flex;
+  flex-direction: column;
+}
+
+.cancelseatforseminarform > * {
+  width: 100%;
+}

@@ -1,0 +1,8 @@
+.bookseatforseminarform {
+  display: flex;
+  flex-direction: column;
+}
+
+.bookseatforseminarform > * {
+  width: 100%;
+}

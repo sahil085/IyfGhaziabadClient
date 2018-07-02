@@ -19,6 +19,10 @@ export class SeminarService {
 
   }
 
+  bookSeatForSeminar(seminarId, status){
+   return this.http.post(this.apiUrl + '/bookSeatForSeminar/' + seminarId + '/' + status,{});
+  }
+
 
 
 }

@@ -1,0 +1,26 @@
+<div class="cancelseatforseminarform">
+  <mat-card>
+    <mat-card-title>Book You Seat For Seminar <strong>{{seminarTitle}}</strong></mat-card-title>
+
+    <mat-card-content>
+      <form [formGroup]="bookingForm">
+        <label>Please Give Us Reason For Cancelation</label>
+        <br>
+        <mat-form-field>
+
+          <mat-select formControlName="status">
+            <mat-option value="Will Come Surely">Will Come Surely</mat-option>
+            <mat-option value="Can Come Not Sure">Can Come Not Sure</mat-option>
+          </mat-select>
+          <mat-error *ngIf="bookingForm.get('status').hasError('required')">
+            Please Give Your Confirmation
+          </mat-error>
+        </mat-form-field>
+
+        <br/>
+        <button mat-raised-button (click)="bookSeatForSeminar()">Book Your Seat</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+

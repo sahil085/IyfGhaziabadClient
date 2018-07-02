@@ -1,54 +1,99 @@
 <div class="row">
-  <div class="content-area home-area-1 recent-property" style="background-color: #FCFCFC; padding-bottom: 55px;">
-    <div class="container">
-      <!--<div class="row">-->
-
-
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
-          <!-- /.feature title -->
-          <h2 style="color: black">Upcoming seminars</h2>
-          <!--<app-quotes-carousel></app-quotes-carousel>-->
-          <!--<p>Seminars aimed towards giving a deeper and much more meaningful prespective to world events, our work and our Life itself.</p>-->
-        </div>
-        <div class="proerty-th">
-          <div *ngFor="let seminar of seminars">
-
-
-          <div class="col-sm-6 col-md-4 p0">
-            <div class="box-two proerty-item">
-              <div class="item-thumb">
-                <a href="#" ><img src="{{seminar.thumbNailUrl}}"></a>
-              </div>
-              <div class="item-entry overflow">
-                <h4>Tittle : <small>{{seminar.title}}</small></h4>
-                <h4>Speaker Name :</h4><h5>{{seminar.speakerName}}</h5>
-                <!--<div class="dot-hr"></div>-->
-                <!--<span class="pull-left"><b>Area :</b> 120m </span>-->
-                <!--<span class="proerty-price pull-right">$ 300,000</span>-->
-              </div>
-              <a href="#"> <button mat-flat-button data-wow-delay="0.45s"><strong>More details</strong></button></a>
-              <!--<a href="/view-course"> <button mat-raised-button data-wow-delay="0.45s"><strong>View</strong></button></a>-->
-            </div>
+  <div [hidden]="!isLoading">
+    <div class="loading-indicator">
+      <mat-spinner mode="indeterminate"></mat-spinner>
+    </div>
+  </div>
+  <div [hidden]="isLoading">
+    <div class="content-area home-area-1 recent-property" style="background-color: #FCFCFC; padding-bottom: 55px;">
+      <div class="container">
+        <!--<div class="row">-->
+        <div class="row">
+          <div class="col-xs-12 col-md-12">
+            <mat-paginator [length]="100"
+                           [pageSize]="10"
+                           [pageSizeOptions]="[5, 10, 25, 100]"
+                           (page)="onPaginateChange($event)">
+            </mat-paginator>
           </div>
         </div>
-        </div>
-        <!--<md-paginator [length]="length"-->
-                      <!--[pageSize]="pageSize"-->
-                      <!--[pageSizeOptions]="pageSizeOptions"-->
-                      <!--(page)="onPaginateChange($event)">-->
-        <!--</md-paginator>-->
 
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-md-12">
-          <mat-paginator [length]="100"
-                         [pageSize]="10"
-                         [pageSizeOptions]="[5, 10, 25, 100]"
-                         (page)="onPaginateChange($event)">
-          </mat-paginator>
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
+            <!-- /.feature title -->
+            <h2 style="color: black"><b>Upcoming seminars</b></h2>
+            <div *ngIf="seminars == 0">
+              <h4>That's Last</h4>
+            </div>
+            <!--<app-quotes-carousel></app-quotes-carousel>-->
+            <!--<p>Seminars aimed towards giving a deeper and much more meaningful prespective to world events, our work and our Life itself.</p>-->
+          </div>
+          <div class="proerty-th">
+
+            <div *ngFor="let seminar of seminars">
+
+
+              <div class="col-sm-12 col-md-6 p0">
+                <div class="box-two proerty-item">
+                  <div class="item-thumb">
+                    <a href="#" ><img src="{{seminar.thumbNailUrl}}"></a>
+                  </div>
+                  <div class="item-entry overflow">
+                    <h4>Tittle : <small>{{seminar.title}}</small></h4>
+                    <h4>Speaker Name :</h4><h5>{{seminar.speakerName}}</h5>
+                    <!--<div class="dot-hr"></div>-->
+                    <!--<span class="pull-left"><b>Area :</b> 120m </span>-->
+                    <!--<span class="proerty-price pull-right">$ 300,000</span>-->
+                  </div>
+                  <a href="#"> <button mat-flat-button data-wow-delay="0.45s"><strong>More details</strong></button></a>
+                  <button *ngIf="!seminar.bookingStatus" mat-flat-button data-wow-delay="0.45s" style="float: right;clear: both" (click)="openBookingDialog(seminar.id,seminar.title)" id="bookSeat">Book Your Seat Now</button>
+                  <button *ngIf="seminar.bookingStatus" mat-flat-button data-wow-delay="0.45s" style="float: right;clear: both" (click)="openBookingDialog(seminar.id,seminar.title)" id="cancelSeat">Cancel Your Seat </button>
+                  <!--<a href="/view-course"> <button mat-raised-button data-wow-delay="0.45s"><strong>View</strong></button></a>-->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--<md-paginator [length]="length"-->
+          <!--[pageSize]="pageSize"-->
+          <!--[pageSizeOptions]="pageSizeOptions"-->
+          <!--(page)="onPaginateChange($event)">-->
+          <!--</md-paginator>-->
+
         </div>
+
       </div>
     </div>
   </div>
+
 </div>
+
+<!-- Modal -->
+<div id="bookSeatForSeminar" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 class="modal-header">Book Your Seat For Seminar</h3>
+        <h4 class="modal-title">Please Give Us Confirmation. So That We Can Prepare Delicious Feast ( prasadam ) For You</h4>
+      </div>
+      <div class="modal-body">
+        <!--<form [formGroup]="bookingForm">-->
+          <!--<mat-select formControlName="status">-->
+            <!--<mat-option value="Will Come Surely">Will Come Surely</mat-option>-->
+            <!--<mat-option value="Can Come Not Sure">Can Come Not Sure</mat-option>-->
+          <!--</mat-select>-->
+           <!--<input matInput hidden id="seminarId" formControlName="seminarId">-->
+          <!--<button mat-raised-button (click)="bookSeatForSeminar()">Book Your Seat</button>-->
+        <!--</form>-->
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+

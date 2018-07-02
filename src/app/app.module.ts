@@ -45,6 +45,8 @@ import { UpcomingSessionListComponent } from './components/upcoming-session-list
 import { RecentSessionListComponent } from './components/recent-session-list/recent-session-list.component';
 import { RecentSeminarListComponent } from './components/recent-seminar-list/recent-seminar-list.component';
 import {MatPaginatorModule, MatSortModule, MatTableDataSource} from '@angular/material';
+import { BookSeatForSeminarDialogComponent } from './components/book-seat-for-seminar-dialog/book-seat-for-seminar-dialog.component';
+import { CancelSeatForSeminarDialogComponent } from './components/cancel-seat-for-seminar-dialog/cancel-seat-for-seminar-dialog.component';
 
 
 
@@ -112,7 +114,9 @@ export class XhrInterceptor implements HttpInterceptor {
     RecentSeminarListComponent,
     RecentSessionListComponent,
     UpcomingSeminarListComponent,
-    UpcomingSessionListComponent
+    UpcomingSessionListComponent,
+    BookSeatForSeminarDialogComponent,
+    CancelSeatForSeminarDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -137,12 +141,10 @@ export class XhrInterceptor implements HttpInterceptor {
     MatGridListModule,
     MatMenuModule,
     MatDialogModule,
-    NoopAnimationsModule,
     MatProgressSpinnerModule,
     MatSelectModule,
     MatSidenavModule,
     MatSnackBarModule,
-    NoopAnimationsModule,
     ReactiveFormsModule,
     MatPaginatorModule,
     RouterModule.forRoot(appRoutes)
@@ -156,7 +158,7 @@ export class XhrInterceptor implements HttpInterceptor {
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
     , AuthenticationService],
   bootstrap: [AppComponent],
-  entryComponents: [LogindialogComponent]
+  entryComponents: [LogindialogComponent,BookSeatForSeminarDialogComponent]
 })
 export class AppModule { }
 
