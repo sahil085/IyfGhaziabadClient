@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="content-area home-area-1 recent-property" style="background-color: #FCFCFC; padding-bottom: 55px;">
+    <div class="container">
+      <!--<div class="row">-->
+
+
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
+          <!-- /.feature title -->
+          <h2 style="color: black">Upcoming seminars</h2>
+          <!--<app-quotes-carousel></app-quotes-carousel>-->
+          <!--<p>Seminars aimed towards giving a deeper and much more meaningful prespective to world events, our work and our Life itself.</p>-->
+        </div>
+        <div class="proerty-th">
+          <div *ngFor="let seminar of seminars">
+
+
+          <div class="col-sm-6 col-md-4 p0">
+            <div class="box-two proerty-item">
+              <div class="item-thumb">
+                <a href="#" ><img src="{{seminar.thumbNailUrl}}"></a>
+              </div>
+              <div class="item-entry overflow">
+                <h4>Title : <small>{{seminar.title}}</small></h4>
+                <h4>Speaker Name :</h4><h5>{{seminar.speakerName}}</h5>
+                <!--<div class="dot-hr"></div>-->
+                <!--<span class="pull-left"><b>Area :</b> 120m </span>-->
+                <!--<span class="proerty-price pull-right">$ 300,000</span>-->
+              </div>
+              <a href="#"> <button mat-flat-button data-wow-delay="0.45s"><strong>More details</strong></button></a>
+              <!--<a href="/view-course"> <button mat-raised-button data-wow-delay="0.45s"><strong>View</strong></button></a>-->
+            </div>
+          </div>
+        </div>
+        </div>
+        <!--<md-paginator [length]="length"-->
+                      <!--[pageSize]="pageSize"-->
+                      <!--[pageSizeOptions]="pageSizeOptions"-->
+                      <!--(page)="onPaginateChange($event)">-->
+        <!--</md-paginator>-->
+
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-12">
+          <mat-paginator [length]="100"
+                         [pageSize]="10"
+                         [pageSizeOptions]="[5, 10, 25, 100]"
+                         (page)="onPaginateChange($event)">
+          </mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
