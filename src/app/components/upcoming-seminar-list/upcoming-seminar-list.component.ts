@@ -95,7 +95,7 @@ public bookingForm: FormGroup;
     //   left: '0'
     // };
     dialogConfig.data = {
-      seminarId: id,
+      seminarRecordId: id,
       seminarTitle: title
     };
 

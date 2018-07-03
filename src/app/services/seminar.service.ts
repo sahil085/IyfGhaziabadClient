@@ -23,6 +23,10 @@ export class SeminarService {
    return this.http.post(this.apiUrl + '/bookSeatForSeminar/' + seminarId + '/' + status,{});
   }
 
+  cancelSeatForSeminar(seminarRecordId, reason){
+    return this.http.put(this.apiUrl + '/cancelSeatForSeminar' + seminarRecordId + '/' + reason);
+  }
+
 
 
 }

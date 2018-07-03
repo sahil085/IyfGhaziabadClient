@@ -158,7 +158,8 @@ export class XhrInterceptor implements HttpInterceptor {
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
     , AuthenticationService],
   bootstrap: [AppComponent],
-  entryComponents: [LogindialogComponent,BookSeatForSeminarDialogComponent]
+  entryComponents: [LogindialogComponent, BookSeatForSeminarDialogComponent,
+  CancelSeatForSeminarDialogComponent]
 })
 export class AppModule { }
 

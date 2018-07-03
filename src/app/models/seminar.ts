@@ -13,6 +13,7 @@ export class Seminar {
   category:any;
   id:any;
   bookingStatus:any;
+  seminarRecordId:any;
 
 
 
