@@ -16,9 +16,11 @@
       <h1 style="color: red;">ABOUT THE FEST</h1>
       Stressed and depressed although well-dressed owing to regular conundrums of city life…looking forward to press the refresh button in life dominated by unending puzzles and explore the jewels of wisdom to grow in life. “Udgaar-An Expression of Goodness and Joy” has it all. Blended with edutainment events such as drama, rock show, dance, shadow act etc. the much anticipated extravaganza will let your spirit fly and experience the true joy of the inner self. Don’t wait...Register Now. A wonderful idea can change your life.
       <div class="registration-button">
-      <button *ngIf="isInterested" mat-raised-button data-wow-delay="0.45s" (click)="interestButtonDisable()">Register for Udgaar</button>
+      <button *ngIf="isInterested && isAuthenticated" mat-raised-button data-wow-delay="0.45s" (click)="interestButtonDisable()">Register for Udgaar</button>
       <button *ngIf="!isInterested" mat-raised-button data-wow-delay="0.45s" (click)="pay('payNow')">Pay now</button>
       <button *ngIf="!isInterested" class="mat-raised-button wow bounceInUp" style="margin-left: 20px; background-color: white; color: black" (click)="pay('payLater')" data-wow-delay="0.48s">Pay later</button>
+        <button *ngIf='!isAuthenticated' class="mat-raised-button" (click)="openDialog()" >Login to register for Udgaar</button>
+
       </div>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="background-color: whitesmoke; background: whitesmoke;">
