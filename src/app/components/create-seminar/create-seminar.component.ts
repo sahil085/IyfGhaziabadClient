@@ -31,6 +31,7 @@ export class CreateSeminarComponent implements OnInit {
       startTime: ['',Validators.required],
       endTime: ['',Validators.required],
       venue: ['',Validators.required],
+      city: ['',Validators.required],
       category: '',
       totalNumberOfSeats: ['', [Validators.max(150), Validators.min(10)]]
     });

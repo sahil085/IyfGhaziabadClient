@@ -5,6 +5,8 @@ import {RegistrationService} from '../../sevices/registration.service';
 import {User} from '../../User';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
+declare var jquery:any;
+declare var $ :any;
 
 @Component({
   selector: 'app-register',
@@ -22,7 +24,15 @@ export class RegisterComponent implements OnInit {
   constructor( private formBuilder: FormBuilder,
                private registrationService: RegistrationService,
                private router: Router,
-               public snackBar: MatSnackBar) { }
+               public snackBar: MatSnackBar) {
+    $('userForm').on('keyup keypress', function(e) {
+      const key = e.keyCode || e.which;
+      if (key === 13) {
+        e.preventDefault();
+        return false;
+      }
+    });
+  }
 
   ngOnInit() {
     this.userform = this.formBuilder.group({
@@ -35,16 +45,16 @@ export class RegisterComponent implements OnInit {
       currentAddress: ['',Validators.required],
       permanentAddress: ['',Validators.required],
       city: ['',Validators.required],
-      street: ['',Validators.required],
-      isInitiated: ['',Validators.required],
-      roundsChant: ['',Validators.required],
-      facilitatorName: [],
-      counslerName: ['',Validators.required],
-      seniorFacilitatorName: ['',Validators.required],
-      nearestIskconTemple: ['',Validators.required],
-      vedicLevel: ['',Validators.required],
-      isBrahmchari: ['',Validators.required],
-      accept : ['', Validators.required]
+      // street: ['',Validators.required],
+      // isInitiated: ['',Validators.required],
+      // roundsChant: ['',Validators.required],
+      // facilitatorName: [],
+      // counslerName: ['',Validators.required],
+      // seniorFacilitatorName: ['',Validators.required],
+      // nearestIskconTemple: ['',Validators.required],
+      // vedicLevel: ['',Validators.required],
+      // isBrahmchari: ['',Validators.required],
+      // accept : ['',Validators.required]
 
     });
   }
@@ -83,56 +93,38 @@ export class RegisterComponent implements OnInit {
      }
      formvalidation(): boolean {
     // console.log(this.userform.get('nearestIskconTemple').value);
-    //    if (this.userform.get('username').value == null) {
-    //      return false;
-    //    } else if (this.userform.get('password').value == null) {
-    //      return false;
-    //    } else if (this.userform.get('email').value == null || this.userform.get('email').hasError('email') == null)
-    //    {
-    //      return false;
-    //    } else if (this.userform.get('mobileNumber').value == null) {
-    //      return false;
-    //
-    //    }  else if (this.userform.get('isInitiated').value == null) {
-    //      return false;
-    //
-    //    }else if (this.userform.get('city').value == null)
-    //     {
-    //       return false;
-    //
-    //     } else if (this.userform.get('street').value == null)
-    //    {
-    //      return false;
-    //
-    //    } else if (this.userform.get('currentAddress').value == null)
-    //    {
-    //      return false;
-    //
-    //    } else if (this.userform.get('permanentAddress').value == null)
-    //    {
-    //      return false;
-    //
-    //    } else if (this.userform.get('nearestIskconTemple').value == null)
-    //    {
-    //      return false;
-    //
-    //    } else if (this.userform.get('accept').value == null || this.userform.get('accept').value === false
-    //     || this.userform.get('accept').value === "" )
-    //    {
-    //      return false;
-    //
-    //    }
-    //    else if (this.userform.get('roundsChant').value == null)
-    //    {
-    //      return false;
-    //
-    //    } else if (this.userform.get('gender').value == null) {
-    //      return false;
-    //
-    //    } else{
-    //      return true;
-    //    }
+       if (this.userform.get('username').value == null) {
+         return false;
+       } else if (this.userform.get('password').value == null) {
+         return false;
+       } else if (this.userform.get('email').value == null || this.userform.get('email').hasError('email') == null)
+       {
+         return false;
+       } else if (this.userform.get('mobileNumber').value == "") {
+         return false;
+
+       } else if (this.userform.get('city').value == "")
+        {
+          return false;
+
+        } else if (this.userform.get('currentAddress').value == "")
+       {
+         return false;
+
+       } else if (this.userform.get('permanentAddress').value == "")
+       {
+         return false;
+
+       } else if (this.userform.get('gender').value == null) {
+         return false;
+
+       }
        return true;
      }
+
+  checkValue(event: any){
+    // console.log(event);
+    // this.userform.patchValue({accept:"123"});
+  }
 
 }

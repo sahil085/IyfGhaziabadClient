@@ -77,6 +77,17 @@
                 </mat-form-field>
 
                 <mat-form-field>
+                  <mat-select placeholder="City" formControlName="city" required>
+                    <mat-option value="ghaziabad">GHAZIABAD</mat-option>
+                    <mat-option value="meerut">MEERUT</mat-option>
+                    <mat-option value="shimla">SHIMLA</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="seminarForm.get('city').hasError('required')">
+                    Please Enter the City
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
                   <mat-select placeholder="Seminar Category" formControlName="category" >
                     <mat-option value="general">General</mat-option>
                     <mat-option value="scientific">Scientific</mat-option>

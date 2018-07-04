@@ -71,8 +71,7 @@
             <ul>
               <li><a href="#step1" data-toggle="tab">Step 1</a></li>
               <li><a href="#step2" data-toggle="tab">Step 2</a></li>
-              <li><a href="#step3" data-toggle="tab">Step 3 </a></li>
-              <li><a href="#step4" data-toggle="tab">Finished </a></li>
+              <!--<li><a href="#step3" data-toggle="tab">Finished </a></li>-->
             </ul>
 
             <div class="tab-content">
@@ -84,7 +83,7 @@
                     <div class="picture-container">
                       <div class="picture">
                         <img src="https://lh3.googleusercontent.com/-wia-03mMF9o/WrYixMPdC2I/AAAAAAAA8d8/J88ffm1w-Z8NBm0KeFzgGOMENPMxDdq6wCCoYBhgL/s1024/ISKCON%2BVrindavan%2BDeity%2BDarshan%2B24%2BMar%2B2018%2B%252818%2529.jpg" width="100px" class="picture-src" id="wizardPicturePreview" title=""/>
-                        <input type="file" id="wizard-picture">
+                        <!--<input type="file" id="wizard-picture">-->
                       </div>
                     </div>
                   </div>
@@ -96,7 +95,7 @@
 
                     <div class="form-group">
                       <label>Email <small>(required)</small></label>
-                      <input name="email" formControlName="email" type="email" class="form-control" placeholder="Enter Your Email">
+                      <input name="email" formControlName="email" type="email" class="form-control" placeholder="Enter Your Email" required>
                     </div>
                     <div class="form-group">
                       <label>Password <small>(required)</small></label>
@@ -128,7 +127,7 @@
                     <div class="picture-container">
                       <div class="picture">
                         <img src="https://lh3.googleusercontent.com/-wia-03mMF9o/WrYixMPdC2I/AAAAAAAA8d8/J88ffm1w-Z8NBm0KeFzgGOMENPMxDdq6wCCoYBhgL/s1024/ISKCON%2BVrindavan%2BDeity%2BDarshan%2B24%2BMar%2B2018%2B%252818%2529.jpg" width="100px" class="picture-src" id="wizardPicturePreview" title=""/>
-                        <input type="file" id="wizard-picture">
+                        <!--<input type="file" id="wizard-picture">-->
                       </div>
                     </div>
                   </div>
@@ -151,90 +150,103 @@
                       <label>Your Permanent Address<small> (required)</small></label>
                       <input name="permanentAddress" formControlName="permanentAddress" type="text" class="form-control" placeholder="Enter Your Permanent Address" required>
                     </div>
+                    <!--<div class="form-group">-->
+                      <!--<label>Your City<small> (required)</small></label>-->
+                      <!--<input name="city" formControlName="city" type="select" class="form-control" placeholder="Enter Your City" required>-->
+
+                    <!--</div>-->
+
+                    <!--<select name="city" formControlName="city" class="form-control" placeholder="Enter your city" required>-->
+                      <!--<option value="ghaziabad">GHAZIABAD</option>-->
+                      <!--<option value="meerut">MEERUT</option>-->
+                      <!--<option value="shimla">SHIMLA</option>-->
+                    <!--</select>-->
+
                     <div class="form-group">
-                      <label>Your City<small> (required)</small></label>
-                      <input name="city" formControlName="city" type="text" class="form-control" placeholder="Enter Your City" required>
-                    </div>
-                    <div class="form-group">
-                      <label>Your Street<small> (required)</small></label>
-                      <select required name="street" formControlName="street" id="lunchBegin" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Street">
-                        <option>Pillakhua</option>
-                        <option>Raj Nagar</option>
+                      <label>Your City</label>
+                      <select required name="city" formControlName="city" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your City">
+                        <option value="ghaziabad">GHAZIABAD</option>
+                        <option value="meerut">MEERUT</option>
+                        <option value="shimla">SHIMLA</option>
 
                       </select>
                     </div>
+
 
                   </div>
                 </div>
               </div>
               <!-- End step 2 -->
 
-              <div class="tab-pane" id="step3">
-                <div class="row p-b-15  ">
-                  <h4 class="info-text"> Personal information</h4>
-                  <div class="col-sm-4 col-sm-offset-1">
-                    <div class="picture-container">
-                      <div class="picture">
-                        <img src="https://lh3.googleusercontent.com/-wia-03mMF9o/WrYixMPdC2I/AAAAAAAA8d8/J88ffm1w-Z8NBm0KeFzgGOMENPMxDdq6wCCoYBhgL/s1024/ISKCON%2BVrindavan%2BDeity%2BDarshan%2B24%2BMar%2B2018%2B%252818%2529.jpg" width="100px" class="picture-src" id="wizardPicturePreview" title=""/>
-                        <input type="file" id="wizard-picture">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label>Nearest Iskcon Temple<small>(required)</small></label>
-                      <select required name="nearestIskconTemple" formControlName="nearestIskconTemple" id="unchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Nearest Iskcon Temple">
-                        <option> Iskcon Ghaziabad</option>
-                        <option> Iskcon Delhi</option>
-                      </select>
-                    </div>
+              <!--<div class="tab-pane" id="step3">-->
+                <!--<div class="row p-b-15  ">-->
+                  <!--<h4 class="info-text"> Personal information</h4>-->
+                  <!--<div class="col-sm-4 col-sm-offset-1">-->
+                    <!--<div class="picture-container">-->
+                      <!--<div class="picture">-->
+                        <!--<img src="https://lh3.googleusercontent.com/-wia-03mMF9o/WrYixMPdC2I/AAAAAAAA8d8/J88ffm1w-Z8NBm0KeFzgGOMENPMxDdq6wCCoYBhgL/s1024/ISKCON%2BVrindavan%2BDeity%2BDarshan%2B24%2BMar%2B2018%2B%252818%2529.jpg" width="100px" class="picture-src" id="wizardPicturePreview" title=""/>-->
+                        <!--<input type="file" id="wizard-picture">-->
+                      <!--</div>-->
+                    <!--</div>-->
+                  <!--</div>-->
+                  <!--<div class="col-sm-6">-->
+                    <!--<div class="form-group">-->
+                      <!--<label>Nearest Iskcon Temple<small>(required)</small></label>-->
+                      <!--<select required name="nearestIskconTemple" formControlName="nearestIskconTemple" id="unchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Nearest Iskcon Temple">-->
+                        <!--<option> Iskcon Ghaziabad</option>-->
+                        <!--<option> Iskcon Delhi</option>-->
+                      <!--</select>-->
+                    <!--</div>-->
 
-                    <div class="form-group">
-                      <label>Your Facilitator Name<small> (Optional)</small></label>
-                      <select required name="facilitatorName" formControlName="facilitatorName" id="lunchBe" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="None-Selected">
-                        <option>HG Charu Govind Prabhu Ji</option>
-                        <option>HG Sarv Mangal Prabhu Ji</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label>Initiated <small>(Are You Deekshit ?)</small></label>
-                      <select required name="isInitiated" formControlName="isInitiated" id="lunBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="None-Selected">
-                        <option>Yes</option>
-                        <option>No</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                      <label>How Many Rounds You Chant<small> (Optional)</small></label>
-                      <input name="roundsChant" formControlName="roundsChant" type="number" class="form-control" placeholder="How Many Rounds You Chant" required>
-                    </div>
+                    <!--<div class="form-group">-->
+                      <!--<label>Your Facilitator Name<small> (Optional)</small></label>-->
+                      <!--<select required name="facilitatorName" formControlName="facilitatorName" id="lunchBe" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="None-Selected">-->
+                        <!--<option>HG Charu Govind Prabhu Ji</option>-->
+                        <!--<option>HG Sarv Mangal Prabhu Ji</option>-->
+                      <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                      <!--<label>Initiated <small>(Are You Deekshit ?)</small></label>-->
+                      <!--<select required name="isInitiated" formControlName="isInitiated" id="lunBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="None-Selected">-->
+                        <!--<option>Yes</option>-->
+                        <!--<option>No</option>-->
+                      <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                      <!--<label>How Many Rounds You Chant<small> (Optional)</small></label>-->
+                      <!--<input name="roundsChant" formControlName="roundsChant" type="number" class="form-control" placeholder="How Many Rounds You Chant" required>-->
+                    <!--</div>-->
 
-                  </div>
-                </div>
-              </div>
-              <!--  End step 3 -->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--&lt;!&ndash;  End step 3 &ndash;&gt;-->
 
 
-              <div class="tab-pane" id="step4">
-                <h4 class="info-text"> Finished and submit </h4>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <div class="">
-                      <p>
-                        <label><strong>Terms and Conditions</strong></label>
-                        I HereBy Accept That I Will Not Post Bad Comment And Always Humble Between Devotess Of Iskcon
-                      </p>
+              <!--<div class="tab-pane" id="step3">-->
+                <!--<h4 class="info-text"> Finished and submit </h4>-->
+                <!--<div class="row">-->
+                  <!--<div class="col-sm-12">-->
+                    <!--<div>-->
+                      <!--<p>-->
+                        <!--<label><strong>Terms and Conditions</strong></label>-->
+                        <!--I HereBy Accept That I Will Not Post Bad Comment And Always Humble Between Devotess Of Iskcon-->
+                      <!--</p>-->
 
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" value="true" name="accept" formControlName="accept" required/> &nbsp; <strong>Accept termes and conditions.</strong>
-                        </label>
-                      </div>
+                      <!--<div class="checkbox">-->
+                        <!--<label>-->
+                          <!--<input type="checkbox" value="123" name="accept" formControlName="accept" [checked]="checkValue()" required/> &nbsp; <strong>Accept termes and conditions.</strong>-->
+                        <!--</label>-->
+                        <!--&lt;!&ndash;<input type="checkbox" id="scales" name="accept"&ndash;&gt;-->
+                               <!--&lt;!&ndash;value="scales" checked />&ndash;&gt;-->
+                        <!--&lt;!&ndash;<label for="scales">Scales</label>&ndash;&gt;-->
+                      <!--</div>-->
 
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--  End step 4 -->
+                    <!--</div>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--&lt;!&ndash;  End step 4 &ndash;&gt;-->
 
             </div>
 
