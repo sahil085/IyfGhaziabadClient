@@ -17,7 +17,7 @@ export class CancelSeatForSeminarDialogComponent implements OnInit {
               public seminarService: SeminarService,
               @Inject(MAT_DIALOG_DATA) public data: any) {
     this.cancelSeatForSeminarForm = this.fbu.group({
-           reasons :  ['' , Validators.required]
+           reason : ['', Validators.required]
     });
   }
 
@@ -25,8 +25,14 @@ export class CancelSeatForSeminarDialogComponent implements OnInit {
   }
 
   cancelSeatForSeminar() {
-    console.log("ayaaa" + this.cancelSeatForSeminarForm.reasons);
-    this.seminarService.cancelSeatForSeminar(this.data.seminarRecordId, this.cancelSeatForSeminarForm.reason);
+    console.log("ayaaa" + this.cancelSeatForSeminarForm.value.reason);
+    this.seminarService.cancelSeatForSeminar(this.data.seminarRecordId, this.cancelSeatForSeminarForm.value.reason).
+      subscribe( (response) => {
+        console.log(response );
+
+    }, (error1) => {
+        console.log(error1.error.message);
+    });
 
   }
 

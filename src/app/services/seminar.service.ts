@@ -14,7 +14,6 @@ export class SeminarService {
 
 
   GetSeminarList(itemPerPage,pageNumber) : Observable<Seminar[]>{
-    console.log("ayaa");
    return this.http.get<Seminar[]>(this.apiUrl + '/upcomingSeminars/1/' + pageNumber + '/' + itemPerPage);
 
   }
@@ -24,7 +23,8 @@ export class SeminarService {
   }
 
   cancelSeatForSeminar(seminarRecordId, reason){
-    return this.http.put(this.apiUrl + '/cancelSeatForSeminar' + seminarRecordId + '/' + reason);
+
+    return this.http.put(this.apiUrl + '/cancelSeatForSeminar/' + seminarRecordId + '/' + reason,{});
   }
 
 

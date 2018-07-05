@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {SeminarService} from '../../services/seminar.service';
+import {UpcomingSeminarListComponent} from '../upcoming-seminar-list/upcoming-seminar-list.component';
 
 @Component({
   selector: 'app-book-seat-for-seminar-dialog',
@@ -29,6 +30,7 @@ export class BookSeatForSeminarDialogComponent implements OnInit {
   {
     this.seminarService.bookSeatForSeminar(this.data.seminarId, this.bookingForm.value.status).subscribe(response => {
       console.log(response);
+      // this.upcomingSeminars.getSeminarListOnInit(10,0);
     }, (error) => {
       console.log(error);
 

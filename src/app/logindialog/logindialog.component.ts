@@ -43,7 +43,7 @@ export class LogindialogComponent implements OnInit {
 
           localStorage.setItem('currentUser', data.json().principal);
           localStorage.setItem('isAuthenticated', 'true');
-      window.location.href = "";
+          window.location.href = "";
         },err=>{
           console.log(err);
           if(err.status === 401)

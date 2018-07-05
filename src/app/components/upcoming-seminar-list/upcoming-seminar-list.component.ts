@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Injectable, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {SeminarService} from '../../services/seminar.service';
 import {Seminar} from '../../models/seminar';
@@ -14,6 +14,7 @@ declare var $: any;
   templateUrl: './upcoming-seminar-list.component.html',
   styleUrls: ['./upcoming-seminar-list.component.css']
 })
+@Injectable()
 export class UpcomingSeminarListComponent implements OnInit {
 
 
@@ -61,7 +62,8 @@ public bookingForm: FormGroup;
 
 
 
-  openBookingDialog(id,title) {
+  openBookingDialog(id, title) {
+
 
     const dialogConfig = new MatDialogConfig();
 
@@ -76,16 +78,18 @@ public bookingForm: FormGroup;
       seminarTitle: title
     };
 
-    this.dialog.open(BookSeatForSeminarDialogComponent, dialogConfig);
+    // this.dialog.open(BookSeatForSeminarDialogComponent, dialogConfig);
 
-    // const dialogRef = this.dialog.open(LogindialogComponent, dialogConfig);
-    //
-    // dialogRef.afterClosed().subscribe(
-    //   data => console.log("Dialog output:", data)
-    // );
+    const dialogRef = this.dialog.open(BookSeatForSeminarDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      data => {
+        this.getSeminarListOnInit(10,0)
+      }
+    );
   }
 
-  openCancelDialog(id,title){
+  openCancelDialog(id, title){
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = false;
@@ -99,7 +103,13 @@ public bookingForm: FormGroup;
       seminarTitle: title
     };
 
-    this.dialog.open(CancelSeatForSeminarDialogComponent, dialogConfig);
+    const dialogRef = this.dialog.open(CancelSeatForSeminarDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      data => {
+        this.getSeminarListOnInit(10,0)
+      }
+    );
 
   }
 
