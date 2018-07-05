@@ -45,16 +45,16 @@ export class RegisterComponent implements OnInit {
       currentAddress: ['',Validators.required],
       permanentAddress: ['',Validators.required],
       city: ['',Validators.required],
-      // street: ['',Validators.required],
-      // isInitiated: ['',Validators.required],
-      // roundsChant: ['',Validators.required],
-      // facilitatorName: [],
-      // counslerName: ['',Validators.required],
-      // seniorFacilitatorName: ['',Validators.required],
-      // nearestIskconTemple: ['',Validators.required],
-      // vedicLevel: ['',Validators.required],
-      // isBrahmchari: ['',Validators.required],
-      // accept : ['',Validators.required]
+      street: [''],
+      isInitiated: [''],
+      roundsChant: [''],
+      facilitatorName: [],
+      counslerName: [''],
+      seniorFacilitatorName: [''],
+      nearestIskconTemple: [''],
+      vedicLevel: [''],
+      isBrahmchari: [''],
+      accept : ['']
 
     });
   }

@@ -10,7 +10,7 @@ export class UdgaarService {
   constructor(public http: HttpClient) { }
 
   public registerUser(status){
-    return this.http.post(this.apiUrl+"registerForUdgaar",status);
+    return this.http.post(this.apiUrl+"/udgaarRegistration",status,{responseType: 'text'});
 
   }
 
