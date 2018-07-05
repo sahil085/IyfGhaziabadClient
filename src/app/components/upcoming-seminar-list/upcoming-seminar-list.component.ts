@@ -7,6 +7,7 @@ import {LogindialogComponent} from '../../logindialog/logindialog.component';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {BookSeatForSeminarDialogComponent} from '../book-seat-for-seminar-dialog/book-seat-for-seminar-dialog.component';
 import {CancelSeatForSeminarDialogComponent} from '../cancel-seat-for-seminar-dialog/cancel-seat-for-seminar-dialog.component';
+import {map} from 'rxjs/operators';
 declare var $: any;
 
 @Component({
@@ -20,6 +21,7 @@ export class UpcomingSeminarListComponent implements OnInit {
 
 public seminars: Seminar[];
 public isLoading: boolean = false;
+public totalPages:any;
 
 
 public bookingForm: FormGroup;
@@ -34,10 +36,11 @@ public bookingForm: FormGroup;
 
   onPaginateChange(event){
     this.isLoading = true;
-   this.seminarService.GetSeminarList(event.pageSize, event.pageIndex).subscribe(
+   this.seminarService.GetSeminarList(event.pageSize, event.pageIndex).map(res => res.json()).subscribe(
+
      (response) => {
-       console.log(response);
-       this.seminars = response;
+       console.log(response.upcomingSeminar);
+       this.seminars = response.upcomingSeminar;
        this.isLoading = false;
      },(error1) => {
        alert(" OOPS..!! Some Error Occured Please try Again");
@@ -48,8 +51,13 @@ public bookingForm: FormGroup;
   }
 
   getSeminarListOnInit(itemPerpage,PageIndex){
-    this.seminarService.GetSeminarList(itemPerpage, PageIndex).subscribe(
+    this.seminarService.GetSeminarList(itemPerpage, PageIndex).pipe(
+      map(res => res.upcomingSeminar,
+        totalpages => totalpages.totalPages) // or any other operator
+    ).subscribe(
       (response) => {
+        console.log(to);
+        console.log(response);
         this.seminars = response;
         this.isLoading = false;
       },(error1) => {
