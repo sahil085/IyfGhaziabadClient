@@ -36,11 +36,11 @@ public bookingForm: FormGroup;
 
   onPaginateChange(event){
     this.isLoading = true;
-   this.seminarService.GetSeminarList(event.pageSize, event.pageIndex).map(res => res.json()).subscribe(
+   this.seminarService.GetSeminarList(event.pageSize, event.pageIndex).subscribe(
 
      (response) => {
-       console.log(response.upcomingSeminar);
-       this.seminars = response.upcomingSeminar;
+       console.log(response["upcomingSeminar"]);
+       this.seminars = response["upcomingSeminar"];
        this.isLoading = false;
      },(error1) => {
        alert(" OOPS..!! Some Error Occured Please try Again");
@@ -51,14 +51,11 @@ public bookingForm: FormGroup;
   }
 
   getSeminarListOnInit(itemPerpage,PageIndex){
-    this.seminarService.GetSeminarList(itemPerpage, PageIndex).pipe(
-      map(res => res.upcomingSeminar,
-        totalpages => totalpages.totalPages) // or any other operator
-    ).subscribe(
-      (response) => {
-        console.log(to);
-        console.log(response);
-        this.seminars = response;
+    this.seminarService.GetSeminarList(itemPerpage, PageIndex).subscribe(
+      (res) => {
+        console.log(res["upcomingSeminar"]);
+        this.seminars = res["upcomingSeminar"];
+        this.totalPages= res["totalPages"]+1;
         this.isLoading = false;
       },(error1) => {
         alert(" OOPS..!! Some Error Occured Please try Again");
