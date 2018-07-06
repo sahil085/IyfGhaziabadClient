@@ -46,7 +46,6 @@ export class UdgaarHomePageComponent implements OnInit {
   }
 
   openDialog() {
-
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
@@ -57,7 +56,8 @@ export class UdgaarHomePageComponent implements OnInit {
     // };
     dialogConfig.data = {
       id: 1,
-      title: 'Angular For Beginners'
+      title: 'Angular For Beginners',
+      // callbackUrl: url;
     };
 
     this.dialog.open(LogindialogComponent, dialogConfig);
