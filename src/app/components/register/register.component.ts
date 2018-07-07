@@ -68,7 +68,7 @@ export class RegisterComponent implements OnInit {
                 duration: 2000,
               });
               setTimeout(function () {
-                location.reload();
+                window.location.href=' ';
               },2000);
             } else {
               this.isSignupSuccess = false;

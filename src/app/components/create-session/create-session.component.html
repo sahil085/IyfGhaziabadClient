@@ -1,0 +1,111 @@
+<div class="row">
+  <div class="text-center centerdiv">
+    <div class="col-md-12 col-xs-12">
+      <div style="padding: auto;margin-top: 10px;margin-bottom: 20px;justify-content: center">
+
+        <mat-card>
+          <mat-card-content>
+            <mat-card-title>Create Session</mat-card-title>
+
+
+            <form [formGroup]="sessionForm" >
+              <div class="example-container">
+                <mat-form-field>
+                  <input matInput placeholder="Session Title" formControlName="title" required >
+                  <mat-error *ngIf="sessionForm.get('title').hasError('required')">
+                    Please Enter Session Title
+                  </mat-error>
+
+                </mat-form-field>
+
+
+
+                <mat-form-field>
+                  <input matInput placeholder="Session Description" formControlName="description" type="text" required>
+                  <mat-error *ngIf="sessionForm.get('description').hasError('required')">
+                    Please Enter Session Description
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <input matInput placeholder="Speaker Name" formControlName="speakerName" type="text" required>
+                  <mat-error *ngIf="sessionForm.get('speakerName').hasError('required')">
+                    Please Enter Speaker Name
+                  </mat-error>
+                </mat-form-field>
+
+                <div>
+                  <mat-form-field>
+                    <input matInput placeholder="Session Date" formControlName="date" type="date" required>
+                    <mat-error *ngIf="sessionForm.get('date').hasError('required')">
+                      Please Enter Session Date
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <input matInput placeholder="From" formControlName="timeFrom" type="time" required>
+                    <mat-error *ngIf="sessionForm.get('timeFrom').hasError('required')">
+                      When will Session start?
+                    </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <input matInput placeholder="Till" formControlName="timeTill" type="time" required>
+                    <mat-error *ngIf="sessionForm.get('timeTill').hasError('required')">
+                      When will Session end?
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <mat-form-field>
+                  <input matInput placeholder="Venue" formControlName="venue" type="text" required>
+                  <mat-error *ngIf="sessionForm.get('venue').hasError('required')">
+                    Please Enter the ISKCON Centre
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-select placeholder="ISKCON Centre" formControlName="iskconCentre" >
+                    <mat-option value="ISKCON Delhi">ISKCON Delhi</mat-option>
+                    <mat-option value="ISKCON Ghaziabad">ISKCON Ghaziabad</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="sessionForm.get('iskconCentre').hasError('required')">
+                    Please Select Iskcon centre
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-select placeholder="Course ID" formControlName="courseId" >
+                    <mat-option value="course 1">Course 1</mat-option>
+                    <mat-option value="course 2">Course 2</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="sessionForm.get('courseId').hasError('required')">
+                  Please Enter Course ID
+                  </mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field>
+                  <input matInput placeholder="No. of Seats" formControlName="seats" type="number" >
+                  <mat-error *ngIf="sessionForm.get('seats').hasError('max')">
+                    Seats can be maximum upto 150
+                  </mat-error>
+                </mat-form-field>
+
+
+              </div>
+              <button mat-raised-button (click)="createSession()">Create</button>
+            </form>
+
+          </mat-card-content>
+
+        </mat-card>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

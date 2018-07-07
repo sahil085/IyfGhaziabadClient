@@ -8,11 +8,11 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-b
 import {
   MAT_DIALOG_DEFAULT_OPTIONS,
   MatAutocompleteModule,
-  MatButtonModule, MatCardModule, MatDialogModule,
+  MatButtonModule, MatCardModule, MatDatepickerModule, MatDialogModule,
   MatGridListModule, MatIconModule,
   MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule,
   MatOptionModule, MatProgressSpinnerModule,
-  MatSelectModule, MatSidenavModule, MatSnackBarModule, MatToolbarModule
+  MatSelectModule, MatSidenavModule, MatSnackBarModule, MatTableModule, MatToolbarModule
 } from '@angular/material';
 import { RegisterComponent } from './components/register/register.component';
 import {HTTP_INTERCEPTORS, HttpClientModule, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
@@ -27,21 +27,72 @@ import {Observable, Subject} from 'rxjs';
 import { LogindialogComponent } from './logindialog/logindialog.component';
 import {HttpModule} from '@angular/http';
 import {AuthenticationService} from './services/authentication.service';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { CreateCourseComponent } from './components/create-course/create-course.component';
+import { ViewCourseComponent } from './components/view-course/view-course.component';
+import { CreateSessionComponent } from './components/create-session/create-session.component';
+import { CreateSeminarComponent } from './components/create-seminar/create-seminar.component';
+import { ViewSeminarComponent } from './components/view-seminar/view-seminar.component';
+import { ViewSessionComponent } from './components/view-session/view-session.component';
+import {AdminCourseService} from './services/admin-course.service';
+import * as path from 'path';
+import { QuotesCarouselComponent } from './components/quotes-carousel/quotes-carousel.component';
+import {AmazingTimePickerModule} from 'amazing-time-picker';
+
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { UpcomingSeminarListComponent } from './components/upcoming-seminar-list/upcoming-seminar-list.component';
+import { UpcomingSessionListComponent } from './components/upcoming-session-list/upcoming-session-list.component';
+import { RecentSessionListComponent } from './components/recent-session-list/recent-session-list.component';
+import { RecentSeminarListComponent } from './components/recent-seminar-list/recent-seminar-list.component';
+import {MatPaginatorModule, MatSortModule, MatTableDataSource} from '@angular/material';
+import { BookSeatForSeminarDialogComponent } from './components/book-seat-for-seminar-dialog/book-seat-for-seminar-dialog.component';
+import { CancelSeatForSeminarDialogComponent } from './components/cancel-seat-for-seminar-dialog/cancel-seat-for-seminar-dialog.component';
+import { UserRoleMappingComponent } from './components/user-role-mapping/user-role-mapping.component';
+import {User} from './User';
+import {SharedService} from './services/shared.service';
+
 
 
 const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
-  {path: '', component: HomeComponent}
+  {path: '', component: HomeComponent},
+  {path: 'admin', component: AdminPanelComponent},
+  {path: 'create-course', component: CreateCourseComponent},
+  {path: 'create-session', component: CreateSessionComponent},
+  {path: 'create-seminar', component: CreateSeminarComponent},
+  {path: 'dashboard', component: DashboardComponent},
+  {path: 'recent-seminar-list', component: RecentSeminarListComponent},
+  {path: 'recent-session-list', component: RecentSessionListComponent},
+  {path: 'upcoming-seminar-list', component: UpcomingSeminarListComponent},
+  {path: 'upcoming-session-list', component: UpcomingSessionListComponent},
+  {path: 'view-course', component: ViewCourseComponent},
+  {path: 'view-session', component: ViewSessionComponent},
+  {path: 'view-seminar', component: ViewSeminarComponent},
+  {path: 'userrolemapping', component: UserRoleMappingComponent}
+
 ];
 
 @Injectable()
 export class XhrInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    const xhr = req.clone({
-      headers: req.headers.set('X-Requested-With', 'XMLHttpRequest')
-    });
-    return next.handle(xhr);
+    console.log(localStorage.getItem('Authorization'));
+    if ( localStorage.getItem('Authorization') == null) {
+      const xhr = req.clone({
+        setHeaders: {
+          'X-Requested-With' : 'XMLHttpRequest'
+        }
+      });
+      return next.handle(xhr);
+    } else {
+      const xhr = req.clone({
+        setHeaders: {
+          'X-Requested-With' : 'XMLHttpRequest',
+          'Authorization' : 'Basic ' + localStorage.getItem('Authorization')
+        }
+      });
+      return next.handle(xhr);
+    }
   }
 }
 
@@ -49,22 +100,41 @@ export class XhrInterceptor implements HttpInterceptor {
   declarations: [
     AppComponent,
     HeaderComponent,
+    HeaderComponent,
     FooterComponent,
     RegisterComponent,
     LoginComponent,
     HomeComponent,
-    LogindialogComponent
+    LogindialogComponent,
+    AdminPanelComponent,
+    CreateCourseComponent,
+    ViewCourseComponent,
+    CreateSessionComponent,
+    CreateSeminarComponent,
+    ViewSeminarComponent,
+    ViewSessionComponent,
+    QuotesCarouselComponent,
+    DashboardComponent,
+    RecentSeminarListComponent,
+    RecentSessionListComponent,
+    UpcomingSeminarListComponent,
+    UpcomingSessionListComponent,
+    BookSeatForSeminarDialogComponent,
+    CancelSeatForSeminarDialogComponent,
+    UserRoleMappingComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     HttpModule,
     BrowserAnimationsModule,
+    AmazingTimePickerModule,
     MatButtonModule,
     MatCardModule,
     MatInputModule,
     MatListModule,
     MatToolbarModule,
+    MatDatepickerModule,
     FormsModule,
     ReactiveFormsModule,
     LayoutModule,
@@ -76,13 +146,26 @@ export class XhrInterceptor implements HttpInterceptor {
     MatGridListModule,
     MatMenuModule,
     MatDialogModule,
-    NoopAnimationsModule,
     MatProgressSpinnerModule,
+    MatSelectModule,
+    MatSidenavModule,
     MatSnackBarModule,
+    ReactiveFormsModule,
+    MatPaginatorModule,
+    MatTableModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [RegistrationService,{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},AuthenticationService],
+  providers: [RegistrationService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: XhrInterceptor,
+      multi: true
+    },
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+    , AuthenticationService],
   bootstrap: [AppComponent],
-  entryComponents: [LogindialogComponent]
+  entryComponents: [LogindialogComponent, BookSeatForSeminarDialogComponent,
+  CancelSeatForSeminarDialogComponent]
 })
 export class AppModule { }
+
