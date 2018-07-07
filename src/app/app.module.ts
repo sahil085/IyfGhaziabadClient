@@ -47,6 +47,7 @@ import { RecentSeminarListComponent } from './components/recent-seminar-list/rec
 import {MatPaginatorModule, MatSortModule, MatTableDataSource} from '@angular/material';
 import { BookSeatForSeminarDialogComponent } from './components/book-seat-for-seminar-dialog/book-seat-for-seminar-dialog.component';
 import { CancelSeatForSeminarDialogComponent } from './components/cancel-seat-for-seminar-dialog/cancel-seat-for-seminar-dialog.component';
+import { UserRoleMappingComponent } from './user-role-mapping/user-role-mapping.component';
 
 
 
@@ -116,7 +117,8 @@ export class XhrInterceptor implements HttpInterceptor {
     UpcomingSeminarListComponent,
     UpcomingSessionListComponent,
     BookSeatForSeminarDialogComponent,
-    CancelSeatForSeminarDialogComponent
+    CancelSeatForSeminarDialogComponent,
+    UserRoleMappingComponent,
   ],
   imports: [
     BrowserModule,

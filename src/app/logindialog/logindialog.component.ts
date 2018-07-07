@@ -41,8 +41,17 @@ export class LogindialogComponent implements OnInit {
       console.log(this.loginForm.invalid);
       this.auth.logIn(this.loginForm.value).subscribe(data=>{
 
-          localStorage.setItem('currentUser', data.json().principal);
-          localStorage.setItem('isAuthenticated', 'true');
+          // localStorage.setItem('currentUser', data.json().principal);
+          console.log(data.json().principal);
+          let authorities = data.json().principal.authorities;
+         authorities.forEach(roles => {
+          console.log(roles.authority);
+           localStorage.setItem('role', roles.authority);
+
+         });
+
+
+        localStorage.setItem('isAuthenticated', 'true');
           window.location.href = "";
         },err=>{
           console.log(err);
