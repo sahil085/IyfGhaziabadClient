@@ -13,5 +13,4 @@ export class UdgaarService {
     return this.http.post(this.apiUrl+"/udgaarRegistration",status,{responseType: 'text'});
 
   }
-
 }
