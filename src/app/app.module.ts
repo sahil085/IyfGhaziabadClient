@@ -153,6 +153,7 @@ export class XhrInterceptor implements HttpInterceptor {
     ReactiveFormsModule,
     MatPaginatorModule,
     MatTableModule,
+    MatSortModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [RegistrationService,
