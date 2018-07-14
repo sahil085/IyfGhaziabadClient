@@ -2,6 +2,8 @@ import {st} from '@angular/core/src/render3';
 
 export class User
 {
+  sNo: number;
+  id: number;
   username: string;
   email: string;
   password: string;
@@ -20,4 +22,5 @@ export class User
   nearestIskconTemple: string;
   vedicLevel: number;
   isBrahmchari: boolean;
+  role: string;
 }

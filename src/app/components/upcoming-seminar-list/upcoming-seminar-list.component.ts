@@ -30,7 +30,7 @@ public bookingForm: FormGroup;
                private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.getSeminarListOnInit(10,0);
+    this.getSeminarListOnInit(2,0);
 
   }
 
@@ -41,6 +41,7 @@ public bookingForm: FormGroup;
      (response) => {
        console.log(response["upcomingSeminar"]);
        this.seminars = response["upcomingSeminar"];
+       this.totalPages= response["totalPages"];
        this.isLoading = false;
      },(error1) => {
        alert(" OOPS..!! Some Error Occured Please try Again");
@@ -55,7 +56,7 @@ public bookingForm: FormGroup;
       (res) => {
         console.log(res["upcomingSeminar"]);
         this.seminars = res["upcomingSeminar"];
-        this.totalPages= res["totalPages"]+1;
+        this.totalPages= res["totalPages"];
         this.isLoading = false;
       },(error1) => {
         alert(" OOPS..!! Some Error Occured Please try Again");

@@ -12,7 +12,7 @@ import {
   MatGridListModule, MatIconModule,
   MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule,
   MatOptionModule, MatProgressSpinnerModule,
-  MatSelectModule, MatSidenavModule, MatSnackBarModule, MatToolbarModule
+  MatSelectModule, MatSidenavModule, MatSnackBarModule, MatTableModule, MatToolbarModule
 } from '@angular/material';
 import { RegisterComponent } from './components/register/register.component';
 import {HTTP_INTERCEPTORS, HttpClientModule, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
@@ -47,7 +47,9 @@ import { RecentSeminarListComponent } from './components/recent-seminar-list/rec
 import {MatPaginatorModule, MatSortModule, MatTableDataSource} from '@angular/material';
 import { BookSeatForSeminarDialogComponent } from './components/book-seat-for-seminar-dialog/book-seat-for-seminar-dialog.component';
 import { CancelSeatForSeminarDialogComponent } from './components/cancel-seat-for-seminar-dialog/cancel-seat-for-seminar-dialog.component';
-import { UserRoleMappingComponent } from './user-role-mapping/user-role-mapping.component';
+import { UserRoleMappingComponent } from './components/user-role-mapping/user-role-mapping.component';
+import {User} from './User';
+import {SharedService} from './services/shared.service';
 
 import {UdgaarHomePageComponent} from './components/udgaar-home-page/udgaar-home-page.component';
 import {UdgaarService} from './services/udgaar.service';
@@ -68,7 +70,8 @@ const appRoutes: Routes = [
   {path: 'upcoming-session-list', component: UpcomingSessionListComponent},
   {path: 'view-course', component: ViewCourseComponent},
   {path: 'view-session', component: ViewSessionComponent},
-  {path: 'view-seminar', component: ViewSeminarComponent}
+  {path: 'view-seminar', component: ViewSeminarComponent},
+  {path: 'userrolemapping', component: UserRoleMappingComponent}
 
 ];
 
@@ -153,6 +156,8 @@ export class XhrInterceptor implements HttpInterceptor {
     MatSnackBarModule,
     ReactiveFormsModule,
     MatPaginatorModule,
+    MatTableModule,
+    MatSortModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [RegistrationService,
