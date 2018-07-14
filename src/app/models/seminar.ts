@@ -11,6 +11,9 @@ export class Seminar {
   totalNumberOfSeats:any;
   totalNumberOfAvailableSeats:any;
   category:any;
+  id:any;
+  bookingStatus:any;
+  seminarRecordId:any;
 
 
 
