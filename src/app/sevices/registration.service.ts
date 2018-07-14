@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {User} from '../User';
-import {text} from '@angular/core/src/render3/instructions';
 
 @Injectable(
   // {providedIn: 'root'}

@@ -48,7 +48,7 @@ import {MatPaginatorModule, MatSortModule, MatTableDataSource} from '@angular/ma
 import { BookSeatForSeminarDialogComponent } from './components/book-seat-for-seminar-dialog/book-seat-for-seminar-dialog.component';
 import { CancelSeatForSeminarDialogComponent } from './components/cancel-seat-for-seminar-dialog/cancel-seat-for-seminar-dialog.component';
 import { UserRoleMappingComponent } from './components/user-role-mapping/user-role-mapping.component';
-import {User} from './User';
+import {User} from './models/User';
 import {SharedService} from './services/shared.service';
 
 import {UdgaarHomePageComponent} from './components/udgaar-home-page/udgaar-home-page.component';

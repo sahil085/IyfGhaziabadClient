@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 // import {RegistrationService, RegistrationServiceService} from '../../sevices/registration-service.service';
 import {RegistrationService} from '../../sevices/registration.service';
-import {User} from '../../User';
+import {User} from '../../models/User';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
 declare var jquery:any;
