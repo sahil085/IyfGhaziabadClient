@@ -2,7 +2,7 @@ import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {HeaderComponent} from '../../header/header.component';
 import {SharedService} from '../../services/shared.service';
 import {UserRoleMappingService} from '../../services/user-role-mapping.service';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatSnackBar, MatSort, MatTableDataSource} from '@angular/material';
 import {User} from '../../models/User';
 import {DataSource} from '@angular/cdk/table';
 import {Observable} from 'rxjs';
@@ -12,12 +12,14 @@ import {Observable} from 'rxjs';
   templateUrl: './user-role-mapping.component.html',
   styleUrls: ['./user-role-mapping.component.css']
 })
-export class UserRoleMappingComponent implements OnInit , AfterViewInit{
+export class UserRoleMappingComponent implements OnInit {
 
-  displayedColumns: string[] = ['sNo', 'name', 'email', 'currentRole', 'action'];
+  displayedColumns: string[] = ['sNo', 'name', 'email', 'currentRole', 'selectRole' , 'action'];
   dataSource = new MatTableDataSource();
-  currentpage:number = 1;
-  pageSize: number = 10;
+  currentpage  = 1 ;
+  pageSize= 1;
+  totalpage:number ;
+  Role:string;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -26,12 +28,15 @@ export class UserRoleMappingComponent implements OnInit , AfterViewInit{
   public role: string;
 
   constructor(public sharedService: SharedService,
-              public userRoleService: UserRoleMappingService) { }
+              public userRoleService: UserRoleMappingService,
+              public snackBar: MatSnackBar) { }
 
   ngOnInit() {
    this.role = this.sharedService.role;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.getAllUserOnInit(10,0);
+
   }
 
   applyFilter(filterValue: string) {
@@ -42,15 +47,17 @@ export class UserRoleMappingComponent implements OnInit , AfterViewInit{
 
 
   onPaginateChange(event){
-    console.log(event.pageSize +" -- "+ event.pageIndex);
-    this.currentpage = event.pageIndex;
+
+    this.currentpage = event.pageIndex +1 ;
+
     this.pageSize = event.pageSize;
     // this.isLoading = true;
     this.userRoleService.getAllUsers(event.pageSize, event.pageIndex).subscribe(
 
       (data) => {
         console.log( data);
-        this.dataSource =  new MatTableDataSource(data);
+        this.dataSource =  new MatTableDataSource(data.userList);
+        this.totalpage = data.totalPage;
         // this.isLoading = false;
       },(error1) => {
         alert(" OOPS..!! Some Error Occured Please try Again");
@@ -62,8 +69,10 @@ export class UserRoleMappingComponent implements OnInit , AfterViewInit{
 
   getAllUserOnInit(userPerpage, pageIndex) {
    this.userRoleService.getAllUsers(userPerpage, pageIndex).subscribe( (data) => {
-     console.log(data);
-     this.dataSource =  new MatTableDataSource(data);
+
+     this.dataSource =  new MatTableDataSource(data.userList);
+     this.totalpage = data.totalPage;
+
 
    }, (error1) => {
 
@@ -71,13 +80,31 @@ export class UserRoleMappingComponent implements OnInit , AfterViewInit{
 
   }
 
-  ngAfterViewInit(): void {
+  assignRole(user){
 
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-    this.getAllUserOnInit(10,0);
 
+
+    this.userRoleService.changeUserRole(JSON.parse(JSON.stringify(user))).subscribe( response => {
+      if(response.type === 'success'){
+        user.currentRole = user.role;
+        this.snackBar.open(response.response, 'Hare krishna', {
+          duration: 3000,
+          verticalPosition: 'top',
+          horizontalPosition: 'center'
+        });
+
+      }
+    });
 
   }
+
+  // ngAfterViewInit(): void {
+  //
+  //   this.dataSource.paginator = this.paginator;
+  //   this.dataSource.sort = this.sort;
+  //   this.getAllUserOnInit(10,0);
+  //
+  //
+  // }
 
 }

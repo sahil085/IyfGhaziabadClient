@@ -26,7 +26,7 @@ public totalPages:any;
 
 public bookingForm: FormGroup;
 
-  constructor(public dialog: MatDialog,private seminarService: SeminarService,
+  constructor(public dialog: MatDialog,public seminarService: SeminarService,
                private fb: FormBuilder) { }
 
   ngOnInit() {
