@@ -42,7 +42,7 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log("header");
+
     var authentication = localStorage.getItem("isAuthenticated");
 
     console.log(this.isAuthenticated);
