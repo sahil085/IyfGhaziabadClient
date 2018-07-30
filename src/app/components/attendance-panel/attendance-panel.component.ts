@@ -16,25 +16,25 @@ export class AttendancePanelComponent implements OnInit {
   ngOnInit() {
 
 
-    this.getSeminarListOnInit(2,0);
+    // this.getSeminarListOnInit(2,0);
 
 
   }
 
 
-  getSeminarListOnInit(itemPerpage,PageIndex){
-    this.seminarService.GetSeminarList(itemPerpage, PageIndex).subscribe(
-      (res) => {
-        console.log(res["upcomingSeminar"]);
-        this.seminars = res["upcomingSeminar"];
-        this.totalPages= res["totalPages"];
-        this.isLoading = false;
-      },(error1) => {
-        alert(" OOPS..!! Some Error Occured Please try Again");
-        this.isLoading = false;
-      }
-    );
-
-  }
+  // getSeminarListOnInit(itemPerpage,PageIndex){
+  //   this.seminarService.GetSeminarList(itemPerpage, PageIndex).subscribe(
+  //     (res) => {
+  //       console.log(res["upcomingSeminar"]);
+  //       this.seminars = res["upcomingSeminar"];
+  //       this.totalPages= res["totalPages"];
+  //       this.isLoading = false;
+  //     },(error1) => {
+  //       alert(" OOPS..!! Some Error Occured Please try Again");
+  //       this.isLoading = false;
+  //     }
+  //   );
+  //
+  // }
 
 }

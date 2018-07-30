@@ -12,9 +12,9 @@ export class MarkAttendacneForSeminarComponent implements OnInit {
 
   ngOnInit() {
 
-    this.sub = this.route.params.subscribe(params => {
-      console.log(params['id']);
-    });
+    // this.sub = this.route.params.subscribe(params => {
+    //   console.log(params['id']);
+    // });
 
   }
 
