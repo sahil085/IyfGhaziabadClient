@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Seminar} from "../../models/seminar";
+import {SeminarService} from '../../services/seminar.service';
 
 @Component({
   selector: 'app-attendance-panel',
@@ -10,8 +11,9 @@ export class AttendancePanelComponent implements OnInit {
 
   public seminars: Seminar[];
   public totalPages:any;
+  public isLoading: boolean;
 
-  constructor() { }
+  constructor(public seminarService: SeminarService) { }
 
   ngOnInit() {
 

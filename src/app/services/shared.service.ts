@@ -14,7 +14,7 @@ export class SharedService {
     {
       this.isAuthenticated  = false;
       window.location.href = '';
-    } else{
+    } else {
       this.role = localStorage.getItem('role');
     }
   }

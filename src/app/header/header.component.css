@@ -1,7 +1,13 @@
 .navbar-nav > li > a {
   padding-top:5px;
   padding-bottom:5px;
+  outline:none;
 }
 .navbar {
   min-height:32px;
+  outline:none;
+}
+
+a {
+  outline:none;
 }

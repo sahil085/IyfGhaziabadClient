@@ -63,19 +63,19 @@ const appRoutes: Routes = [
   {path: 'admin', component: AdminPanelComponent},
   {path: 'attendance', component: AttendancePanelComponent},
   {path: 'markSeminarAttendance/:id', component: MarkAttendacneForSeminarComponent},
-  {path: 'create-course', component: CreateCourseComponent},
-  {path: 'create-session', component: CreateSessionComponent},
-  {path: 'create-seminar', component: CreateSeminarComponent},
+  {path: 'createCourse', component: CreateCourseComponent},
+  {path: 'createSession', component: CreateSessionComponent},
+  {path: 'createSeminar', component: CreateSeminarComponent},
   {path: 'dashboard', component: DashboardComponent},
-  {path: 'recent-seminar-list', component: RecentSeminarListComponent},
-  {path: 'recent-session-list', component: RecentSessionListComponent},
+  {path: 'recentSeminarList', component: RecentSeminarListComponent},
+  {path: 'recentSessionList', component: RecentSessionListComponent},
   {path: 'udgaar', component: UdgaarHomePageComponent},
-  {path: 'upcoming-seminar-list', component: UpcomingSeminarListComponent},
-  {path: 'upcoming-session-list', component: UpcomingSessionListComponent},
-  {path: 'view-course', component: ViewCourseComponent},
-  {path: 'view-session', component: ViewSessionComponent},
-  {path: 'view-seminar', component: ViewSeminarComponent},
-  {path: 'userrolemapping', component: UserRoleMappingComponent}
+  {path: 'upcomingSeminarList', component: UpcomingSeminarListComponent},
+  {path: 'upcomingSessionList', component: UpcomingSessionListComponent},
+  {path: 'viewCourse', component: ViewCourseComponent},
+  {path: 'viewSession', component: ViewSessionComponent},
+  {path: 'viewSeminar', component: ViewSeminarComponent},
+  {path: 'userRoleMapping', component: UserRoleMappingComponent}
 
 ];
 
@@ -84,7 +84,7 @@ export class XhrInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     console.log(localStorage.getItem('Authorization'));
-    if ( localStorage.getItem('Authorization') == null) {
+    if (localStorage.getItem('Authorization') == null) {
       const xhr = req.clone({
         setHeaders: {
           'X-Requested-With' : 'XMLHttpRequest'
@@ -173,7 +173,7 @@ export class XhrInterceptor implements HttpInterceptor {
       multi: true
     },
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
-    , AuthenticationService,UdgaarService],
+    , AuthenticationService, UdgaarService],
   bootstrap: [AppComponent],
   entryComponents: [LogindialogComponent, BookSeatForSeminarDialogComponent,
   CancelSeatForSeminarDialogComponent]

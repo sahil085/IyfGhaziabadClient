@@ -10,9 +10,9 @@ import {AppComponent} from '../app.component';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  public  isAuthenticated:boolean=false;
-  public role:string ;
-  constructor(public dialog: MatDialog,public auth: AuthenticationService,public appComp: AppComponent) {}
+  public  isAuthenticated = false;
+  public role: string ;
+  constructor(public dialog: MatDialog, public auth: AuthenticationService, public appComp: AppComponent) {}
 
   openDialog() {
 
@@ -43,22 +43,19 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
 
-    var authentication = localStorage.getItem("isAuthenticated");
+    const authentication = localStorage.getItem('isAuthenticated');
 
     console.log(this.isAuthenticated);
-    if(authentication == null)
-    {
+    if (authentication == null) {
       this.isAuthenticated = false;
       console.log(this.isAuthenticated);
-    }
-    else
-    {
+    } else {
       this.isAuthenticated = true;
       console.log(this.isAuthenticated);
-      let role = localStorage.getItem("role");
-      if(role != null ){
+      const role = localStorage.getItem('role');
+      if (role != null ) {
         console.log(role);
-        this.role =role;
+        this.role = role;
       }
 
     }
@@ -68,9 +65,8 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  logout()
-  {
-    console.log("logout");
+  logout() {
+    console.log('logout');
     this.auth.logout();
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-mark-attendacne-for-seminar',
@@ -7,6 +7,7 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./mark-attendacne-for-seminar.component.css']
 })
 export class MarkAttendacneForSeminarComponent implements OnInit {
+  public sub: any;
 
   constructor(private route: ActivatedRoute) { }
 

@@ -8,13 +8,13 @@
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target="#navigation">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="#"><img src="/assets/img/logo.png" class="img-responsive" width="80px" alt=""></a>
+      <!--<button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target="#navigation">-->
+        <!--<span class="sr-only">Toggle navigation</span>-->
+        <!--<span class="icon-bar"></span>-->
+        <!--<span class="icon-bar"></span>-->
+        <!--<span class="icon-bar"></span>-->
+      <!--</button>-->
+      <a href="http://iskconghaziabad.com/"><img src="/assets/img/logo.png" class="img-responsive" width="80px" alt=""></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -22,34 +22,49 @@
       <div class="button navbar-right">
         <button *ngIf='isAuthenticated' class="navbar-btn nav-button wow bounceInRight login" (click)="logout()" data-wow-delay="0.45s"><strong>Logout</strong></button>
 
-         <a routerLink="/admin" *ngIf="role == 'USER'"><button  class="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.45s"><strong>Admin Panel</strong></button></a>
+         <!--<a routerLink="/admin" *ngIf="role == 'USER'"><button  class="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.45s"><strong>Admin Panel</strong></button></a>-->
         <button *ngIf='!isAuthenticated' class="navbar-btn nav-button wow bounceInRight login" (click)="openDialog()" data-wow-delay="0.45s"><strong>Login</strong></button>
         <a routerLink="register" *ngIf="!isAuthenticated"> <button class="navbar-btn nav-button wow fadeInRight"  data-wow-delay="0.48s">Register</button></a>
-        <a routerLink="userrolemapping" *ngIf="(role == 'USER' && isAuthenticated )">
-          <button  class="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.45s"><strong>User Role Mapping</strong></button>
-        </a>
+        <!--<a routerLink="userrolemapping" *ngIf="(role == 'USER' && isAuthenticated )">-->
+          <!--<button  class="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.45s"><strong>User Role Mapping</strong></button>-->
+        <!--</a>-->
       </div>
       <ul class="main-nav nav navbar-nav navbar-right">
         <!--<li class="dropdown ymm-sw " data-wow-delay="0.1s">-->
         <li class="wow fadeInDown"><a class="" href="#">Home</a></li>
         <li class="dropdown ymm-sw " data-wow-delay="0.1s">
-          <a href="index.html" class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Activities <b class="caret"></b></a>
+          <a href="index.html" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Activities <b class="caret"></b></a>
           <ul class="dropdown-menu navbar-nav">
             <li>
-              <a href="index-2.html">Seminars</a>
+              <a routerLink="upcomingSeminarList">Seminars</a>
             </li>
             <li>
-              <a href="index-3.html">Courses</a>
+              <a routerLink="upcomingSessionList">Courses</a>
+            </li>
+            <!--<li>-->
+              <!--<a href="index-4.html">Festivals</a>-->
+            <!--</li>-->
+
+          </ul>
+        </li>
+        <li *ngIf="(isAuthenticated && role=='ADMIN')" class="dropdown ymm-sw " data-wow-delay="0.1s">
+          <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Admin Activities<b class="caret"></b></a>
+          <ul class="dropdown-menu navbar-nav">
+            <li>
+              <a routerLink="admin">Admin Panel</a>
             </li>
             <li>
-              <a href="index-4.html">Festivals</a>
+              <a routerLink="userRoleMapping">User Role Mapping</a>
+            </li>
+            <li>
+              <a routerLink="markSeminarAttendance">Mark Attendance</a>
             </li>
 
           </ul>
         </li>
-        <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="#">Contact Us</a></li>
+        <li class="wow fadeInDown" data-wow-delay="0.3s"><a href="#">Contact Us</a></li>
 
-        <li class="wow fadeInDown" data-wow-delay="0.4s"><a href="contact.html">About Us</a></li>
+        <li class="wow fadeInDown" data-wow-delay="0.4s"><a href="#">About Us</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

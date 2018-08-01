@@ -26,7 +26,7 @@ export class CreateSeminarComponent implements OnInit {
       title: ['',Validators.required],
       seminarDescription: ['',Validators.required],
       speakerName: ['',Validators.required],
-      speakerDescription: ['', Validators.required],
+      speakerDescription: [''],
       date: ['',Validators.required],
       startTime: ['',Validators.required],
       endTime: ['',Validators.required],
