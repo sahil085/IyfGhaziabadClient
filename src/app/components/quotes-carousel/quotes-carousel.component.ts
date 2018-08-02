@@ -11,5 +11,4 @@ export class QuotesCarouselComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
