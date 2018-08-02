@@ -20,6 +20,7 @@ export class UserRoleMappingComponent implements OnInit {
   pageSize= 1;
   totalpage:number ;
   Role:string;
+  hideView = false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -77,6 +78,9 @@ export class UserRoleMappingComponent implements OnInit {
 
      this.dataSource =  new MatTableDataSource(data.userList);
      this.totalpage = data.totalPage;
+     if (data.userList.length == 0){
+       this.hideView = true;
+     }
 
 
    }, (error1) => {

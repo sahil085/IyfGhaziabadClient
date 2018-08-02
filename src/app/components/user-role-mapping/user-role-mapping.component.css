@@ -19,6 +19,11 @@
   max-height: 500px;
 }
 
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
 td.mat-cell:last-child, td.mat-footer-cell:last-child, th.mat-header-cell:last-child{
   padding: 5px;
 }
