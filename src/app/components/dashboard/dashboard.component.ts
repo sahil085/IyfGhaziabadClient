@@ -10,6 +10,11 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    const role = localStorage.getItem('role');
+    if (role !== 'ADMIN' ) {
+      console.log(role);
+      window.location.href = '';
+    }
   }
 
 }

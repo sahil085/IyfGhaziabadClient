@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Seminar} from "../../models/seminar";
+import {Seminar} from '../../models/seminar';
 import {SeminarService} from '../../services/seminar.service';
 
 @Component({
@@ -10,29 +10,34 @@ import {SeminarService} from '../../services/seminar.service';
 export class AttendancePanelComponent implements OnInit {
 
   public seminars: Seminar[];
-  public totalPages:any;
+  public totalPages: any;
   public isLoading: boolean;
 
   constructor(public seminarService: SeminarService) { }
 
   ngOnInit() {
 
+    const role = localStorage.getItem('role');
+    if (role !== 'ADMIN' ) {
+      console.log(role);
+      window.location.href = '';
+    }
 
-    this.getSeminarListOnInit(2,0);
+    this.getSeminarListOnInit(2, 0);
 
 
   }
 
 
-  getSeminarListOnInit(itemPerpage,PageIndex){
+  getSeminarListOnInit(itemPerpage, PageIndex) {
     this.seminarService.GetSeminarList(itemPerpage, PageIndex).subscribe(
       (res) => {
-        console.log(res["upcomingSeminar"]);
-        this.seminars = res["upcomingSeminar"];
-        this.totalPages= res["totalPages"];
+        console.log(res['upcomingSeminar']);
+        this.seminars = res['upcomingSeminar'];
+        this.totalPages = res['totalPages'];
         this.isLoading = false;
-      },(error1) => {
-        alert(" OOPS..!! Some Error Occured Please try Again");
+      }, (error1) => {
+        alert(' OOPS..!! Some Error Occured Please try Again');
         this.isLoading = false;
       }
     );

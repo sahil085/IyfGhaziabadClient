@@ -11,41 +11,41 @@ import {map} from 'rxjs/operators';
 })
 export class CreateCourseComponent implements OnInit {
 
-  public courseForm : FormGroup;
+  public courseForm: FormGroup;
 
   constructor(private fb: FormBuilder,
               public snackBar: MatSnackBar,
               private adminCourseService: AdminCourseService) {
     this.courseForm = this.fb.group({
-      tittle: ['',Validators.required],
-      description: ['',Validators.required],
-      vedicLevel: ['',Validators.required],
-      courseType: ['',Validators.required],
-      gender: ['',Validators.required],
-      duration: ['',Validators.required]
+      tittle: ['', Validators.required],
+      description: ['', Validators.required],
+      vedicLevel: ['', Validators.required],
+      courseType: ['', Validators.required],
+      gender: ['', Validators.required],
+      duration: ['', Validators.required]
     });
   }
 
 
-  public createCourse(){
+  public createCourse() {
     console.log(this.courseForm.value);
 
-    if(this.courseForm.invalid){
-      this.snackBar.open(" Please Fill All Form Fields", 'Hare krishna', {
+    if(this.courseForm.invalid) {
+      this.snackBar.open(' Please Fill All Form Fields', 'Hare krishna', {
         duration: 3000,
         verticalPosition: 'top',
         horizontalPosition: 'center'
       });
-    }else{
+    } else {
       this.adminCourseService.createCourseService(this.courseForm.value).subscribe( resp => {
-        this.snackBar.open(resp["response"], 'Hare krishna', {
+        this.snackBar.open(resp['response'], 'Hare krishna', {
           duration: 3000,
           verticalPosition: 'top',
           horizontalPosition: 'center'
         });
         setTimeout(function () {
-          window.location.href='create-course';
-        },2000);
+          window.location.href = 'createCourse';
+        }, 2000);
       });
     }
 
@@ -53,6 +53,11 @@ export class CreateCourseComponent implements OnInit {
 
   ngOnInit() {
 
+    const role = localStorage.getItem('role');
+    if (role !== 'ADMIN' ) {
+      console.log(role);
+      window.location.href = '';
+    }
   }
 }
 

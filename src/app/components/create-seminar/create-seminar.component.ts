@@ -13,7 +13,7 @@ import {AmazingTimePickerService} from 'amazing-time-picker';
 export class CreateSeminarComponent implements OnInit {
   public seminarForm: FormGroup;
   public formdata = new FormData();
-  public file : File;
+  public file: File;
   selectedFiles: FileList;
 
   constructor(private fb: FormBuilder,
@@ -23,15 +23,15 @@ export class CreateSeminarComponent implements OnInit {
               public snackBar: MatSnackBar) {
 
     this.seminarForm = this.fb.group({
-      title: ['',Validators.required],
-      seminarDescription: ['',Validators.required],
-      speakerName: ['',Validators.required],
+      title: ['', Validators.required],
+      seminarDescription: ['', Validators.required],
+      speakerName: ['', Validators.required],
       speakerDescription: [''],
-      date: ['',Validators.required],
-      startTime: ['',Validators.required],
-      endTime: ['',Validators.required],
-      venue: ['',Validators.required],
-      city: ['',Validators.required],
+      date: ['', Validators.required],
+      startTime: ['', Validators.required],
+      endTime: ['', Validators.required],
+      venue: ['', Validators.required],
+      city: ['', Validators.required],
       category: '',
       totalNumberOfSeats: ['', [Validators.max(150), Validators.min(10)]]
     });
@@ -41,7 +41,7 @@ export class CreateSeminarComponent implements OnInit {
   onFileChange(event) {
     const reader = new FileReader();
 
-    if(event.target.files && event.target.files.length) {
+    if (event.target.files && event.target.files.length) {
       this.selectedFiles = undefined;
       this.file = undefined;
       this.selectedFiles = event.target.files;
@@ -60,35 +60,41 @@ export class CreateSeminarComponent implements OnInit {
     }
   }
 
-  public createSeminar(){
+  public createSeminar() {
     console.log(this.seminarForm.value);
     this.formdata.append('form', new Blob([JSON.stringify(this.seminarForm.value)],
       {
-        type: "application/json"
+        type: 'application/json'
       }));
     // this.formdata.append("form",this.seminarForm.value);
-    this.formdata.append("file",this.file);
-    if(this.seminarForm.invalid){
+    this.formdata.append('file', this.file);
+    if (this.seminarForm.invalid) {
       this.snackBar.open(' Please Fill All Form Fields', 'Hare krishna', {
         duration: 1000,
         verticalPosition: 'top',
         horizontalPosition: 'center'
       });
-    }else{
+    } else {
+
       this.adminSeminarService.createSeminarService(this.formdata).subscribe( resp => {
-        this.snackBar.open(resp["response"], 'Hare krishna', {
+        this.snackBar.open(resp['response'], 'Hare krishna', {
           duration: 3000,
           verticalPosition: 'top',
           horizontalPosition: 'center'
         });
           setTimeout(function () {
-            window.location.href='create-seminar';
-          },2000);
+            window.location.href = 'createSeminar';
+          }, 2000);
       });
     }
   }
 
   ngOnInit() {
+    const role = localStorage.getItem('role');
+    if (role !== 'ADMIN' ) {
+      console.log(role);
+      window.location.href = '';
+    }
   }
 
 }

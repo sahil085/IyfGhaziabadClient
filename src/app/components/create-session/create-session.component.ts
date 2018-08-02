@@ -32,7 +32,13 @@ export class CreateSessionComponent implements OnInit {
       // });
     }
 
-  ngOnInit(){ }
+  ngOnInit() {
+    const role = localStorage.getItem('role');
+    if (role !== 'ADMIN' ) {
+      console.log(role);
+      window.location.href = '';
+    }
+  }
 
 }
 

@@ -5,8 +5,8 @@ import {RegistrationService} from '../../sevices/registration.service';
 import {User} from '../../models/User';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
-declare var jquery:any;
-declare var $ :any;
+declare var jquery: any;
+declare var $: any;
 
 @Component({
   selector: 'app-register',
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
 
   public userform: FormGroup;
   public usr: User;
-  public signupProcess: boolean = false;
+  public signupProcess = false;
   public isSignupSuccess: boolean;
 
   constructor( private formBuilder: FormBuilder,
@@ -37,14 +37,14 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.userform = this.formBuilder.group({
       username: ['', Validators.required],
-      email: ['',[Validators.required,Validators.email]],
-      password: ['',[Validators.required,Validators.minLength(3)]],
-      gender : ['',[Validators.required]],
-      mobileNumber: ['',Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(3)]],
+      gender : ['', [Validators.required]],
+      mobileNumber: ['', Validators.required],
       alternateMobileNumber: [],
-      currentAddress: ['',Validators.required],
-      permanentAddress: ['',Validators.required],
-      city: ['',Validators.required],
+      currentAddress: ['', Validators.required],
+      permanentAddress: ['', Validators.required],
+      city: ['', Validators.required],
       street: [''],
       isInitiated: [''],
       roundsChant: [''],
@@ -67,22 +67,21 @@ export class RegisterComponent implements OnInit {
           this.snackBar.open(' Please Make Sure You Have Filled All The Fields', 'Hare krishna', {
             duration: 3000,
           });
-        }
-        else {
+        } else {
           this.registrationService.saveNewUser(this.userform.value).subscribe(response => {
             if (response === 'Registered Successfully') {
               this.isSignupSuccess = true;
-              this.signupProcess= false;
+              this.signupProcess = false;
 
               this.snackBar.open(response, 'Hare krishna', {
                 duration: 2000,
               });
               setTimeout(function () {
-                window.location.href=' ';
-              },2000);
+                window.location.href = ' ';
+              }, 2000);
             } else {
               this.isSignupSuccess = false;
-              this.signupProcess= false;
+              this.signupProcess = false;
               this.snackBar.open(response, 'Hare krishna', {
                 duration: 2000,
               });
@@ -97,22 +96,18 @@ export class RegisterComponent implements OnInit {
          return false;
        } else if (this.userform.get('password').value == null) {
          return false;
-       } else if (this.userform.get('email').value == null || this.userform.get('email').hasError('email') == null)
-       {
+       } else if (this.userform.get('email').value == null || this.userform.get('email').hasError('email') == null) {
          return false;
-       } else if (this.userform.get('mobileNumber').value == "") {
+       } else if (this.userform.get('mobileNumber').value === '') {
          return false;
 
-       } else if (this.userform.get('city').value == "")
-        {
+       } else if (this.userform.get('city').value === '') {
           return false;
 
-        } else if (this.userform.get('currentAddress').value == "")
-       {
+        } else if (this.userform.get('currentAddress').value === '') {
          return false;
 
-       } else if (this.userform.get('permanentAddress').value == "")
-       {
+       } else if (this.userform.get('permanentAddress').value === '') {
          return false;
 
        } else if (this.userform.get('gender').value == null) {
@@ -122,7 +117,7 @@ export class RegisterComponent implements OnInit {
        return true;
      }
 
-  checkValue(event: any){
+  checkValue(event: any) {
     // console.log(event);
     // this.userform.patchValue({accept:"123"});
   }

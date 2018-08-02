@@ -12,6 +12,11 @@ export class MarkAttendacneForSeminarComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    const role = localStorage.getItem('role');
+    if (role !== 'ADMIN' ) {
+      console.log(role);
+      window.location.href = '';
+    }
 
     this.sub = this.route.params.subscribe(params => {
       console.log(params['id']);

@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
 
   openDialog() {
 
+    localStorage.setItem('loginCallbackURL','');
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;

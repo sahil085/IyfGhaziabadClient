@@ -46,6 +46,7 @@ export class UdgaarHomePageComponent implements OnInit {
   }
 
   openDialog() {
+    localStorage.setItem('loginCallbackURL','udgaar');
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;

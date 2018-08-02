@@ -32,6 +32,11 @@ export class UserRoleMappingComponent implements OnInit {
               public snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    const role = localStorage.getItem('role');
+    if (role !== 'ADMIN' ) {
+      console.log(role);
+      window.location.href = '';
+    }
    this.role = this.sharedService.role;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
