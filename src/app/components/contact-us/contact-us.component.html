@@ -1,0 +1,67 @@
+<div class="container-fluid contact-bg">
+  <div class="row">
+    <div class="text-center">
+      <div class="col-md-6 col-xs-12 col-lg-6 col-sm-6 col-centered">
+        <div style="align-self: center; align-content: center;">
+          <div style="padding: auto;margin-top: 10px;margin-bottom: 20px;justify-content: center">
+
+            <mat-card>
+              <mat-card-content>
+                <mat-card-title>Any Message?</mat-card-title>
+                Drop your message here in this form alongwith your details.
+
+
+                <form [formGroup]="contactForm">
+                  <div class="example-container">
+                    <mat-form-field>
+                      <input matInput placeholder="Full Name" formControlName="name" required >
+                      <mat-error *ngIf="contactForm.get('name').hasError('required')">
+                        Please Enter your Name
+                      </mat-error>
+
+                    </mat-form-field>
+
+                    <mat-form-field>
+                      <input matInput placeholder="Contact/Whatsapp Number" formControlName="contact" type="text" required>
+                      <mat-error *ngIf="contactForm.get('contact').hasError('required')">
+                        Please Enter your Contact
+                      </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                      <input matInput placeholder="Email" formControlName="email" type="email" required>
+                      <mat-error *ngIf="contactForm.get('email').hasError('required')">
+                        Please Enter your Email
+                      </mat-error>
+                      <mat-error *ngIf="contactForm.get('email').hasError('email')">
+                        Enter a Valid Email
+                      </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                      <textarea style="height: 100px;" matInput placeholder="Message" formControlName="message" type="text">
+                      </textarea>
+                      <mat-error *ngIf="contactForm.get('message').hasError('required')">
+                      Please Enter your Message
+                      </mat-error>
+                    </mat-form-field>
+
+                  </div>
+                  <button mat-raised-button (click)="sendMessage()">Send</button>
+                </form>
+
+              </mat-card-content>
+
+            </mat-card>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+

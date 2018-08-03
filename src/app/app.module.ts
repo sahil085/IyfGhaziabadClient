@@ -57,6 +57,7 @@ import {UdgaarService} from './services/udgaar.service';
 import { AttendancePanelComponent } from './components/attendance-panel/attendance-panel.component';
 import { MarkAttendacneForSeminarComponent } from './components/mark-attendacne-for-seminar/mark-attendacne-for-seminar.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import {ContactUsComponent} from './components/contact-us/contact-us.component';
 
 
 const appRoutes: Routes = [
@@ -66,6 +67,7 @@ const appRoutes: Routes = [
   {path: 'admin', component: AdminPanelComponent},
   {path: 'attendance', component: AttendancePanelComponent},
   {path: 'markSeminarAttendance/:id', component: MarkAttendacneForSeminarComponent},
+  {path: 'contactUs', component: ContactUsComponent},
   {path: 'createCourse', component: CreateCourseComponent},
   {path: 'createSession', component: CreateSessionComponent},
   {path: 'createSeminar', component: CreateSeminarComponent},
@@ -136,6 +138,7 @@ export class XhrInterceptor implements HttpInterceptor {
     AttendancePanelComponent,
     MarkAttendacneForSeminarComponent,
     AboutUsComponent,
+    ContactUsComponent,
   ],
   imports: [
     BrowserModule,

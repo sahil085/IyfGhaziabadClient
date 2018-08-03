@@ -1,0 +1,43 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+button{
+  background-color: #FDC600;
+  font-weight: bold;
+}
+
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
+.contact-bg{
+  border-top: 1px solid #D1D1D1;
+  background: #fff url("../../../assets/img/seminar/whatsapp.jpg") repeat scroll 0% 0%;
+  color: #ffffff;
+}
+
+.timer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: relative;
+  margin: 1em;
+}
+
+.demo-form {
+  padding: 4em;
+}
