@@ -1,0 +1,11 @@
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
+.boy-sale-area {
+  position: relative;
+  padding: 70px 0px;
+  background-color: #F3F3F3;
+  color: #FFF;
+}

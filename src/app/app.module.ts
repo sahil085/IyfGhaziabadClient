@@ -50,16 +50,19 @@ import { CancelSeatForSeminarDialogComponent } from './components/cancel-seat-fo
 import { UserRoleMappingComponent } from './components/user-role-mapping/user-role-mapping.component';
 import {User} from './models/User';
 import {SharedService} from './services/shared.service';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import {UdgaarHomePageComponent} from './components/udgaar-home-page/udgaar-home-page.component';
 import {UdgaarService} from './services/udgaar.service';
 import { AttendancePanelComponent } from './components/attendance-panel/attendance-panel.component';
 import { MarkAttendacneForSeminarComponent } from './components/mark-attendacne-for-seminar/mark-attendacne-for-seminar.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 
 const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: '', component: HomeComponent},
+  {path: 'aboutUs', component: AboutUsComponent},
   {path: 'admin', component: AdminPanelComponent},
   {path: 'attendance', component: AttendancePanelComponent},
   {path: 'markSeminarAttendance/:id', component: MarkAttendacneForSeminarComponent},
@@ -132,6 +135,7 @@ export class XhrInterceptor implements HttpInterceptor {
     UserRoleMappingComponent,
     AttendancePanelComponent,
     MarkAttendacneForSeminarComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,
@@ -164,6 +168,7 @@ export class XhrInterceptor implements HttpInterceptor {
     MatPaginatorModule,
     MatTableModule,
     MatSortModule,
+    MatExpansionModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [RegistrationService,
