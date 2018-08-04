@@ -77,10 +77,11 @@ export class AttendancePanelComponent implements OnInit {
   }
 
   getSeminarListOnInit(itemPerpage, PageIndex) {
-    this.seminarService.GetSeminarList(itemPerpage, PageIndex).subscribe(
+    this.seminarService.GetAllSeminar(itemPerpage, PageIndex).subscribe(
       (res) => {
-        console.log(res['upcomingSeminar']);
-        this.seminars = res['upcomingSeminar'];
+        console.log(res);
+        this.seminars = res;
+        this.dataSource =  new MatTableDataSource(this.seminars);
         this.totalPages = res['totalPages'];
         this.isLoading = false;
       }, (error1) => {

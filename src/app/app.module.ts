@@ -65,7 +65,7 @@ const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'aboutUs', component: AboutUsComponent},
   {path: 'admin', component: AdminPanelComponent},
-  {path: 'attendance', component: AttendancePanelComponent},
+  {path: 'attendancePanel', component: AttendancePanelComponent},
   {path: 'markSeminarAttendance/:id', component: MarkAttendacneForSeminarComponent},
   {path: 'contactUs', component: ContactUsComponent},
   {path: 'createCourse', component: CreateCourseComponent},

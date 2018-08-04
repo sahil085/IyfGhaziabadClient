@@ -25,6 +25,11 @@ export class SeminarService {
 
     return this.http.put(this.apiUrl + '/cancelSeatForSeminar/' + seminarRecordId + '/' + reason, {});
   }
+  GetAllSeminar(itemPerPage, pageNumber): Observable<Seminar[]> {
+    return this.http.get<Seminar[]>(this.apiUrl + '/admin/seminars');
+
+  }
+
 
 
 
