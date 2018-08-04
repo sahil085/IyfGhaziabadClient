@@ -1,30 +1,69 @@
-<div class="row" style="margin: 20px 20px 20px 20px">
-  <div class="col-md-2" class="text-center">
-     <span style="color: black">
-       <h1><strong>OverAll Seminars</strong></h1>
-    </span>
+<div class="row" style="margin-bottom:15px;margin-left: 25px;margin-right: 15px  ">
+  <h1 style="text-align: center">Select Seminar</h1>
+  <h4 *ngIf="hideView" style="text-align: center">No seminars</h4>
+  <div class="col-md-4 col-lg-4 col-sm-6" *ngIf="!hideView">
+    <!--<i class="fa fa-search" aria-hidden="true"></i>&nbsp;-->
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search by name">
+    </mat-form-field>
+
   </div>
-</div>
-<div class="row" style="margin: 20px 20px 20px 20px">
-  <div class="col-md-10">
+  <div class="col-md-4 col-lg-4 col-sm-6" *ngIf="!hideView">
+    <mat-form-field>
+      <mat-select placeholder="Search by Speaker">
+        <mat-option value="HG Sarva Mangal Gaur Prabhu">HG Sarva Mangal Gaur Prabhu</mat-option>
+        <mat-option value="HG Damodar Lila Prabhu">HG Damodar Lila Prabhu</mat-option>
+        <mat-option value="HG Charu Govind Prabhu">HG Charu Govind Prabhu</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+  <div class="col-md-12" *ngIf="!hideView">
+    <div class="example-container mat-elevation-z8 ">
+      <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="sNo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> SNo. </th>
+          <td mat-cell *matCellDef="let seminar ; let i = index;">
+            {{ (currentpage - 1) * pageSize + i +1 }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="seminarTitle">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+          <td mat-cell *matCellDef="let seminar"> {{seminar.title}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="speakerName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Speaker Name </th>
+          <td mat-cell *matCellDef="let seminar"> {{seminar.speakerName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="seminarDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+          <td mat-cell *matCellDef="let seminar"> {{seminar.date}} </td>
+        </ng-container>
 
 
-    <div class="col-sm-6 col-md-4 p0">
-      <div class="box-two proerty-item">
-        <div class="item-entry overflow">
-         <h4>
-          <div> <strong>Topic :</strong>  hare krishna  </div>
-           <div> <strong>Date :</strong> hare krishna </div>
-           <div> <strong>Speaker Name :</strong> hare krishna  </div>
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+          <td mat-cell *matCellDef="let seminar" (click)="$event.stopPropagation()">
+            <button type="button" class="mat-raised-button" style="background-color: #FDC600;" (click)="selectSeminar(seminar)">Mark Attendance</button>
+          </td>
+        </ng-container>
 
-         </h4>
-        </div>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row ; columns: displayedColumns;"></tr>
+      </table>
 
-        <a routerLink="/markSeminarAttendance/1"> <button mat-raised-button  data-wow-delay="0.45s"><strong>Create</strong></button></a>
-        <!--<a href="/view-session"> <button mat-raised-button data-wow-delay="0.45s"><strong>View</strong></button></a>-->
-      </div>
+      <mat-paginator [pageSizeOptions]="[1,2,10]" showFirstLastButtons
+                     [pageSize]="10"
+                     [length]="totalpage"
+                     (page)="onPaginateChange($event)"></mat-paginator>
     </div>
-
-
   </div>
+  <!--<div *ngIf="role == 'USER'">-->
+
+  <!--</div>-->
+
 </div>

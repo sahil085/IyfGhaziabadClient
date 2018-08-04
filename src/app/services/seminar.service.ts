@@ -13,7 +13,7 @@ export class SeminarService {
 
 
   GetSeminarList(itemPerPage, pageNumber): Observable<Seminar[]> {
-   return this.http.get<Seminar[]>(this.apiUrl + '/upcomingSeminars/1/' + pageNumber + '/' + itemPerPage);
+   return this.http.get<Seminar[]>(this.apiUrl + '/admin/upcomingSeminars/1/' + pageNumber + '/' + itemPerPage);
 
   }
 
