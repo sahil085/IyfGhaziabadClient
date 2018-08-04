@@ -81,9 +81,9 @@ export class CreateSeminarComponent implements OnInit {
           verticalPosition: 'top',
           horizontalPosition: 'center'
         });
-          setTimeout(function () {
-            window.location.href='create-seminar';
-          },2000);
+          // setTimeout(function () {
+          //   window.location.href='create-seminar';
+          // },2000);
       });
     }
   }
