@@ -9,6 +9,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class ContactUsComponent implements OnInit {
 
   contactForm: FormGroup;
+  whatsappForm: FormGroup;
+  waMessage = '';
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -18,9 +20,19 @@ export class ContactUsComponent implements OnInit {
       email: ['', Validators.required, Validators.email],
       message: ['', Validators.required],
     });
+    this.whatsappForm = this.fb.group({
+      waMessage: this.waMessage
+    });
   }
   sendMessage() {
-    console.log(this.fb);
+    console.log(this.contactForm.value);
+  }
+
+  sendOverWhatsapp() {
+    console.log(JSON.stringify(this.whatsappForm.value));
+    this.waMessage = this.whatsappForm.value.waMessage;
+    this.waMessage.replace(' ', '%20');
+    window.location.href = 'https://wa.me/918920041231?text=' + this.waMessage;
   }
 
 }
