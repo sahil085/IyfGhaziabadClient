@@ -61,9 +61,10 @@ export class HeaderComponent implements OnInit {
 
     }
 
+  }
 
-
-
+  isIYFVolunteer() {
+    return this.role === 'IYFVolunteer';
   }
 
   logout() {

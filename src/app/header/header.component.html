@@ -24,7 +24,7 @@
 
          <!--<a routerLink="/admin" *ngIf="role == 'USER'"><button  class="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.45s"><strong>Admin Panel</strong></button></a>-->
         <button *ngIf='!isAuthenticated' class="navbar-btn nav-button wow bounceInRight login" (click)="openDialog()" data-wow-delay="0.45s"><strong>Login</strong></button>
-        <a routerLink="register" *ngIf="!isAuthenticated"> <button class="navbar-btn nav-button wow fadeInRight"  data-wow-delay="0.48s">Register</button></a>
+        <a href="register" *ngIf="(isAuthenticated && role=='ADMIN') || (!isAuthenticated)"> <button class="navbar-btn nav-button wow fadeInRight"  data-wow-delay="0.48s">Register</button></a>
         <!--<a routerLink="userrolemapping" *ngIf="(role == 'USER' && isAuthenticated )">-->
           <!--<button  class="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.45s"><strong>User Role Mapping</strong></button>-->
         <!--</a>-->
@@ -66,7 +66,7 @@
           <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Admin Activities<b class="caret"></b></a>
           <ul class="dropdown-menu navbar-nav">
             <li>
-              <a routerLink="#">Volunteer Registration</a>
+              <a href="register">Volunteer Registration</a>
             </li>
             <li>
               <a routerLink="attendancePanel">Mark Attendance</a>
