@@ -19,7 +19,7 @@ export class MarkAttendacneForSeminarComponent implements OnInit {
   public filteredList = [];
   public elementRef;
   dataSource : any;
-  displayedColumns: string[] = ['User Name', 'Email', 'Mobile Number', 'Actions'];
+  displayedColumns: string[] = ['UserName', 'Email', 'MobileNumber', 'Actions'];
   constructor(private route: ActivatedRoute,
               private markAttendanceService: MarkeAttendanceServiceService) { }
 
@@ -43,7 +43,7 @@ export class MarkAttendacneForSeminarComponent implements OnInit {
     if (this.query !== '') {
       console.log(this.query);
       this.markAttendanceService.searchUser(this.query).subscribe(res => {
-        this.dataSource= res;
+        this.dataSource = res;
         console.log(res);
       });
 
