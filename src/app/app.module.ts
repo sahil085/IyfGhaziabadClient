@@ -60,6 +60,7 @@ import {ContactUsComponent} from './components/contact-us/contact-us.component';
 import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
 
 
+
 const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: '', component: HomeComponent},
@@ -142,6 +143,7 @@ export class XhrInterceptor implements HttpInterceptor {
     ContactUsComponent,
   ],
   imports: [
+    MatIconModule,
     BrowserModule,
     HttpClientModule,
     HttpModule,
