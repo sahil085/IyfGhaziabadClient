@@ -54,9 +54,14 @@
                       </mat-error>
                     </mat-form-field>
 
+
                     <mat-form-field >
+                      <input placeholder="End Time" matInput type="time" value="" formControlName="startTime"/>
+
+                      <!--<input matInput formControlName="startTime" [ngxTimepicker]="picker1">-->
+                      <!--<ngx-material-timepicker  #picker1></ngx-material-timepicker>-->
                       <!--<timepicker color="primary" [(userTime)]="exportTime"></timepicker>-->
-                      <input placeholder="Start Time" matInput atp-time-picker type="time" value="11:00"  formControlName="startTime"/>
+                      <!--<input placeholder="Start Time" matInput atp-time-picker type="time" value="11:00"  formControlName="startTime"/>-->
                       <!--<input matInput placeholder="From" formControlName="startTime" type="time" required>-->
                       <mat-error *ngIf="seminarForm.get('startTime').hasError('required')">
                         When will seminar start?
@@ -64,7 +69,7 @@
                     </mat-form-field>
 
                     <mat-form-field>
-                      <input placeholder="End Time" matInput atp-time-picker type="time" value="19:00" formControlName="endTime"/>
+                      <input placeholder="End Time" matInput atp-time-picker type="time" value="" formControlName="endTime"/>
                       <!--<input matInput placeholder="Till" formControlName="endTime" type="time" required>-->
                       <mat-error *ngIf="seminarForm.get('endTime').hasError('required')">
                         When will seminar end?

@@ -13,7 +13,7 @@ export class SeminarService {
 
 
   GetSeminarList(itemPerPage, pageNumber): Observable<Seminar[]> {
-   return this.http.get<Seminar[]>(this.apiUrl + '/admin/upcomingSeminars/1/' + pageNumber + '/' + itemPerPage);
+   return this.http.get<Seminar[]>(this.apiUrl + '/upcomingSeminars/1/' + pageNumber + '/' + itemPerPage);
 
   }
 
@@ -26,7 +26,7 @@ export class SeminarService {
     return this.http.put(this.apiUrl + '/cancelSeatForSeminar/' + seminarRecordId + '/' + reason, {});
   }
   GetAllSeminar(itemPerPage, pageNumber): Observable<Seminar[]> {
-    return this.http.get<Seminar[]>(this.apiUrl + '/admin/seminars');
+    return this.http.get<Seminar[]>(`${this.apiUrl}/admin/seminars/${itemPerPage}/${pageNumber}`);
 
   }
 

@@ -3,7 +3,6 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {config} from 'rxjs';
 import {AdminSeminarService} from '../../services/admin-seminar.service';
 import {MatSnackBar} from '@angular/material';
-import {AmazingTimePickerService} from 'amazing-time-picker';
 
 @Component({
   selector: 'app-create-seminar',
@@ -18,7 +17,6 @@ export class CreateSeminarComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private cd: ChangeDetectorRef,
-              private atp: AmazingTimePickerService,
               private adminSeminarService: AdminSeminarService,
               public snackBar: MatSnackBar) {
 

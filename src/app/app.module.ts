@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {Injectable, NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, Injectable, NgModule} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -37,7 +37,6 @@ import { ViewSessionComponent } from './components/view-session/view-session.com
 import {AdminCourseService} from './services/admin-course.service';
 import * as path from 'path';
 import { QuotesCarouselComponent } from './components/quotes-carousel/quotes-carousel.component';
-import {AmazingTimePickerModule} from 'amazing-time-picker';
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { UpcomingSeminarListComponent } from './components/upcoming-seminar-list/upcoming-seminar-list.component';
@@ -58,6 +57,7 @@ import { AttendancePanelComponent } from './components/attendance-panel/attendan
 import { MarkAttendacneForSeminarComponent } from './components/mark-attendacne-for-seminar/mark-attendacne-for-seminar.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import {ContactUsComponent} from './components/contact-us/contact-us.component';
+import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
 
 
 const appRoutes: Routes = [
@@ -72,11 +72,11 @@ const appRoutes: Routes = [
   {path: 'createSession', component: CreateSessionComponent},
   {path: 'createSeminar', component: CreateSeminarComponent},
   {path: 'dashboard', component: DashboardComponent},
-  {path: 'recentSeminarList', component: RecentSeminarListComponent},
-  {path: 'recentSessionList', component: RecentSessionListComponent},
+  {path: 'recentSeminar', component: RecentSeminarListComponent},
+  {path: 'recentSession', component: RecentSessionListComponent},
   {path: 'udgaar', component: UdgaarHomePageComponent},
-  {path: 'upcomingSeminarList', component: UpcomingSeminarListComponent},
-  {path: 'upcomingSessionList', component: UpcomingSessionListComponent},
+  {path: 'upcomingSeminar', component: UpcomingSeminarListComponent},
+  {path: 'upcomingSession', component: UpcomingSessionListComponent},
   {path: 'viewCourse', component: ViewCourseComponent},
   {path: 'viewSession', component: ViewSessionComponent},
   {path: 'viewSeminar', component: ViewSeminarComponent},
@@ -109,6 +109,7 @@ export class XhrInterceptor implements HttpInterceptor {
 }
 
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
     AppComponent,
     HeaderComponent,
@@ -145,7 +146,6 @@ export class XhrInterceptor implements HttpInterceptor {
     HttpClientModule,
     HttpModule,
     BrowserAnimationsModule,
-    AmazingTimePickerModule,
     MatButtonModule,
     MatCardModule,
     MatInputModule,
@@ -172,8 +172,10 @@ export class XhrInterceptor implements HttpInterceptor {
     MatTableModule,
     MatSortModule,
     MatExpansionModule,
+    NgxMaterialTimepickerModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
+  exports: [RouterModule],
   providers: [RegistrationService,
     {
       provide: HTTP_INTERCEPTORS,
