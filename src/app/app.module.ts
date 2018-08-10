@@ -51,13 +51,14 @@ import { UserRoleMappingComponent } from './components/user-role-mapping/user-ro
 import {User} from './models/User';
 import {SharedService} from './services/shared.service';
 import {MatExpansionModule} from '@angular/material/expansion';
-
+import {MatChipsModule} from '@angular/material/chips';
 import {UdgaarHomePageComponent} from './components/udgaar-home-page/udgaar-home-page.component';
 import {UdgaarService} from './services/udgaar.service';
 import { AttendancePanelComponent } from './components/attendance-panel/attendance-panel.component';
 import { MarkAttendacneForSeminarComponent } from './components/mark-attendacne-for-seminar/mark-attendacne-for-seminar.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import {ContactUsComponent} from './components/contact-us/contact-us.component';
+import { UpcomingSeminarDetailComponent } from './components/upcoming-seminar-detail/upcoming-seminar-detail.component';
 
 
 
@@ -81,7 +82,8 @@ const appRoutes: Routes = [
   {path: 'viewCourse', component: ViewCourseComponent},
   {path: 'viewSession', component: ViewSessionComponent},
   {path: 'viewSeminar', component: ViewSeminarComponent},
-  {path: 'userRoleMapping', component: UserRoleMappingComponent}
+  {path: 'userRoleMapping', component: UserRoleMappingComponent},
+  {path: 'seminarDetails', component: UpcomingSeminarDetailComponent}
 
 ];
 
@@ -140,6 +142,7 @@ export class XhrInterceptor implements HttpInterceptor {
     MarkAttendacneForSeminarComponent,
     AboutUsComponent,
     ContactUsComponent,
+    UpcomingSeminarDetailComponent,
   ],
   imports: [
     MatIconModule,
@@ -157,6 +160,7 @@ export class XhrInterceptor implements HttpInterceptor {
     FormsModule,
     ReactiveFormsModule,
     LayoutModule,
+    MatChipsModule,
     MatSidenavModule,
     MatIconModule,
     MatOptionModule,

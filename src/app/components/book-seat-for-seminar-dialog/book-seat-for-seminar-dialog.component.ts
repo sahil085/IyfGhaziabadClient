@@ -12,7 +12,7 @@ import {UpcomingSeminarListComponent} from '../upcoming-seminar-list/upcoming-se
 export class BookSeatForSeminarDialogComponent implements OnInit {
 
   public bookingForm: FormGroup;
-
+  public seminarTitle: string = '';
   constructor(public dialog: MatDialog,
               public fb: FormBuilder,
               public seminarService: SeminarService,

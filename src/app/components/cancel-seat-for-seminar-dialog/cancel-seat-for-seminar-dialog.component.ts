@@ -11,6 +11,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class CancelSeatForSeminarDialogComponent implements OnInit {
 
   public cancelSeatForSeminarForm: FormGroup;
+  public seminarTitle: string = '';
 
   constructor(public dialog: MatDialog,
               public fbu: FormBuilder,
@@ -25,7 +26,7 @@ export class CancelSeatForSeminarDialogComponent implements OnInit {
   }
 
   cancelSeatForSeminar() {
-    console.log("ayaaa" + this.cancelSeatForSeminarForm.value.reason);
+    console.log('ayaaa' + this.cancelSeatForSeminarForm.value.reason);
     this.seminarService.cancelSeatForSeminar(this.data.seminarRecordId, this.cancelSeatForSeminarForm.value.reason).
       subscribe( (response) => {
         console.log(response );

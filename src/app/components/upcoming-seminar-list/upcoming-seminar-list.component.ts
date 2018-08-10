@@ -44,6 +44,7 @@ public bookingForm: FormGroup;
        this.totalPages= response["totalPages"];
        this.isLoading = false;
      },(error1) => {
+       console.log(error1);
        alert(" OOPS..!! Some Error Occured Please try Again");
        this.isLoading = false;
      }

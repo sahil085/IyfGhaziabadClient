@@ -44,7 +44,7 @@ export class LogindialogComponent implements OnInit {
 
           // localStorage.setItem('currentUser', data.json().principal);
           console.log(data.json().principal);
-          let authorities = data.json().principal.authorities;
+          const authorities = data.json().principal.authorities;
          authorities.forEach(roles => {
           console.log(roles.authority);
            localStorage.setItem('role', roles.authority);
