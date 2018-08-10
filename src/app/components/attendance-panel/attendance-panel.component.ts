@@ -19,7 +19,7 @@ export class AttendancePanelComponent implements OnInit {
   dataSource = new MatTableDataSource();
   currentpage  = 1 ;
   pageSize= 1;
-  totalpage: number ;
+  totalpage: number = 2 ;
   Role: string;
   hideView = false;
 
@@ -44,6 +44,7 @@ export class AttendancePanelComponent implements OnInit {
     this.role = this.sharedService.role;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.totalpage = 4;
     // this.getAllSeminarOnInit(10,0);
 
     this.getSeminarListOnInit(2, 0);
@@ -61,12 +62,12 @@ export class AttendancePanelComponent implements OnInit {
 
     this.pageSize = event.pageSize;
     // this.isLoading = true;
-    this.seminarService.GetSeminarList(event.pageSize, event.pageIndex).subscribe(
+    this.seminarService.GetAllSeminar(event.pageSize, event.pageIndex).subscribe(
 
       (data) => {
         console.log( data);
-        this.dataSource =  new MatTableDataSource(data);
-        this.totalpage = Math.ceil(data.length / this.pageSize);
+        this.dataSource =  new MatTableDataSource(data['content']);
+        this.totalpage = data['totalElements'];
         // this.isLoading = false;
       },(error1) => {
         alert(' OOPS..!! Some Error Occured Please try Again');
@@ -80,10 +81,9 @@ export class AttendancePanelComponent implements OnInit {
     this.seminarService.GetAllSeminar(itemPerpage, PageIndex).subscribe(
       (res) => {
         console.log(res);
-        this.seminars = res;
-        this.dataSource =  new MatTableDataSource(this.seminars);
-        this.totalPages = res['totalPages'];
-        this.isLoading = false;
+        this.dataSource =  new MatTableDataSource(res['content']);
+        this.seminars = res['content'];
+        this.totalPages = res['totalElements'];
       }, (error1) => {
         console.log('Error message: ' + JSON.stringify(error1));
         alert(' OOPS..!! Some Error Occured Please try Again');
