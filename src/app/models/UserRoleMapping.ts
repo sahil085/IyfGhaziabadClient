@@ -1,6 +1,4 @@
 export class UserRoleMapping {
-
-  userList:any;
-  totalPage : number;
-
+  userList: any;
+  totalPage: number;
 }

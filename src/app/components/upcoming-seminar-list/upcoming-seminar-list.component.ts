@@ -20,47 +20,47 @@ export class UpcomingSeminarListComponent implements OnInit {
 
 
 public seminars: Seminar[];
-public isLoading: boolean = false;
-public totalPages:any;
+public isLoading = false;
+public totalPages: any;
 
 
 public bookingForm: FormGroup;
 
-  constructor(public dialog: MatDialog,public seminarService: SeminarService,
+  constructor(public dialog: MatDialog, public seminarService: SeminarService,
                private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.getSeminarListOnInit(2,0);
+    this.getSeminarListOnInit(2, 0);
 
   }
 
-  onPaginateChange(event){
+  onPaginateChange(event) {
     this.isLoading = true;
    this.seminarService.GetSeminarList(event.pageSize, event.pageIndex).subscribe(
 
      (response) => {
-       console.log(response["upcomingSeminar"]);
-       this.seminars = response["upcomingSeminar"];
-       this.totalPages= response["totalPages"];
+       console.log(response['upcomingSeminar']);
+       this.seminars = response['upcomingSeminar'];
+       this.totalPages = response['totalPages'];
        this.isLoading = false;
-     },(error1) => {
+     }, (error1) => {
        console.log(error1);
-       alert(" OOPS..!! Some Error Occured Please try Again");
+       alert(' OOPS..!! Some Error Occured Please try Again');
        this.isLoading = false;
      }
    );
     // alert("Current page index: " + event.pageIndex );
   }
 
-  getSeminarListOnInit(itemPerpage,PageIndex){
+  getSeminarListOnInit(itemPerpage, PageIndex) {
     this.seminarService.GetSeminarList(itemPerpage, PageIndex).subscribe(
       (res) => {
-        console.log(res["upcomingSeminar"]);
-        this.seminars = res["upcomingSeminar"];
-        this.totalPages= res["totalPages"];
+        console.log(res['upcomingSeminar']);
+        this.seminars = res['upcomingSeminar'];
+        this.totalPages = res['totalPages'];
         this.isLoading = false;
-      },(error1) => {
-        alert(" OOPS..!! Some Error Occured Please try Again");
+      }, (error1) => {
+        alert(' OOPS..!! Some Error Occured Please try Again');
         this.isLoading = false;
       }
     );
@@ -91,12 +91,12 @@ public bookingForm: FormGroup;
 
     dialogRef.afterClosed().subscribe(
       data => {
-        this.getSeminarListOnInit(10,0)
+        this.getSeminarListOnInit(10, 0);
       }
     );
   }
 
-  openCancelDialog(id, title){
+  openCancelDialog(id, title) {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = false;
@@ -114,10 +114,15 @@ public bookingForm: FormGroup;
 
     dialogRef.afterClosed().subscribe(
       data => {
-        this.getSeminarListOnInit(10,0)
+        this.getSeminarListOnInit(10, 0);
       }
     );
 
+  }
+
+  showDetails(seminar) {
+    localStorage.setItem('seminar', JSON.stringify(seminar));
+    window.location.href = 'seminarDetails/' + seminar.seminarRecordId;
   }
 
 }

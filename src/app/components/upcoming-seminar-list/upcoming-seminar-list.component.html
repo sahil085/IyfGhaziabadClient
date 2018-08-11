@@ -39,13 +39,14 @@
                     <a href="#" ><img src="{{seminar.thumbNailUrl}}"></a>
                   </div>
                   <div class="item-entry overflow">
-                    <h4>Tittle : <small>{{seminar.title}}</small></h4>
+                    <h4>Title : <small>{{seminar.title}}</small></h4>
                     <h4>Speaker Name :</h4><h5>{{seminar.speakerName}}</h5>
+                    <h4>Seats: {{seminar.totalNumberOfAvailableSeats}}/{{seminar.totalNumberOfSeats}}</h4>
                     <!--<div class="dot-hr"></div>-->
                     <!--<span class="pull-left"><b>Area :</b> 120m </span>-->
                     <!--<span class="proerty-price pull-right">$ 300,000</span>-->
                   </div>
-                  <a href="#"> <button mat-flat-button data-wow-delay="0.45s"><strong>More details</strong></button></a>
+                  <button mat-flat-button data-wow-delay="0.45s" (click)="showDetails(seminar)"><strong>More details</strong></button>
                   <button *ngIf="!seminar.bookingStatus" mat-flat-button data-wow-delay="0.45s" style="float: right;clear: both" (click)="openBookingDialog(seminar.id,seminar.title)" id="bookSeat">Book Your Seat Now</button>
                   <button *ngIf="seminar.bookingStatus" mat-flat-button data-wow-delay="0.45s" style="float: right;clear: both" (click)="openCancelDialog(seminar.seminarRecordId,seminar.title)" id="cancelSeat">Cancel Your Seat </button>
                   <!--<a href="/view-course"> <button mat-raised-button data-wow-delay="0.45s"><strong>View</strong></button></a>-->

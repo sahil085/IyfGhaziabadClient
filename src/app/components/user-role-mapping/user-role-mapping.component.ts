@@ -17,9 +17,9 @@ export class UserRoleMappingComponent implements OnInit {
   displayedColumns: string[] = ['sNo', 'name', 'email', 'currentRole', 'selectRole' , 'action'];
   dataSource = new MatTableDataSource();
   currentpage  = 1 ;
-  pageSize= 1;
-  totalpage:number ;
-  Role:string;
+  pageSize = 1;
+  totalpage: number ;
+  Role: string;
   hideView = false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -66,7 +66,7 @@ export class UserRoleMappingComponent implements OnInit {
         this.totalpage = data.totalPage;
         // this.isLoading = false;
       },(error1) => {
-        alert(" OOPS..!! Some Error Occured Please try Again");
+        alert(' OOPS..!! Some Error Occured Please try Again');
         // this.isLoading = false;
       }
     );
@@ -90,11 +90,8 @@ export class UserRoleMappingComponent implements OnInit {
   }
 
   assignRole(user){
-
-
-
     this.userRoleService.changeUserRole(JSON.parse(JSON.stringify(user))).subscribe( response => {
-      if(response.type === 'success'){
+      if (response.type === 'success'){
         user.currentRole = user.role;
         this.snackBar.open(response.response, 'Hare krishna', {
           duration: 3000,

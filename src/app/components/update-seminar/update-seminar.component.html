@@ -1,10 +1,5 @@
 <div class="container-fluid seminar-bg">
   <div class="row">
-    <div [hidden]="!isLoading">
-      <div class="loading-indicator">
-        <mat-spinner mode="indeterminate"></mat-spinner>
-      </div>
-    </div>
     <div class="text-center">
       <div class="col-md-6 col-xs-12 col-lg-6 col-sm-6 col-centered">
         <div style="align-self: center; align-content: center;">
@@ -12,13 +7,13 @@
 
             <mat-card>
               <mat-card-content>
-                <mat-card-title>Create Seminar</mat-card-title>
+                <mat-card-title>Update Seminar</mat-card-title>
 
 
                 <form [formGroup]="seminarForm">
                   <div class="example-container">
                     <mat-form-field>
-                      <input matInput placeholder="Seminar Title" formControlName="title" required >
+                      <input matInput placeholder="Seminar Title" formControlName="title" value={{title}} [(ngModel)]="title" required >
                       <mat-error *ngIf="seminarForm.get('title').hasError('required')">
                         Please Enter Seminar Title
                       </mat-error>
@@ -28,21 +23,21 @@
 
 
                     <mat-form-field>
-                      <input matInput placeholder="Seminar Description" formControlName="seminarDescription" type="text" required>
+                      <input matInput placeholder="Seminar Description" formControlName="seminarDescription" value="Seminar 1" type="text" required>
                       <mat-error *ngIf="seminarForm.get('seminarDescription').hasError('required')">
                         Please Enter Seminar Description
                       </mat-error>
                     </mat-form-field>
 
                     <mat-form-field>
-                      <input matInput placeholder="Speaker Name" formControlName="speakerName" type="text" required>
+                      <input matInput placeholder="Speaker Name" formControlName="speakerName" value="Seminar 1" type="text" required>
                       <mat-error *ngIf="seminarForm.get('speakerName').hasError('required')">
                         Please Enter Speaker Name
                       </mat-error>
                     </mat-form-field>
 
                     <mat-form-field>
-                      <textarea matInput style="resize:none" placeholder="Speaker Designation" formControlName="speakerDescription" type="text" rows="6">
+                      <textarea matInput style="resize:none" placeholder="Speaker Designation" value="Seminar 1" formControlName="speakerDescription" type="text" rows="6">
                       </textarea>
                       <mat-error *ngIf="seminarForm.get('speakerDescription').hasError('required')">
                         Please Enter Speaker Description
@@ -51,7 +46,7 @@
 
 
                     <mat-form-field>
-                      <input (focus)="picker.open()" (click)="picker.open()" matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date">
+                      <input (focus)="picker.open()" (click)="picker.open()" matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="date" value="MM/DD/YYYY">
                       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                       <mat-datepicker #picker></mat-datepicker>
                       <!--<input matInput placeholder="Seminar Date" formControlName="date" type="date" required>-->
@@ -62,7 +57,7 @@
 
 
                     <mat-form-field >
-                      <input placeholder="Start Time" matInput type="time" value="" formControlName="startTime"/>
+                      <input placeholder="Start Time" matInput type="time" value="20:45" formControlName="startTime"/>
 
                       <!--<input matInput formControlName="startTime" [ngxTimepicker]="picker1">-->
                       <!--<ngx-material-timepicker  #picker1></ngx-material-timepicker>-->
@@ -75,7 +70,7 @@
                     </mat-form-field>
 
                     <mat-form-field>
-                      <input placeholder="End Time" matInput type="time" value="" formControlName="endTime"/>
+                      <input placeholder="End Time" matInput type="time" value="21:45" formControlName="endTime"/>
                       <!--<input matInput placeholder="Till" formControlName="endTime" type="time" required>-->
                       <mat-error *ngIf="seminarForm.get('endTime').hasError('required')">
                         When will seminar end?
@@ -83,14 +78,14 @@
                     </mat-form-field>
 
                     <mat-form-field>
-                      <input matInput placeholder="Venue" formControlName="venue" type="text" required>
+                      <input matInput placeholder="Venue" formControlName="venue" value="Seminar 1" type="text" required>
                       <mat-error *ngIf="seminarForm.get('venue').hasError('required')">
                         Please Enter the Seminar Venue
                       </mat-error>
                     </mat-form-field>
 
                     <mat-form-field>
-                      <mat-select placeholder="City" formControlName="city" required>
+                      <mat-select placeholder="City" formControlName="city" value="Seminar 1" required>
                         <mat-option value="ghaziabad">GHAZIABAD</mat-option>
                         <mat-option value="meerut">MEERUT</mat-option>
                         <mat-option value="shimla">SHIMLA</mat-option>
@@ -101,7 +96,7 @@
                     </mat-form-field>
 
                     <mat-form-field>
-                      <mat-select placeholder="Seminar Category" formControlName="category" >
+                      <mat-select placeholder="Seminar Category" formControlName="category" value="Seminar 1">
                         <mat-option value="OTP">ONE TIME PROGRAM</mat-option>
                         <mat-option value="1">VEDIC LEVEL 1</mat-option>
                         <mat-option value="2">VEDIC LEVEL 2</mat-option>
@@ -110,30 +105,24 @@
                         <mat-option value="5">VEDIC LEVEL 5</mat-option>
                       </mat-select>
                       <mat-error *ngIf="seminarForm.get('category').hasError('required')">
-                      Please Enter Course Type
+                        Please Enter Course Type
                       </mat-error>
                     </mat-form-field>
 
                     <mat-form-field>
-                      <input placeholder="Total No. of Seats" matInput type="number" formControlName="totalNumberOfSeats"/>
-                      <!--<input matInput placeholder="Till" formControlName="endTime" type="time" required>-->
-                      <mat-error *ngIf="seminarForm.get('totalNumberOfSeats').hasError('required')">
-                        Please add total no. of seats
+                      <mat-select placeholder="Poster / Thumbnail" formControlName="fileType" value="Seminar 1">
+                        <mat-option value="poster">Poster</mat-option>
+                        <mat-option value="thumbnail">Thumbnail</mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="seminarForm.get('fileType').hasError('required')">
+                        Please Specify File Type
                       </mat-error>
                     </mat-form-field>
-
-                    <!--<mat-form-field>-->
-                      <!--<mat-select placeholder="Poster / Thumbnail" formControlName="fileType" >-->
-                        <!--<mat-option value="poster">Poster</mat-option>-->
-                        <!--<mat-option value="thumbnail">Thumbnail</mat-option>-->
-                      <!--</mat-select>-->
-                      <!--<mat-error *ngIf="seminarForm.get('fileType').hasError('required')">-->
-                        <!--Please Specify File Type-->
-                      <!--</mat-error>-->
-                    <!--</mat-form-field>-->
                     <input type="file" id="avatar" (change)="onFileChange($event)" #fileInput>
+
+
                   </div>
-                  <button mat-raised-button [disabled]="!selectedFiles"  (click)="createSeminar()" [hidden]="isLoading">Create</button>
+                  <button mat-raised-button [disabled]="!selectedFiles"  (click)="createSeminar()">Create</button>
                 </form>
 
               </mat-card-content>

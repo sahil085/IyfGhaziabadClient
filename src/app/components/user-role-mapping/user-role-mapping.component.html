@@ -9,7 +9,7 @@
   </mat-form-field>
 
 </div>
-  <div class="col-md-4 col-lg-4 col-sm-6" *ngIf="!hideView">
+  <div class="col-md-4 col-lg-4 col-sm-6">
     <mat-form-field>
       <mat-select placeholder="Search by Current Roles">
         <mat-option value="IYFVolunteer">IYF Volunteer</mat-option>
@@ -20,7 +20,7 @@
   </div>
   <div class="col-md-12" *ngIf="!hideView">
     <div class="example-container mat-elevation-z8 ">
-      <table mat-table [dataSource]="dataSource" matSort>
+      <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
 
         <ng-container matColumnDef="sNo">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> SNo. </th>

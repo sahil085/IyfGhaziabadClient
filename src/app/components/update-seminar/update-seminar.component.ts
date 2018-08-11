@@ -5,17 +5,18 @@ import {AdminSeminarService} from '../../services/admin-seminar.service';
 import {MatSnackBar} from '@angular/material';
 
 @Component({
-  selector: 'app-create-seminar',
-  templateUrl: './create-seminar.component.html',
-  styleUrls: ['./create-seminar.component.css']
+  selector: 'app-update-seminar',
+  templateUrl: './update-seminar.component.html',
+  styleUrls: ['./update-seminar.component.css']
 })
-export class CreateSeminarComponent implements OnInit {
+export class UpdateSeminarComponent implements OnInit {
+  public title: string = "mind";
+
   public seminarForm: FormGroup;
   public formdata = new FormData();
   public file: File;
   public fileType: string;
   selectedFiles: FileList;
-  public isLoading = false;
 
   constructor(private fb: FormBuilder,
               private cd: ChangeDetectorRef,
@@ -33,7 +34,7 @@ export class CreateSeminarComponent implements OnInit {
       venue: ['', Validators.required],
       city: ['', Validators.required],
       category: ['', Validators.required],
-      // fileType: ['', Validators.required],
+      fileType: ['', Validators.required],
       totalNumberOfSeats: ['', Validators.required]
     });
   }
@@ -60,9 +61,8 @@ export class CreateSeminarComponent implements OnInit {
     }
   }
 
-  public createSeminar() {
-    this.isLoading = true;
-    console.log(this.seminarForm.value);
+  public updateSeminar() {
+
     this.formdata.append('form', new Blob([JSON.stringify(this.seminarForm.value)],
       {
         type: 'application/json'
@@ -70,7 +70,6 @@ export class CreateSeminarComponent implements OnInit {
     // this.formdata.append("form",this.seminarForm.value);
     this.formdata.append('file', this.file);
     if (this.seminarForm.invalid) {
-      this.isLoading = false;
       this.snackBar.open(' Please Fill All Form Fields', 'Hare krishna', {
         duration: 1000,
         verticalPosition: 'top',
@@ -79,15 +78,14 @@ export class CreateSeminarComponent implements OnInit {
     } else {
 
       this.adminSeminarService.createSeminarService(this.formdata).subscribe( resp => {
-        this.isLoading = false;
         this.snackBar.open(resp['response'], 'Hare krishna', {
           duration: 3000,
           verticalPosition: 'top',
           horizontalPosition: 'center'
         });
-          setTimeout(function () {
-            // window.location.href = 'createSeminar';
-          }, 2000);
+        setTimeout(function () {
+          window.location.href = 'createSeminar';
+        }, 2000);
       });
     }
   }
@@ -98,6 +96,8 @@ export class CreateSeminarComponent implements OnInit {
       console.log(role);
       window.location.href = '';
     }
+
   }
 
 }
+

@@ -57,6 +57,8 @@ import { AttendancePanelComponent } from './components/attendance-panel/attendan
 import { MarkAttendacneForSeminarComponent } from './components/mark-attendacne-for-seminar/mark-attendacne-for-seminar.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import {ContactUsComponent} from './components/contact-us/contact-us.component';
+import { UpdateSeminarComponent } from './components/update-seminar/update-seminar.component';
+import {UpcomingSeminarDetailComponent} from './components/upcoming-seminar-detail/upcoming-seminar-detail.component';
 
 const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -78,7 +80,9 @@ const appRoutes: Routes = [
   {path: 'viewCourse', component: ViewCourseComponent},
   {path: 'viewSession', component: ViewSessionComponent},
   {path: 'viewSeminar', component: ViewSeminarComponent},
-  {path: 'userRoleMapping', component: UserRoleMappingComponent}
+  {path: 'userRoleMapping', component: UserRoleMappingComponent},
+  {path: 'updateSeminar', component: UpdateSeminarComponent},
+  {path: 'seminarDetails/:id', component: UpcomingSeminarDetailComponent}
 
 ];
 
@@ -138,6 +142,8 @@ export class XhrInterceptor implements HttpInterceptor {
     MarkAttendacneForSeminarComponent,
     AboutUsComponent,
     ContactUsComponent,
+    UpdateSeminarComponent,
+    UpcomingSeminarDetailComponent,
   ],
   imports: [
     MatIconModule,
