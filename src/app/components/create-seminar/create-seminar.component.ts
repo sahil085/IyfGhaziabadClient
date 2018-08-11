@@ -13,6 +13,7 @@ export class CreateSeminarComponent implements OnInit {
   public seminarForm: FormGroup;
   public formdata = new FormData();
   public file: File;
+  public fileType: string;
   selectedFiles: FileList;
 
   constructor(private fb: FormBuilder,
@@ -24,18 +25,26 @@ export class CreateSeminarComponent implements OnInit {
       title: ['', Validators.required],
       seminarDescription: ['', Validators.required],
       speakerName: ['', Validators.required],
-      speakerDescription: [''],
+      speakerDescription: ['', Validators.required],
       date: ['', Validators.required],
       startTime: ['', Validators.required],
       endTime: ['', Validators.required],
       venue: ['', Validators.required],
       city: ['', Validators.required],
-      category: '',
-      totalNumberOfSeats: ['', [Validators.max(150), Validators.min(10)]]
+      category: ['', Validators.required],
+      fileType: ['', Validators.required],
+      totalNumberOfSeats: ['', Validators.required]
     });
   }
 
-
+  setPoster() {
+    console.log('Poster chosen');
+    this.fileType = 'poster';
+  }
+  setThumbnail() {
+    console.log('Thumbnail chosen');
+    this.fileType = 'thumbnail';
+  }
   onFileChange(event) {
     const reader = new FileReader();
 
@@ -59,7 +68,9 @@ export class CreateSeminarComponent implements OnInit {
   }
 
   public createSeminar() {
+    console.log('fileType: ' + this.fileType);
     console.log(this.seminarForm.value);
+    // this.seminarForm.value.fileType = (this.fileType === 1) ? 'poster' : 'thumbnail';
     this.formdata.append('form', new Blob([JSON.stringify(this.seminarForm.value)],
       {
         type: 'application/json'

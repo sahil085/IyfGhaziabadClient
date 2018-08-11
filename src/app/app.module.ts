@@ -11,7 +11,7 @@ import {
   MatButtonModule, MatCardModule, MatDatepickerModule, MatDialogModule,
   MatGridListModule, MatIconModule,
   MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule,
-  MatOptionModule, MatProgressSpinnerModule,
+  MatOptionModule, MatProgressSpinnerModule, MatRadioModule,
   MatSelectModule, MatSidenavModule, MatSnackBarModule, MatTableModule, MatToolbarModule
 } from '@angular/material';
 import { RegisterComponent } from './components/register/register.component';
@@ -57,9 +57,6 @@ import { AttendancePanelComponent } from './components/attendance-panel/attendan
 import { MarkAttendacneForSeminarComponent } from './components/mark-attendacne-for-seminar/mark-attendacne-for-seminar.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import {ContactUsComponent} from './components/contact-us/contact-us.component';
-import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
-
-
 
 const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -174,7 +171,7 @@ export class XhrInterceptor implements HttpInterceptor {
     MatTableModule,
     MatSortModule,
     MatExpansionModule,
-    NgxMaterialTimepickerModule.forRoot(),
+    MatRadioModule,
     RouterModule.forRoot(appRoutes)
   ],
   exports: [RouterModule],

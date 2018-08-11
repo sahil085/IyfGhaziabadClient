@@ -41,3 +41,7 @@ button{
 .demo-form {
   padding: 4em;
 }
+
+textarea {
+  resize: none;
+}
