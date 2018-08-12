@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {config} from 'rxjs';
 import {AdminSeminarService} from '../../services/admin-seminar.service';
 import {MatSnackBar} from '@angular/material';
+import {CreateSeminarComponent} from '../create-seminar/create-seminar.component';
 
 @Component({
   selector: 'app-update-seminar',
@@ -10,7 +11,7 @@ import {MatSnackBar} from '@angular/material';
   styleUrls: ['./update-seminar.component.css']
 })
 export class UpdateSeminarComponent implements OnInit {
-  public title: string = "mind";
+  public title = 'mind';
 
   public seminarForm: FormGroup;
   public formdata = new FormData();
