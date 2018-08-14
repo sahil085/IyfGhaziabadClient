@@ -22,4 +22,6 @@ export class User
   vedicLevel: number;
   isBrahmchari: boolean;
   role: string;
+  nearestIskcontemple: String;
+  state: String;
 }

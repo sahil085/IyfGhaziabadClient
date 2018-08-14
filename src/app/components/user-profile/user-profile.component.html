@@ -1,5 +1,59 @@
 <div class="row">
   <div class="col-md-10">
-    {{userDetail}}
+
+    <form [formGroup]="userform"  (submit)="updateUserInfo()" >
+      Username :<input   [value]="userDetail.username" formControlName="username">
+      Email : <input  [value]="userDetail.email" formControlName="email">
+      Gender : <input [value]="userDetail.gender" formControlName="gender">
+      Mobile Number : : <input [value]="userDetail.mobileNumber" formControlName="mobileNumber">
+      Alternate Mobile Number :  <input [value]="userDetail.alternateMobileNumber" formControlName="alternateMobileNumber">
+      Current Address : <input [value]="userDetail.currentAddress" formControlName="currentAddress">
+      Permanent Address : <input [value]="userDetail.permanentAddress" formControlName="permanentAddress">
+      City  : <input [value]="userDetail.city" formControlName="city">
+      State : <input [value]="userDetail.state" formControlName="state">
+      Street : <input [value]="userDetail.street" formControlName="street">
+
+
+      Nearest Iskcon Temple : <input [value]="userDetail.nearestIskcontemple" formControlName="nearestIskcontemple">
+
+
+
+      <div class="hidden">
+        Initiated : <input [value]="userDetail.isInitiated" >
+
+        Rounds Chant : <input [value]="userDetail.roundsChant" >
+
+        Facilitator Name : <input [value]="userDetail.facilitatorName" >
+
+        Senior  Facilitator Name : <input [value]="userDetail.seniorFacilitatorName">
+
+        Counsler Name  : <input [value]="userDetail.counslerName">
+        Class Level : <input [value]="userDetail.vedicLevel" >
+
+        Brahmachari : <input [value]="userDetail.isBrahmchari">
+
+      </div>
+
+      <input type="submit"   >
+
+    </form>
+
+    <button type="button" (click)="editInfo()" >edit</button>
+
+
   </div>
 </div>
+
+
+<!--Initiated : <input [value]="userDetail.isInitiated" formControlName="isInitiated">-->
+
+<!--Rounds Chant : <input [value]="userDetail.roundsChant" formControlName="roundsChant">-->
+
+<!--Facilitator Name : <input [value]="userDetail.facilitatorName" formControlName="facilitatorName">-->
+
+<!--Senior  Facilitator Name : <input [value]="userDetail.seniorFacilitatorName" formControlName="seniorFacilitatorName">-->
+
+<!--Counsler Name  : <input [value]="userDetail.counslerName" formControlName="counslerName">-->
+<!--Class Level : <input [value]="userDetail.vedicLevel" formControlName="vedicLevel">-->
+
+<!--Brahmachari : <input [value]="userDetail.isBrahmchari" formControlName="isBrahmchari">-->
