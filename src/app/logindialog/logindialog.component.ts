@@ -38,7 +38,7 @@ export class LogindialogComponent implements OnInit {
       this.loginForm.get('username').markAsTouched();
       this.loginForm.get('password').markAsTouched();
       return;
-    }else {
+    } else {
       console.log(this.loginForm.invalid);
       this.auth.logIn(this.loginForm.value).subscribe(data=>{
 

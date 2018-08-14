@@ -2,7 +2,9 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {config} from 'rxjs';
 import {AdminSeminarService} from '../../services/admin-seminar.service';
-import {MatSnackBar} from '@angular/material';
+import {MatDialog, MatDialogConfig, MatDialogRef, MatSnackBar} from '@angular/material';
+import {LogindialogComponent} from '../../logindialog/logindialog.component';
+import {SuccessfulCreateSeminarDialogComponent} from '../successful-create-seminar-dialog/successful-create-seminar-dialog.component';
 
 @Component({
   selector: 'app-create-seminar',
@@ -16,11 +18,13 @@ export class CreateSeminarComponent implements OnInit {
   public fileType: string;
   selectedFiles: FileList;
   public isLoading = false;
+  successDialogRef: MatDialogRef<SuccessfulCreateSeminarDialogComponent>;
 
   constructor(private fb: FormBuilder,
               private cd: ChangeDetectorRef,
               private adminSeminarService: AdminSeminarService,
-              public snackBar: MatSnackBar) {
+              public snackBar: MatSnackBar,
+              public dialog: MatDialog) {
 
     this.seminarForm = this.fb.group({
       title: ['', Validators.required],
@@ -36,6 +40,31 @@ export class CreateSeminarComponent implements OnInit {
       // fileType: ['', Validators.required],
       totalNumberOfSeats: ['', Validators.required]
     });
+  }
+  openDialog() {
+
+    // localStorage.setItem('loginCallbackURL','');
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    // dialogConfig.width = '250px'
+    // dialogConfig.position = {
+    //   'top': '100',
+    //   'left': '100'
+    // };
+    dialogConfig.data = {
+      id: 1,
+      title: 'Create seminar successful'
+    };
+    this.successDialogRef = this.dialog.open(SuccessfulCreateSeminarDialogComponent, dialogConfig);
+    // this.dialog.open(SuccessfulCreateSeminarDialogComponent, dialogConfig);
+
+    // const dialogRef = this.dialog.open(LogindialogComponent, dialogConfig);
+    //
+    this.successDialogRef.afterClosed().subscribe(
+      data => console.log('Dialog output:', data)
+    );
   }
 
   onFileChange(event) {
@@ -80,11 +109,12 @@ export class CreateSeminarComponent implements OnInit {
 
       this.adminSeminarService.createSeminarService(this.formdata).subscribe( resp => {
         this.isLoading = false;
-        this.snackBar.open(resp['response'], 'Hare krishna', {
-          duration: 3000,
-          verticalPosition: 'top',
-          horizontalPosition: 'center'
-        });
+        // this.snackBar.open(resp['response'], 'Hare krishna', {
+        //   duration: 3000,
+        //   verticalPosition: 'top',
+        //   horizontalPosition: 'center'
+        // });
+        this.openDialog();
           setTimeout(function () {
             // window.location.href = 'createSeminar';
           }, 2000);

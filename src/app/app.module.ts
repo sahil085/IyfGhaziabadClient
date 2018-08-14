@@ -59,6 +59,7 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import {ContactUsComponent} from './components/contact-us/contact-us.component';
 import { UpdateSeminarComponent } from './components/update-seminar/update-seminar.component';
 import {UpcomingSeminarDetailComponent} from './components/upcoming-seminar-detail/upcoming-seminar-detail.component';
+import { SuccessfulCreateSeminarDialogComponent } from './components/successful-create-seminar-dialog/successful-create-seminar-dialog.component';
 
 const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -144,6 +145,7 @@ export class XhrInterceptor implements HttpInterceptor {
     ContactUsComponent,
     UpdateSeminarComponent,
     UpcomingSeminarDetailComponent,
+    SuccessfulCreateSeminarDialogComponent,
   ],
   imports: [
     MatIconModule,
@@ -191,7 +193,7 @@ export class XhrInterceptor implements HttpInterceptor {
     , AuthenticationService, UdgaarService],
   bootstrap: [AppComponent],
   entryComponents: [LogindialogComponent, BookSeatForSeminarDialogComponent,
-  CancelSeatForSeminarDialogComponent]
+  CancelSeatForSeminarDialogComponent, SuccessfulCreateSeminarDialogComponent]
 })
 export class AppModule { }
 
