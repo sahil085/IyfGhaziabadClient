@@ -751,9 +751,7 @@ label small{
 .main-nav {
     padding-top: 10px;
 }
-.button.navbar-right {
-    padding-top: 10px;
-}
+
 .nav-button {
     background-color: #c2c2c2;
     border: medium none;
@@ -2942,11 +2940,10 @@ ul.footer-blog li {
 .footer-blog .blg-date {
     color: #FFF;
     background-color: #AD7206;
-    padding: 2px 3px;
     font-size: 11px;
     position: relative;
     top: -22px;
-    width: 100%;
+    width: 200%;
 }
 .footer-blog .blg-thumb img{
 
@@ -2964,7 +2961,8 @@ ul.footer-blog li {
     font-size: 14px;
     line-height: 1.42857;
     color: #E1E1E1;
-    background-color: rgba(255, 255, 255, 0.52);
+    background-color: rgba(0, 0, 0, 0.2);
+/*rgba(255, 255, 255, 0.52);*/
     background-image: none;
     border: 1px solid rgba(231, 157, 45, 0.3);
     border-radius: 0px;

@@ -47,9 +47,7 @@ export class HeaderComponent implements OnInit {
 
     const authentication = localStorage.getItem('isAuthenticated');
     this.user = JSON.parse(localStorage.getItem('user'));
-    console.log(this.user);
 
-    console.log(this.isAuthenticated);
     if (authentication == null) {
       this.isAuthenticated = false;
     } else {
@@ -68,7 +66,6 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    console.log('logout');
     this.auth.logout();
   }
 
