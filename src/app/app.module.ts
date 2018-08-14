@@ -60,6 +60,7 @@ import {ContactUsComponent} from './components/contact-us/contact-us.component';
 import { UpdateSeminarComponent } from './components/update-seminar/update-seminar.component';
 import {UpcomingSeminarDetailComponent} from './components/upcoming-seminar-detail/upcoming-seminar-detail.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { UserProfileListComponent } from './components/user-profile-list/user-profile-list.component';
 
 const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -84,7 +85,8 @@ const appRoutes: Routes = [
   {path: 'userRoleMapping', component: UserRoleMappingComponent},
   {path: 'updateSeminar', component: UpdateSeminarComponent},
   {path: 'seminarDetails/:id', component: UpcomingSeminarDetailComponent},
-  {path: 'userProfile', component: UserProfileComponent}
+  {path: 'userProfile/:id', component: UserProfileComponent},
+  {path: 'userList', component: UserProfileListComponent}
 
 ];
 
@@ -147,6 +149,7 @@ export class XhrInterceptor implements HttpInterceptor {
     UpdateSeminarComponent,
     UpcomingSeminarDetailComponent,
     UserProfileComponent,
+    UserProfileListComponent,
   ],
   imports: [
     MatIconModule,

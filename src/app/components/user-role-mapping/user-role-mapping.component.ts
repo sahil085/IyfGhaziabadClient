@@ -35,8 +35,7 @@ export class UserRoleMappingComponent implements OnInit {
   ngOnInit() {
     const role = localStorage.getItem('role');
     if (role !== 'ADMIN' ) {
-      console.log(role);
-      window.location.href = '';
+      // window.location.href = '';
     }
    this.role = this.sharedService.role;
     this.dataSource.paginator = this.paginator;
@@ -95,7 +94,7 @@ export class UserRoleMappingComponent implements OnInit {
         user.currentRole = user.role;
         this.snackBar.open(response.response, 'Hare krishna', {
           duration: 3000,
-          verticalPosition: 'top',
+          verticalPosition: 'bottom',
           horizontalPosition: 'center'
         });
 

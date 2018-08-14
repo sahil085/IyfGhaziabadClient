@@ -20,6 +20,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse yamm" id="navigation">
       <div class="button navbar-right">
+        <button routerLink="userProfile/{{user.id}}"  *ngIf='isAuthenticated' class="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.45s"><strong>Profile</strong></button>
         <button *ngIf='isAuthenticated' class="navbar-btn nav-button wow bounceInRight login" (click)="logout()" data-wow-delay="0.45s"><strong>Logout</strong></button>
 
          <!--<a routerLink="/admin" *ngIf="role == 'USER'"><button  class="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.45s"><strong>Admin Panel</strong></button></a>-->

@@ -11,26 +11,22 @@
       Permanent Address : <input [value]="userDetail.permanentAddress" formControlName="permanentAddress">
       City  : <input [value]="userDetail.city" formControlName="city">
       State : <input [value]="userDetail.state" formControlName="state">
-      Street : <input [value]="userDetail.street" formControlName="street">
 
+      <div [hidden]="!isAdmin">
+        Nearest Iskcon Temple : <input [value]="userDetail.nearestIskcontemple" formControlName="nearestIskconTemple">
 
-      Nearest Iskcon Temple : <input [value]="userDetail.nearestIskcontemple" formControlName="nearestIskcontemple">
+        Initiated : <input [value]="userDetail.isInitiated" formControlName="isInitiated">
 
+        Rounds Chant : <input [value]="userDetail.roundsChant" formControlName="roundsChant">
 
+        Facilitator Name : <input [value]="userDetail.facilitatorName" formControlName="facilitatorName">
 
-      <div class="hidden">
-        Initiated : <input [value]="userDetail.isInitiated" >
+        Senior  Facilitator Name : <input [value]="userDetail.seniorFacilitatorName" formControlName="seniorFacilitatorName">
 
-        Rounds Chant : <input [value]="userDetail.roundsChant" >
+        Counsler Name  : <input [value]="userDetail.counslerName" formControlName="counslerName">
+        Class Level : <input [value]="userDetail.vedicLevel" formControlName="vedicLevel">
 
-        Facilitator Name : <input [value]="userDetail.facilitatorName" >
-
-        Senior  Facilitator Name : <input [value]="userDetail.seniorFacilitatorName">
-
-        Counsler Name  : <input [value]="userDetail.counslerName">
-        Class Level : <input [value]="userDetail.vedicLevel" >
-
-        Brahmachari : <input [value]="userDetail.isBrahmchari">
+        Brahmachari : <input [value]="userDetail.isBrahmchari" formControlName="isBrahmchari">
 
       </div>
 

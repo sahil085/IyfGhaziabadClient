@@ -7,13 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
+  public role: string;
   constructor() { }
 
   ngOnInit() {
     const role = localStorage.getItem('role');
+    this.role = role;
     if (role !== 'ADMIN' ) {
-      console.log(role);
-      window.location.href = '';
+      // window.location.href = '';
     }
   }
 

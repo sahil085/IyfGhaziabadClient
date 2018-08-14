@@ -1,0 +1,57 @@
+<div class="row" style="margin-bottom:15px;margin-left: 25px;margin-right: 15px  ">
+  <h1 style="text-align: center">Users</h1>
+  <h4 *ngIf="hideView" style="text-align: center">No User Found</h4>
+  <div class="col-md-4 col-lg-4 col-sm-6" *ngIf="!hideView">
+    <!--<i class="fa fa-search" aria-hidden="true"></i>&nbsp;-->
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search by name">
+    </mat-form-field>
+
+  </div>
+
+  <div class="col-md-12" *ngIf="!hideView">
+    <div class="example-container mat-elevation-z8 ">
+      <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container cdkColumnDef="sNo" matColumnDef="sNo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> SNo. </th>
+          <td mat-cell *matCellDef="let user ; let i = index;">
+            {{ (currentpage - 1) * pageSize + i +1 }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="UserName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> User Name </th>
+          <td mat-cell *matCellDef="let user"> {{user.userName}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Email">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+          <td mat-cell *matCellDef="let user"> {{user.userEmail}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="MobileNumber">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile Number </th>
+          <td mat-cell *matCellDef="let user"> {{user.mobileNumber}} </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+          <td mat-cell *matCellDef="let user" (click)="$event.stopPropagation()">
+            <button type="button" class="mat-raised-button" style="background-color: #FDC600;" routerLink="/userProfile/{{user.userId}}">View Profile</button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row ; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[1,2,10]" showFirstLastButtons
+                     [pageSize]="2"
+                     [length]="totalpage"
+                     (page)="onPaginateChange($event)"></mat-paginator>
+    </div>
+  </div>
+
+</div>

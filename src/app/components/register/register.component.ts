@@ -54,8 +54,8 @@ export class RegisterComponent implements OnInit {
       nearestIskconTemple: [''],
       vedicLevel: [''],
       isBrahmchari: [''],
-      accept : ['']
-
+      accept : [''],
+      state: ['', Validators.required]
     });
   }
 

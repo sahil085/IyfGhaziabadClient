@@ -10,17 +10,14 @@ import {User} from "../models/User";
 export class UserprofileService {
   apiUrl: string = environment.apiUrl;
 
-
   constructor(private http: HttpClient) { }
 
-
-
-  getUserDetails(): Observable<User>{
-    return this.http.get<User>(this.apiUrl + '/user');
+  getUserDetails(userId): Observable<User>{
+    return this.http.get<User>(this.apiUrl + '/user/' + userId);
   }
 
-  updateuserDetails(user){
-    return this.http.put(this.apiUrl + '/editProfile', user);
+  updateuserDetails(user): Observable<User>{
+    return this.http.put<User>(this.apiUrl + '/editProfile', user);
   }
 
 
