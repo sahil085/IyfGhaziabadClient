@@ -1,0 +1,33 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+
+button{
+  background-color: #FDC600;
+  font-weight: bold;
+  margin: 7px;
+}
+
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
+.user-bg{
+  border-top: 1px solid #D1D1D1;
+  background: #fff url("../../../assets/img/seminar/whatsapp.jpg") repeat scroll 0% 0%;
+  color: #ffffff;
+}
+
+.demo-form {
+  padding: 4em;
+}
+
+textarea {
+  resize: none;
+}

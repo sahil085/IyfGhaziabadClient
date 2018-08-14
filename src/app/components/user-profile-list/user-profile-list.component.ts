@@ -60,7 +60,6 @@ export class UserProfileListComponent implements OnInit {
     this.userListService.getUserList(event.pageSize, event.pageIndex).subscribe(
 
       (data) => {
-        console.log( data);
         this.dataSource =  new MatTableDataSource(data['userList']);
         this.totalpage = data['totalPage'];
         // this.isLoading = false;
@@ -76,7 +75,6 @@ export class UserProfileListComponent implements OnInit {
     this.userListService.getUserList(itemPerpage, pageIndex).subscribe(
 
       (data) => {
-        console.log( data);
         this.dataSource =  new MatTableDataSource(data['userList']);
         this.totalpage = data['totalPage'];
         // this.isLoading = false;

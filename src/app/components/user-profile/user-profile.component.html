@@ -1,55 +1,160 @@
-<div class="row">
-  <div class="col-md-10">
+<div class="container-fluid user-bg">
+  <div class="row">
+    <div class="text-center">
+      <div class="col-md-6 col-xs-12 col-lg-6 col-sm-6 col-centered">
+        <div style="align-self: center; align-content: center;">
+          <div style="padding: auto;margin-top: 10px;margin-bottom: 20px;justify-content: center">
 
-    <form [formGroup]="userform"  (submit)="updateUserInfo()" >
-      Username :<input   [value]="userDetail.username" formControlName="username">
-      Email : <input  [value]="userDetail.email" formControlName="email">
-      Gender : <input [value]="userDetail.gender" formControlName="gender">
-      Mobile Number : : <input [value]="userDetail.mobileNumber" formControlName="mobileNumber">
-      Alternate Mobile Number :  <input [value]="userDetail.alternateMobileNumber" formControlName="alternateMobileNumber">
-      Current Address : <input [value]="userDetail.currentAddress" formControlName="currentAddress">
-      Permanent Address : <input [value]="userDetail.permanentAddress" formControlName="permanentAddress">
-      City  : <input [value]="userDetail.city" formControlName="city">
-      State : <input [value]="userDetail.state" formControlName="state">
+            <mat-card>
+              <mat-card-content>
+                <mat-card-title>User Profile</mat-card-title>
+                <form [formGroup]="userform"  (submit)="updateUserInfo()" >
+                  <div class="example-container">
+                    <mat-form-field>
+                      <input matInput placeholder="Username" formControlName="username" [value]="userDetail.username" required >
+                      <mat-error *ngIf="userform.get('username').hasError('required')">
+                        Please Enter Username
+                      </mat-error>
+                    </mat-form-field>
 
-      <div [hidden]="!isAdmin">
-        Nearest Iskcon Temple : <input [value]="userDetail.nearestIskcontemple" formControlName="nearestIskconTemple">
+                    <mat-form-field>
+                      <input matInput placeholder="Email" formControlName="email" [value]="userDetail.email" required >
+                      <mat-error *ngIf="userform.get('email').hasError('required')">
+                        Please Enter Email
+                      </mat-error>
+                      <mat-error *ngIf="userform.get('email').hasError('email')">
+                        Please Enter valid Email
+                      </mat-error>
+                    </mat-form-field>
 
-        Initiated : <input [value]="userDetail.isInitiated" formControlName="isInitiated">
+                    <mat-form-field>
+                      <mat-select placeholder="Gender" formControlName="gender" [value]="userDetail.gender" required>
+                        <mat-option value="male">Male</mat-option>
+                        <mat-option value="female">Female</mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="userform.get('gender').hasError('required')">
+                        Please Enter the Gender
+                      </mat-error>
+                    </mat-form-field>
 
-        Rounds Chant : <input [value]="userDetail.roundsChant" formControlName="roundsChant">
+                    <mat-form-field>
+                      <input matInput placeholder="Mobile Number" formControlName="mobileNumber" [value]="userDetail.mobileNumber" required >
+                      <mat-error *ngIf="userform.get('mobileNumber').hasError('required')">
+                        Please Enter Mobile Number
+                      </mat-error>
+                    </mat-form-field>
 
-        Facilitator Name : <input [value]="userDetail.facilitatorName" formControlName="facilitatorName">
+                    <mat-form-field>
+                      <input matInput placeholder="Alternate Mobile Number" formControlName="alternateMobileNumber" [value]="userDetail.alternateMobileNumber">
+                    </mat-form-field>
 
-        Senior  Facilitator Name : <input [value]="userDetail.seniorFacilitatorName" formControlName="seniorFacilitatorName">
+                    <mat-form-field>
+                      <input matInput placeholder="Current Address" formControlName="currentAddress" [value]="userDetail.currentAddress" required >
+                      <mat-error *ngIf="userform.get('currentAddress').hasError('required')">
+                        Please Enter Current Address
+                      </mat-error>
+                    </mat-form-field>
 
-        Counsler Name  : <input [value]="userDetail.counslerName" formControlName="counslerName">
-        Class Level : <input [value]="userDetail.vedicLevel" formControlName="vedicLevel">
+                    <mat-form-field>
+                      <input matInput placeholder="Permanent Address" formControlName="permanentAddress" [value]="userDetail.permanentAddress" required >
+                      <mat-error *ngIf="userform.get('permanentAddress').hasError('required')">
+                        Please Enter Permanent Address
+                      </mat-error>
+                    </mat-form-field>
 
-        Brahmachari : <input [value]="userDetail.isBrahmchari" formControlName="isBrahmchari">
+                    <mat-form-field>
+                      <mat-select placeholder="City" formControlName="city" [value]="userDetail.city" required>
+                        <mat-option value="ghaziabad">GHAZIABAD</mat-option>
+                        <mat-option value="meerut">MEERUT</mat-option>
+                        <mat-option value="shimla">SHIMLA</mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="userform.get('city').hasError('required')">
+                        Please Enter the City
+                      </mat-error>
+                    </mat-form-field>
 
+                    <mat-form-field>
+                      <mat-select placeholder="State" formControlName="state" [value]="userDetail.state" required>
+                        <mat-option value="Uttar Pradesh">Uttar Pradesh</mat-option>
+                        <mat-option value="Uttrakhand">Uttrakhand</mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="userform.get('state').hasError('required')">
+                        Please Enter the State
+                      </mat-error>
+                    </mat-form-field>
+
+                    <div [hidden]="!isAdmin">
+                      <mat-form-field style="padding-left: 5px; padding-right: 5px;">
+                        <mat-select placeholder="Nearest Iskcon Temple" formControlName="nearestIskconTemple" [value]="userDetail.nearestIskcontemple">
+                          <mat-option value="rajnagar gzb">Raj Nagar (Ghaziabad)</mat-option>
+                          <mat-option value="eastofkailash dli">East of Kailash (Delhi)</mat-option>
+                          <mat-option value="punjabibagh dli">Punjabi Bagh (Delhi)</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+              
+                      <mat-form-field style="padding-left: 5px; padding-right: 5px;">
+                        <mat-select placeholder="Initiated?" formControlName="isInitiated" [value]="userDetail.isInitiated">
+                          <mat-option value="yes">Yes</mat-option>
+                          <mat-option value="no">No</mat-option>
+                          </mat-select>
+                      </mat-form-field>
+              
+                      <mat-form-field>
+                        <input matInput placeholder="Rounds chanted" formControlName="roundsChant" [value]="userDetail.roundsChant">
+                      </mat-form-field>
+              
+                      <mat-form-field style="padding-left: 5px; padding-right: 5px;">
+                        <mat-select placeholder="Facilitator Name" formControlName="facilitatorName" [value]="userDetail.facilitatorName">
+                          <mat-option value="Damodar Lila Prabhu">Damodar Lila Prabhu</mat-option>
+                          <mat-option value="Sarvamangal Gaur Prabhu">Sarvamangal Gaur Prabhu</mat-option>
+                          <mat-option value="Vishnu Gaur Prabhu">Vishnu Gaur Prabhu</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+              
+                      <mat-form-field style="padding-left: 5px; padding-right: 5px;">
+                        <mat-select placeholder="Senior Facilitator Name" formControlName="seniorFacilitatorName" [value]="userDetail.seniorFacilitatorName">
+                          <mat-option value="Damodar Lila Prabhu">Damodar Lila Prabhu</mat-option>
+                          <mat-option value="Sarvamangal Gaur Prabhu">Sarvamangal Gaur Prabhu</mat-option>
+                          <mat-option value="Vishnu Gaur Prabhu">Vishnu Gaur Prabhu</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+              
+                      <mat-form-field style="padding-left: 5px; padding-right: 5px;">
+                        <mat-select placeholder="Counsler Name" [value]="userDetail.counslerName" formControlName="counslerName">
+                          <mat-option value="Sundar Gopal Prabhu">Sundar Gopal Prabhu</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+              
+                      <mat-form-field style="padding-left: 5px; padding-right: 5px;">
+                        <mat-select placeholder="Class Level" [value]="userDetail.vedicLevel" formControlName="vedicLevel">
+                          <mat-option value="OTP">ONE TIME PROGRAM</mat-option>
+                          <mat-option value="1">VEDIC LEVEL 1</mat-option>
+                          <mat-option value="2">VEDIC LEVEL 2</mat-option>
+                          <mat-option value="3">VEDIC LEVEL 3</mat-option>
+                          <mat-option value="4">VEDIC LEVEL 4</mat-option>
+                          <mat-option value="5">VEDIC LEVEL 5</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+              
+                      <mat-form-field style="padding-left: 5px; padding-right: 5px;">
+                        <mat-select placeholder="Brahmachari?" [value]="userDetail.isBrahmchari" formControlName="isBrahmchari">
+                          <mat-option value="yes">Yes</mat-option>
+                          <mat-option value="no">No</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <button *ngIf="!isEditable" mat-raised-button type="submit">Okay</button>
+                  <button mat-raised-button type="button" (click)="editInfo()" >
+                    <span *ngIf="!isEditable">Edit Profile</span>
+                    <span *ngIf="isEditable">Update Profile</span>
+                  </button>
+                </form>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
       </div>
-
-      <input type="submit"   >
-
-    </form>
-
-    <button type="button" (click)="editInfo()" >edit</button>
-
-
+    </div>
   </div>
 </div>
-
-
-<!--Initiated : <input [value]="userDetail.isInitiated" formControlName="isInitiated">-->
-
-<!--Rounds Chant : <input [value]="userDetail.roundsChant" formControlName="roundsChant">-->
-
-<!--Facilitator Name : <input [value]="userDetail.facilitatorName" formControlName="facilitatorName">-->
-
-<!--Senior  Facilitator Name : <input [value]="userDetail.seniorFacilitatorName" formControlName="seniorFacilitatorName">-->
-
-<!--Counsler Name  : <input [value]="userDetail.counslerName" formControlName="counslerName">-->
-<!--Class Level : <input [value]="userDetail.vedicLevel" formControlName="vedicLevel">-->
-
-<!--Brahmachari : <input [value]="userDetail.isBrahmchari" formControlName="isBrahmchari">-->

@@ -94,7 +94,6 @@ const appRoutes: Routes = [
 export class XhrInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    console.log(localStorage.getItem('Authorization'));
     if (localStorage.getItem('Authorization') == null) {
       const xhr = req.clone({
         setHeaders: {
