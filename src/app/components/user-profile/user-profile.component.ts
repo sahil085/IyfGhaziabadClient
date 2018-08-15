@@ -18,6 +18,7 @@ export class UserProfileComponent implements OnInit {
   userId: number;
   public userform: FormGroup;
   isEditable = false;
+  nextPage = false;
   constructor( private  userProfileService: UserprofileService,
                private formBuilder: FormBuilder,
                private route: ActivatedRoute, public snackBar: MatSnackBar) { }
@@ -29,6 +30,7 @@ export class UserProfileComponent implements OnInit {
       this.isAdmin = false;
     } else {
       this.isAdmin = true;
+      this.nextPage = false;
     }
 
     this.route.params.subscribe(params => {
@@ -77,8 +79,12 @@ export class UserProfileComponent implements OnInit {
 
       this.isEditable = false;
     }
-
   }
+
+  changePage() {
+    this.nextPage = !this.nextPage;
+  }
+
   updateUserInfo() {
     if (this.userform.invalid) {
       this.snackBar.open(' Please Fill All Form Fields', 'Hare krishna', {
