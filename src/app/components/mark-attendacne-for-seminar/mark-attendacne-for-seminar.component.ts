@@ -4,6 +4,7 @@ import {FormControl} from '@angular/forms';
 import {MarkeAttendanceServiceService} from '../../services/marke-attendance-service.service';
 
 import {UserSeminarAttendanceDTO} from '../../models/user-seminar-attendance-dto';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-mark-attendacne-for-seminar',
@@ -21,30 +22,25 @@ export class MarkAttendacneForSeminarComponent implements OnInit {
   dataSource : any;
   displayedColumns: string[] = ['UserName', 'Email', 'MobileNumber', 'Actions'];
   constructor(private route: ActivatedRoute,
-              private markAttendanceService: MarkeAttendanceServiceService) { }
+              private markAttendanceService: MarkeAttendanceServiceService,
+              private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     const role = localStorage.getItem('role');
     if (role !== 'ADMIN' ) {
-      console.log(role);
       window.location.href = '';
+    } else {
+      this.sub = this.route.params.subscribe(params => {
+        this.seminarId = params['id'];
+      });
     }
-
-    this.sub = this.route.params.subscribe(params => {
-      console.log(params['id']);
-      this.seminarId = params['id'];
-    });
-
-
     // this.userService.allGeneres().subscribe(res => this.generes = res);
 
   }
   filter() {
     if (this.query !== '') {
-      console.log(this.query);
       this.markAttendanceService.searchUser(this.query).subscribe(res => {
         this.dataSource = res;
-        console.log(res);
       });
 
     } else {
@@ -53,8 +49,12 @@ export class MarkAttendacneForSeminarComponent implements OnInit {
   }
 
   markAttendance(userId, status){
-    this.markAttendanceService.markAttendance(userId,status,this.seminarId).subscribe( res => {
-      console.log(res);
+    this.markAttendanceService.markAttendance(userId, status, this.seminarId).subscribe( res => {
+      this.snackBar.open(JSON.stringify(res), 'Thank you', {
+        duration: 2000,
+        verticalPosition: 'top',
+        horizontalPosition: 'center'
+      });
     });
 
   }

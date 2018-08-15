@@ -67,16 +67,12 @@ export class UserProfileComponent implements OnInit {
   }
   editInfo() {
     if (!this.isEditable) {
-      console.log(' enable ');
       this.userform.enable();
       // this.userform.value = this.userDetail;
       this.isEditable = true;
     } else {
-      console.log(' disable ');
-
       this.userform.disable();
       // this.userform.value = this.userDetail;
-
       this.isEditable = false;
     }
   }
