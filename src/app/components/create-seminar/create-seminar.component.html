@@ -103,16 +103,19 @@
                     <mat-form-field>
                       <mat-select placeholder="Seminar Category" formControlName="category" >
                         <mat-option value="OTP">ONE TIME PROGRAM</mat-option>
-                        <mat-option value="1">VEDIC LEVEL 1</mat-option>
-                        <mat-option value="2">VEDIC LEVEL 2</mat-option>
-                        <mat-option value="3">VEDIC LEVEL 3</mat-option>
-                        <mat-option value="4">VEDIC LEVEL 4</mat-option>
-                        <mat-option value="5">VEDIC LEVEL 5</mat-option>
+                        <mat-option value="SPS">Srila Prabhupada Sabha</mat-option>
+                        <mat-option value="DYS">Discover Yourself</mat-option>
+                        <mat-option value="VL 1">VEDIC LEVEL 1</mat-option>
+                        <mat-option value="VL 2">VEDIC LEVEL 2</mat-option>
+                        <mat-option value="VL 3">VEDIC LEVEL 3</mat-option>
+                        <mat-option value="VL 4">VEDIC LEVEL 4</mat-option>
+                        <mat-option value="VL 5">VEDIC LEVEL 5</mat-option>
                       </mat-select>
                       <mat-error *ngIf="seminarForm.get('category').hasError('required')">
-                      Please Enter Course Type
+                      Please Select Course Type
                       </mat-error>
                     </mat-form-field>
+
 
                     <mat-form-field>
                       <input placeholder="Total No. of Seats" matInput type="number" formControlName="totalNumberOfSeats"/>

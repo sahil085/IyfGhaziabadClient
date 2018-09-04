@@ -95,6 +95,7 @@ export class XhrInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     if (localStorage.getItem('Authorization') == null) {
+      console.log(localStorage.getItem('Authorization'));
       const xhr = req.clone({
         setHeaders: {
           'X-Requested-With' : 'XMLHttpRequest'

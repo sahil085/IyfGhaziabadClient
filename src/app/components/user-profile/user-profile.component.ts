@@ -24,7 +24,7 @@ export class UserProfileComponent implements OnInit {
                private route: ActivatedRoute, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
-
+    console.log(localStorage.getItem('Authorization'));
     this.role = localStorage.getItem('role');
     if (this.role !== 'ADMIN') {
       this.isAdmin = false;
@@ -53,26 +53,23 @@ export class UserProfileComponent implements OnInit {
       counslerName: [''],
       seniorFacilitatorName: [''],
       nearestIskconTemple: [''],
-      vedicLevel: [''],
+      classLevel: [''],
       isBrahmchari: [''],
       state: ['', Validators.required],
 
     });
     this.userProfileService.getUserDetails(this.userId).subscribe( response => {
-      console.log(response);
       this.userDetail = response;
-      this.userform.patchValue(response);
+      this.userform.patchValue(this.userDetail);
     });
     this.userform.disable();
   }
   editInfo() {
     if (!this.isEditable) {
-      console.log(' enable ');
       this.userform.enable();
       // this.userform.value = this.userDetail;
       this.isEditable = true;
     } else {
-      console.log(' disable ');
 
       this.userform.disable();
       // this.userform.value = this.userDetail;
@@ -93,8 +90,14 @@ export class UserProfileComponent implements OnInit {
         horizontalPosition: 'center'
       });
     } else {
-      console.log(this.userform.value);
       this.userProfileService.updateuserDetails(this.userform.value).subscribe(response => {
+        if(response){
+          this.snackBar.open(' Profile updated Successfully', 'Hare krishna', {
+            duration: 3000,
+            verticalPosition: 'top',
+            horizontalPosition: 'center'
+          });
+        }
         this.userDetail = response;
         this.userform.disable();
       });

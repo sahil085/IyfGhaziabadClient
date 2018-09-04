@@ -15,7 +15,7 @@ export class AdminPanelComponent implements OnInit {
       const role = localStorage.getItem('role');
       if (role !== 'ADMIN' ) {
         console.log(role);
-        window.location.href = '';
+        // window.location.href = '';
       }
 
     }
