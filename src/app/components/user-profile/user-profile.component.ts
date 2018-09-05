@@ -53,15 +53,14 @@ export class UserProfileComponent implements OnInit {
       counslerName: [''],
       seniorFacilitatorName: [''],
       nearestIskconTemple: [''],
-      vedicLevel: [''],
+      classLevel: [''],
       isBrahmchari: [''],
       state: ['', Validators.required],
 
     });
     this.userProfileService.getUserDetails(this.userId).subscribe( response => {
-      console.log(response);
       this.userDetail = response;
-      this.userform.patchValue(response);
+      this.userform.patchValue(this.userDetail);
     });
     this.userform.disable();
   }
@@ -71,6 +70,7 @@ export class UserProfileComponent implements OnInit {
       // this.userform.value = this.userDetail;
       this.isEditable = true;
     } else {
+
       this.userform.disable();
       // this.userform.value = this.userDetail;
       this.isEditable = false;
@@ -89,8 +89,14 @@ export class UserProfileComponent implements OnInit {
         horizontalPosition: 'center'
       });
     } else {
-      console.log(this.userform.value);
       this.userProfileService.updateuserDetails(this.userform.value).subscribe(response => {
+        if(response){
+          this.snackBar.open(' Profile updated Successfully', 'Hare krishna', {
+            duration: 3000,
+            verticalPosition: 'top',
+            horizontalPosition: 'center'
+          });
+        }
         this.userDetail = response;
         this.userform.disable();
       });
