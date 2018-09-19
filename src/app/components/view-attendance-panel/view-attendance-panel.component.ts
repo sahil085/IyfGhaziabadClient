@@ -1,23 +1,25 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Seminar} from "../../models/seminar";
 import {MatPaginator, MatSnackBar, MatSort, MatTableDataSource} from "@angular/material";
-import {UserProfileListService} from "../../services/user-profile-list.service";
+import {ViewAttendanceService} from "../../services/view-attendance-service.service";
+import {Seminar} from "../../models/seminar";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
-  selector: 'app-user-profile-list',
-  templateUrl: './user-profile-list.component.html',
-  styleUrls: ['./user-profile-list.component.css']
+  selector: 'app-view-attendance-panel',
+  templateUrl: './view-attendance-panel.component.html',
+  styleUrls: ['./view-attendance-panel.component.css']
 })
-export class UserProfileListComponent implements OnInit {
-
+export class ViewAttendancePanelComponent implements OnInit {
   public seminars: Seminar[];
+  public seminarId: any;
   public totalPages: any;
   public isLoading: boolean;
-  displayedColumns: string[] = ['sNo', 'UserName', 'Email', 'MobileNumber', 'classLevel', 'action'];
+  displayedColumns: string[] = ['sNo', 'UserName', 'Email', 'MobileNumber' , 'classLevel', 'action'];
   dataSource = new MatTableDataSource();
   currentpage  = 1 ;
-  pageSize= 1;
-  totalpage: number = 2 ;
+  public sub: any;
+  pageSize= 60;
+  totalpage: number = 10 ;
   hideView = false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -28,7 +30,8 @@ export class UserProfileListComponent implements OnInit {
 
 
   constructor(public snackBar: MatSnackBar,
-              public userListService: UserProfileListService) { }
+              private route: ActivatedRoute,
+              public viewAttendanceService : ViewAttendanceService ) { }
 
   ngOnInit() {
 
@@ -36,13 +39,17 @@ export class UserProfileListComponent implements OnInit {
     if (role !== 'ADMIN' ) {
       // console.log(role);
       window.location.href = '';
+    } else {
+      this.sub = this.route.params.subscribe(params => {
+        this.seminarId = params['id'];
+      });
     }
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     // this.totalpage = 4;
     // this.getAllSeminarOnInit(10,0);
 
-    this.getUserListOnInit(60, 0);
+    this.getUserListOnInit(this.seminarId, 60, 0);
   }
 
   applyFilter(filterValue: string) {
@@ -57,7 +64,7 @@ export class UserProfileListComponent implements OnInit {
 
     this.pageSize = event.pageSize;
     // this.isLoading = true;
-    this.userListService.getUserList(event.pageSize, event.pageIndex).subscribe(
+    this.viewAttendanceService.getAllUsersForSeminar(this.seminarId, event.pageSize, event.pageIndex).subscribe(
 
       (data) => {
         this.dataSource =  new MatTableDataSource(data['userList']);
@@ -71,8 +78,8 @@ export class UserProfileListComponent implements OnInit {
     // alert("Current page index: " + event.pageIndex );
   }
 
-  getUserListOnInit(itemPerpage, pageIndex) {
-    this.userListService.getUserList(itemPerpage, pageIndex).subscribe(
+  getUserListOnInit(seminarId, itemPerpage, pageIndex) {
+    this.viewAttendanceService.getAllUsersForSeminar(this.seminarId, itemPerpage, pageIndex).subscribe(
 
       (data) => {
         this.dataSource =  new MatTableDataSource(data['userList']);
@@ -84,5 +91,6 @@ export class UserProfileListComponent implements OnInit {
       }
     );
   }
+
 
 }
