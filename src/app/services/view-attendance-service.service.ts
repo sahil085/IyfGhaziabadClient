@@ -13,7 +13,7 @@ export class ViewAttendanceService {
   constructor(private http: HttpClient) { }
 
   getAllUsersForSeminar(seminarId, pageSize, pageIndex): Observable<User>{
-    return this.http.get<User>(this.apiUrl + '/getAllUser' + '/' + seminarId + '/' + pageSize + '/' +pageIndex);
+    return this.http.get<User>(this.apiUrl + '/admin/attendeeBySeminar' + '/' + seminarId + '/' + pageSize + '/' +pageIndex);
   }
 
 }

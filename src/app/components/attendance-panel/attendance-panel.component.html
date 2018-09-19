@@ -44,11 +44,17 @@
           <td mat-cell *matCellDef="let seminar"> {{seminar.date | date}} </td>
         </ng-container>
 
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+          <td mat-cell *matCellDef="let seminar"> {{seminar.category}} </td>
+        </ng-container>
+
 
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
           <td mat-cell *matCellDef="let seminar" (click)="$event.stopPropagation()">
             <button type="button" class="mat-raised-button" style="background-color: #FDC600;" routerLink="/markSeminarAttendance/{{seminar.id}}">Mark Attendance</button>
+            <button type="button" class="mat-raised-button" style="background-color: #FDC600; margin-left: 3px;" routerLink="/viewAttendace/{{seminar.id}}">View Attendance</button>
           </td>
         </ng-container>
 

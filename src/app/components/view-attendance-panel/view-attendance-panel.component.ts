@@ -14,7 +14,7 @@ export class ViewAttendancePanelComponent implements OnInit {
   public seminarId: any;
   public totalPages: any;
   public isLoading: boolean;
-  displayedColumns: string[] = ['sNo', 'UserName', 'Email', 'MobileNumber' , 'classLevel', 'action'];
+  displayedColumns: string[] = ['sNo', 'UserName', 'MobileNumber' , 'classLevel', 'attendanceStatus', 'attendanceMarkedBy'];
   dataSource = new MatTableDataSource();
   currentpage  = 1 ;
   public sub: any;
@@ -49,7 +49,7 @@ export class ViewAttendancePanelComponent implements OnInit {
     // this.totalpage = 4;
     // this.getAllSeminarOnInit(10,0);
 
-    this.getUserListOnInit(this.seminarId, 60, 0);
+    this.getUserListOnInit(this.seminarId, 10, 0);
   }
 
   applyFilter(filterValue: string) {
@@ -67,8 +67,8 @@ export class ViewAttendancePanelComponent implements OnInit {
     this.viewAttendanceService.getAllUsersForSeminar(this.seminarId, event.pageSize, event.pageIndex).subscribe(
 
       (data) => {
-        this.dataSource =  new MatTableDataSource(data['userList']);
-        this.totalpage = data['totalPage'];
+        this.dataSource =  new MatTableDataSource(data['attendeeList']);
+        this.totalpage = data['totalElements'];
         // this.isLoading = false;
       },(error1) => {
         alert(' OOPS..!! Some Error Occured Please try Again');
@@ -82,8 +82,8 @@ export class ViewAttendancePanelComponent implements OnInit {
     this.viewAttendanceService.getAllUsersForSeminar(this.seminarId, itemPerpage, pageIndex).subscribe(
 
       (data) => {
-        this.dataSource =  new MatTableDataSource(data['userList']);
-        this.totalpage = data['totalPage'];
+        this.dataSource =  new MatTableDataSource(data['attendeeList']);
+        this.totalpage = data['totalElements'];
         // this.isLoading = false;
       },(error1) => {
         alert(' OOPS..!! Some Error Occured Please try Again');

@@ -1,6 +1,4 @@
-<p>
-  view-attendance-panel works!
-</p>
+
 <div class="row" style="margin-bottom:15px;margin-left: 25px;margin-right: 15px  ">
   <h1 style="text-align: center">Users</h1>
   <h4 *ngIf="hideView" style="text-align: center">No User Found</h4>
@@ -12,7 +10,7 @@
 
   </div>
 
-  <div class="col-md-12" *ngIf="!hideView">
+  <div class="col-md-12">
     <div class="example-container mat-elevation-z8 ">
       <table mat-table [dataSource]="dataSource" matSort>
 
@@ -28,11 +26,6 @@
           <td mat-cell *matCellDef="let user"> {{user.userName}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="Email">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-          <td mat-cell *matCellDef="let user"> {{user.userEmail}} </td>
-        </ng-container>
-
         <ng-container matColumnDef="MobileNumber">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile Number </th>
           <td mat-cell *matCellDef="let user"> {{user.mobileNumber}} </td>
@@ -43,20 +36,22 @@
           <td mat-cell *matCellDef="let user"> {{user.classLevel}} </td>
         </ng-container>
 
-
-        <ng-container matColumnDef="action">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
-          <td mat-cell *matCellDef="let user" (click)="$event.stopPropagation()">
-            <button type="button" class="mat-raised-button" style="background-color: #FDC600;" routerLink="/userProfile/{{user.userId}}">View Profile</button>
-          </td>
+        <ng-container matColumnDef="attendanceStatus">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Attendance Status </th>
+          <td mat-cell *matCellDef="let user"> {{user.attendanceStatus}} </td>
         </ng-container>
+        <ng-container matColumnDef="attendanceMarkedBy">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Attendance Marked By</th>
+          <td mat-cell *matCellDef="let user"> {{user.attendanceMarkedBy}} </td>
+        </ng-container>
+
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row ; columns: displayedColumns;"></tr>
       </table>
 
-      <mat-paginator [pageSizeOptions]="[20,40,60]" showFirstLastButtons
-                     [pageSize]="60"
+      <mat-paginator [pageSizeOptions]="[10,20,25]" showFirstLastButtons
+                     [pageSize]="10"
                      [length]="totalpage"
                      (page)="onPaginateChange($event)"></mat-paginator>
     </div>

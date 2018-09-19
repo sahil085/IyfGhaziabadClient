@@ -14,7 +14,7 @@ import {Observable} from 'rxjs';
 })
 export class UserRoleMappingComponent implements OnInit {
 
-  displayedColumns: string[] = ['sNo', 'name', 'email', 'currentRole', 'selectRole' , 'action'];
+  displayedColumns: string[] = ['sNo', 'name', 'email', 'currentRole', 'selectRole' , 'classLevel', 'action'];
   dataSource = new MatTableDataSource();
   currentpage  = 1 ;
   pageSize = 1;

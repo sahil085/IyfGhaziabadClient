@@ -15,7 +15,7 @@ export class AttendancePanelComponent implements OnInit {
   public seminars: Seminar[];
   public totalPages: any;
   public isLoading: boolean;
-  displayedColumns: string[] = ['sNo', 'seminarTitle', 'speakerName', 'seminarDate', 'action'];
+  displayedColumns: string[] = ['sNo', 'seminarTitle', 'speakerName', 'seminarDate', 'category' , 'action'];
   dataSource = new MatTableDataSource();
   currentpage  = 1 ;
   pageSize= 1;

@@ -13,11 +13,11 @@ export class UserProfileListComponent implements OnInit {
   public seminars: Seminar[];
   public totalPages: any;
   public isLoading: boolean;
-  displayedColumns: string[] = ['sNo', 'UserName', 'Email', 'MobileNumber', 'classLevel', 'action'];
+  displayedColumns: string[] = ['sNo', 'UserName', 'Email', 'MobileNumber' , 'classLevel', 'action'];
   dataSource = new MatTableDataSource();
   currentpage  = 1 ;
-  pageSize= 1;
-  totalpage: number = 2 ;
+  pageSize= 60;
+  totalpage: number = 10 ;
   hideView = false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

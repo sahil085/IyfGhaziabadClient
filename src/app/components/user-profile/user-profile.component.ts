@@ -49,7 +49,7 @@ export class UserProfileComponent implements OnInit {
       city: ['', Validators.required],
       isInitiated: [''],
       roundsChant: [''],
-      facilitatorName: [],
+      facilitatorName: [''],
       counslerName: [''],
       seniorFacilitatorName: [''],
       nearestIskconTemple: [''],

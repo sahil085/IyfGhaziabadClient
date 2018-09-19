@@ -24,4 +24,6 @@ export class User
   role: string;
   nearestIskcontemple: String;
   state: String;
+  attendanceMarkedBy: string;
+  attendanceStatus: string;
 }
