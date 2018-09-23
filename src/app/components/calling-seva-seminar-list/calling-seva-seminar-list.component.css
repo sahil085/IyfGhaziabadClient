@@ -1,0 +1,36 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 350px;
+}
+
+.example-header {
+  min-height: 64px;
+  padding: 8px 24px ;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
+td.mat-cell:last-child, td.mat-footer-cell:last-child, th.mat-header-cell:last-child{
+  padding: 5px;
+}
+
+.mat-column-sNo {
+  width: 100px;
+}
+.mat-column-seminarTitle {
+  width: 320px;
+}

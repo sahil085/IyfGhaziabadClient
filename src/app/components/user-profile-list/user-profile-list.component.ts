@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Seminar} from "../../models/seminar";
-import {MatPaginator, MatSnackBar, MatSort, MatTableDataSource} from "@angular/material";
-import {UserProfileListService} from "../../services/user-profile-list.service";
+import {Seminar} from '../../models/seminar';
+import {MatPaginator, MatSnackBar, MatSort, MatTableDataSource} from '@angular/material';
+import {UserProfileListService} from '../../services/user-profile-list.service';
 
 @Component({
   selector: 'app-user-profile-list',
@@ -16,8 +16,8 @@ export class UserProfileListComponent implements OnInit {
   displayedColumns: string[] = ['sNo', 'UserName', 'Email', 'MobileNumber' , 'classLevel', 'action'];
   dataSource = new MatTableDataSource();
   currentpage  = 1 ;
-  pageSize= 60;
-  totalpage: number = 10 ;
+  pageSize = 60;
+  totalpage = 10 ;
   hideView = false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -51,9 +51,9 @@ export class UserProfileListComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
-  onPaginateChange(event){
+  onPaginateChange(event) {
 
-    this.currentpage = event.pageIndex +1 ;
+    this.currentpage = event.pageIndex + 1 ;
 
     this.pageSize = event.pageSize;
     // this.isLoading = true;
@@ -63,7 +63,7 @@ export class UserProfileListComponent implements OnInit {
         this.dataSource =  new MatTableDataSource(data['userList']);
         this.totalpage = data['totalPage'];
         // this.isLoading = false;
-      },(error1) => {
+      }, (error1) => {
         alert(' OOPS..!! Some Error Occured Please try Again');
         // this.isLoading = false;
       }
@@ -78,7 +78,7 @@ export class UserProfileListComponent implements OnInit {
         this.dataSource =  new MatTableDataSource(data['userList']);
         this.totalpage = data['totalPage'];
         // this.isLoading = false;
-      },(error1) => {
+      }, (error1) => {
         alert(' OOPS..!! Some Error Occured Please try Again');
         // this.isLoading = false;
       }

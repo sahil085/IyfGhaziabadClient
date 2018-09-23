@@ -12,7 +12,7 @@ import {AppComponent} from '../app.component';
 export class HeaderComponent implements OnInit {
   public  isAuthenticated = false;
   public role: string ;
-  public user:any;
+  public user: any;
   constructor(public dialog: MatDialog, public auth: AuthenticationService, public appComp: AppComponent) {}
 
   openDialog() {
@@ -67,6 +67,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.auth.logout();
+    // this.isAuthenticated = false;
   }
 
 

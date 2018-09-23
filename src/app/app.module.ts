@@ -62,6 +62,8 @@ import {UpcomingSeminarDetailComponent} from './components/upcoming-seminar-deta
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserProfileListComponent } from './components/user-profile-list/user-profile-list.component';
 import { ViewAttendancePanelComponent } from './components/view-attendance-panel/view-attendance-panel.component';
+import { CallingSevaSeminarListComponent } from './components/calling-seva-seminar-list/calling-seva-seminar-list.component';
+import {CallingSevaMarkResponseComponent} from './components/calling-seva-mark-response/calling-seva-mark-response.component';
 
 const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -88,7 +90,9 @@ const appRoutes: Routes = [
   {path: 'updateSeminar', component: UpdateSeminarComponent},
   {path: 'seminarDetails/:id', component: UpcomingSeminarDetailComponent},
   {path: 'userProfile/:id', component: UserProfileComponent},
-  {path: 'userList', component: UserProfileListComponent}
+  {path: 'userList', component: UserProfileListComponent},
+  {path: 'seminarsForCallingSeva', component: CallingSevaSeminarListComponent},
+  {path: 'callingSeva/:id', component: CallingSevaMarkResponseComponent}
 
 ];
 
@@ -153,6 +157,8 @@ export class XhrInterceptor implements HttpInterceptor {
     UserProfileComponent,
     UserProfileListComponent,
     ViewAttendancePanelComponent,
+    CallingSevaSeminarListComponent,
+    CallingSevaMarkResponseComponent,
   ],
   imports: [
     MatIconModule,

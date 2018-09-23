@@ -40,7 +40,7 @@ export class UserRoleMappingComponent implements OnInit {
    this.role = this.sharedService.role;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.getAllUserOnInit(10,0);
+    this.getAllUserOnInit(10, 0);
 
   }
 
@@ -51,9 +51,9 @@ export class UserRoleMappingComponent implements OnInit {
   }
 
 
-  onPaginateChange(event){
+  onPaginateChange(event) {
 
-    this.currentpage = event.pageIndex +1 ;
+    this.currentpage = event.pageIndex + 1 ;
 
     this.pageSize = event.pageSize;
     // this.isLoading = true;
@@ -64,7 +64,7 @@ export class UserRoleMappingComponent implements OnInit {
         this.dataSource =  new MatTableDataSource(data.userList);
         this.totalpage = data.totalPage;
         // this.isLoading = false;
-      },(error1) => {
+      }, (error1) => {
         alert(' OOPS..!! Some Error Occured Please try Again');
         // this.isLoading = false;
       }
@@ -77,7 +77,7 @@ export class UserRoleMappingComponent implements OnInit {
 
      this.dataSource =  new MatTableDataSource(data.userList);
      this.totalpage = data.totalPage;
-     if (data.userList.length == 0){
+     if (data.userList.length === 0) {
        this.hideView = true;
      }
 
@@ -88,9 +88,9 @@ export class UserRoleMappingComponent implements OnInit {
 
   }
 
-  assignRole(user){
+  assignRole(user) {
     this.userRoleService.changeUserRole(JSON.parse(JSON.stringify(user))).subscribe( response => {
-      if (response.type === 'success'){
+      if (response.type === 'success') {
         user.currentRole = user.role;
         this.snackBar.open(response.response, 'Hare krishna', {
           duration: 3000,
