@@ -54,8 +54,8 @@ export class RegisterComponent implements OnInit {
       nearestIskconTemple: [''],
       vedicLevel: [''],
       isBrahmchari: [''],
-      accept : ['']
-
+      accept : [''],
+      state: ['', Validators.required]
     });
   }
 
@@ -76,9 +76,9 @@ export class RegisterComponent implements OnInit {
               this.snackBar.open(response, 'Hare krishna', {
                 duration: 2000,
               });
-              setTimeout(function () {
-                window.location.href = ' ';
-              }, 2000);
+              // setTimeout(function () {
+              //   window.location.href = ' ';
+              // }, 2000);
             } else {
               this.isSignupSuccess = false;
               this.signupProcess = false;

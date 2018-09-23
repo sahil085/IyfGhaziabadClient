@@ -28,7 +28,7 @@
                   <div class="col-sm-4 col-sm-offset-1">
                     <div class="picture-container">
                       <div class="picture">
-                        <img src="https://lh3.googleusercontent.com/-wia-03mMF9o/WrYixMPdC2I/AAAAAAAA8d8/J88ffm1w-Z8NBm0KeFzgGOMENPMxDdq6wCCoYBhgL/s1024/ISKCON%2BVrindavan%2BDeity%2BDarshan%2B24%2BMar%2B2018%2B%252818%2529.jpg" width="100px" class="picture-src" id="wizardPicturePreview" title=""/>
+                        <img src="https://lh3.googleusercontent.com/-wia-03mMF9o/WrYixMPdC2I/AAAAAAAA8d8/J88ffm1w-Z8NBm0KeFzgGOMENPMxDdq6wCCoYBhgL/s1024/ISKCON%2BVrindavan%2BDeity%2BDarshan%2B24%2BMar%2B2018%2B%252818%2529.jpg" width="100px" class="picture-src" title=""/>
                         <!--<input type="file" id="wizard-picture">-->
                       </div>
                     </div>
@@ -50,9 +50,16 @@
 
                     <div class="form-group" >
                       <label>Gender :</label>
-                      <select required name="gender" formControlName="gender" id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Gender">
-                        <option>Male</option>
-                        <option>Female</option>
+                      <select required name="gender" formControlName="gender" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your Gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
+                    </div>
+                    <div class="form-group" >
+                      <label>State :</label>
+                      <select required name="gender" formControlName="state" id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Your State">
+                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                        <option value="Uttrakhand">Uttrakhand</option>
                       </select>
                     </div>
                   </div>

@@ -59,7 +59,11 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import {ContactUsComponent} from './components/contact-us/contact-us.component';
 import { UpdateSeminarComponent } from './components/update-seminar/update-seminar.component';
 import {UpcomingSeminarDetailComponent} from './components/upcoming-seminar-detail/upcoming-seminar-detail.component';
-import { SuccessfulCreateSeminarDialogComponent } from './components/successful-create-seminar-dialog/successful-create-seminar-dialog.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { UserProfileListComponent } from './components/user-profile-list/user-profile-list.component';
+import { ViewAttendancePanelComponent } from './components/view-attendance-panel/view-attendance-panel.component';
+import { CallingSevaSeminarListComponent } from './components/calling-seva-seminar-list/calling-seva-seminar-list.component';
+import {CallingSevaMarkResponseComponent} from './components/calling-seva-mark-response/calling-seva-mark-response.component';
 
 const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -68,6 +72,7 @@ const appRoutes: Routes = [
   {path: 'admin', component: AdminPanelComponent},
   {path: 'attendancePanel', component: AttendancePanelComponent},
   {path: 'markSeminarAttendance/:id', component: MarkAttendacneForSeminarComponent},
+  {path: 'viewAttendace/:id', component: ViewAttendancePanelComponent},
   {path: 'contactUs', component: ContactUsComponent},
   {path: 'createCourse', component: CreateCourseComponent},
   {path: 'createSession', component: CreateSessionComponent},
@@ -83,7 +88,11 @@ const appRoutes: Routes = [
   {path: 'viewSeminar', component: ViewSeminarComponent},
   {path: 'userRoleMapping', component: UserRoleMappingComponent},
   {path: 'updateSeminar', component: UpdateSeminarComponent},
-  {path: 'seminarDetails/:id', component: UpcomingSeminarDetailComponent}
+  {path: 'seminarDetails/:id', component: UpcomingSeminarDetailComponent},
+  {path: 'userProfile/:id', component: UserProfileComponent},
+  {path: 'userList', component: UserProfileListComponent},
+  {path: 'seminarsForCallingSeva', component: CallingSevaSeminarListComponent},
+  {path: 'callingSeva/:id', component: CallingSevaMarkResponseComponent}
 
 ];
 
@@ -91,8 +100,8 @@ const appRoutes: Routes = [
 export class XhrInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
-    console.log(localStorage.getItem('Authorization'));
     if (localStorage.getItem('Authorization') == null) {
+      console.log(localStorage.getItem('Authorization'));
       const xhr = req.clone({
         setHeaders: {
           'X-Requested-With' : 'XMLHttpRequest'
@@ -145,7 +154,11 @@ export class XhrInterceptor implements HttpInterceptor {
     ContactUsComponent,
     UpdateSeminarComponent,
     UpcomingSeminarDetailComponent,
-    SuccessfulCreateSeminarDialogComponent,
+    UserProfileComponent,
+    UserProfileListComponent,
+    ViewAttendancePanelComponent,
+    CallingSevaSeminarListComponent,
+    CallingSevaMarkResponseComponent,
   ],
   imports: [
     MatIconModule,
@@ -193,7 +206,7 @@ export class XhrInterceptor implements HttpInterceptor {
     , AuthenticationService, UdgaarService],
   bootstrap: [AppComponent],
   entryComponents: [LogindialogComponent, BookSeatForSeminarDialogComponent,
-  CancelSeatForSeminarDialogComponent, SuccessfulCreateSeminarDialogComponent]
+  CancelSeatForSeminarDialogComponent]
 })
 export class AppModule { }
 

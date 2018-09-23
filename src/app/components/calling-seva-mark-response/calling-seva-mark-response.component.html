@@ -1,0 +1,74 @@
+<div class="row" style="margin-right: 40px;margin-left: 40px;margin-top: 20px;">
+  <h1 style="text-align: center;">Mark attendance</h1>
+  <div class="col-sm-6 col-centered">
+
+    <!--<mat-form-field>-->
+    <!--<input matInput id="user" type="text" placeholder="Search User"  [(ngModel)]=query (keyup)=filter()>-->
+    <!--<mat-icon>sentiment_very_satisfied</mat-icon>-->
+    <!--</mat-form-field>-->
+    <mat-form-field appearance="outline">
+      <mat-label>Search User</mat-label>
+      <input matInput placeholder="user@email.com" id="user" type="text" [(ngModel)]=query (keyup)=filter()>
+      <mat-icon matSuffix>search</mat-icon>
+      <!--<mat-hint>Hint</mat-hint>-->
+    </mat-form-field>
+  </div>
+</div>
+<div class="row" style="margin-left: 20px;margin-right: 20px">
+
+  <div class="col-md-12" *ngIf="dataSource !=null">
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 example-container">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="UserName">
+        <th mat-header-cell *matHeaderCellDef> UserName </th>
+        <td mat-cell *matCellDef="let user"> {{user.userName}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="Email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let user"> {{user.userEmail}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="MobileNumber">
+        <th mat-header-cell *matHeaderCellDef> Mobile Number </th>
+        <td mat-cell *matCellDef="let user"> {{user.mobileNumber}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="classLevel">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Select Response</th>
+        <td mat-cell *matCellDef="let user">
+          <mat-select [(value)]="user.classLevel">
+            <mat-option value="willCome">Will come</mat-option>
+            <mat-option value="willTry">Try to come</mat-option>
+            <mat-option value="cantCome">Can't come</mat-option>
+            <mat-option value="noResponse">Not Answering/Switch Off</mat-option>
+            <mat-option value="wrongNumber">Wrong Number</mat-option>
+            <mat-option value="notInterested">Not Interested</mat-option>
+          </mat-select>
+        </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let user">
+          <button mat-button mat-flat-button (click)="markResponse(user.userId,'PRESENT')" >Save Response</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <button mat-button mat-flat-button (click)="submitResponse()">Done</button>
+  </div>
+
+</div>

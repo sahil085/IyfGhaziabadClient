@@ -7,14 +7,15 @@ import {UserSeminarAttendanceDTO} from '../../models/user-seminar-attendance-dto
 import {MatSnackBar} from '@angular/material';
 
 @Component({
-  selector: 'app-mark-attendacne-for-seminar',
-  templateUrl: './mark-attendacne-for-seminar.component.html',
-  styleUrls: ['./mark-attendacne-for-seminar.component.css']
+  selector: 'app-calling-seva-mark-response',
+  templateUrl: './calling-seva-mark-response.component.html',
+  styleUrls: ['./calling-seva-mark-response.component.css']
 })
-export class MarkAttendacneForSeminarComponent implements OnInit {
+export class CallingSevaMarkResponseComponent implements OnInit {
+
   public sub: any;
- public seminarId: any;
- public users: UserSeminarAttendanceDTO[];
+  public seminarId: any;
+  public users: UserSeminarAttendanceDTO[];
 
   public query = '';
   public filteredList = [];
@@ -48,7 +49,7 @@ export class MarkAttendacneForSeminarComponent implements OnInit {
     }
   }
 
-  markAttendance(userId, status) {
+  markResponse(userId, status) {
     this.markAttendanceService.markAttendance(userId, status, this.seminarId).subscribe( res => {
       this.snackBar.open(JSON.stringify(res), 'Thank you', {
         duration: 2000,
@@ -64,6 +65,7 @@ export class MarkAttendacneForSeminarComponent implements OnInit {
     this.filteredList = [];
   }
 
+  submitResponse() {
 
-
+  }
 }

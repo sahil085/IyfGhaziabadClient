@@ -6,6 +6,9 @@
 .navbar {
   min-height:32px;
   outline:none;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
 }
 
 a {

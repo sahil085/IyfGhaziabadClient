@@ -56,6 +56,23 @@
           </td>
         </ng-container>
 
+        <ng-container matColumnDef="classLevel">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Select class Level</th>
+          <td mat-cell *matCellDef="let user">
+            <mat-select [(value)]="user.classLevel">
+              <mat-option value="OTP">ONE TIME PROGRAM</mat-option>
+              <mat-option value="SPS">Srila Prabhupada Sabha</mat-option>
+              <mat-option value="DYS">Discover Yourself</mat-option>
+              <mat-option value="VL 1">VEDIC LEVEL 1</mat-option>
+              <mat-option value="VL 2">VEDIC LEVEL 2</mat-option>
+              <mat-option value="VL 3">VEDIC LEVEL 3</mat-option>
+              <mat-option value="VL 4">VEDIC LEVEL 4</mat-option>
+              <mat-option value="VL 5">VEDIC LEVEL 5</mat-option>
+
+            </mat-select>
+          </td>
+        </ng-container>
+
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
           <td mat-cell *matCellDef="let user" (click)="$event.stopPropagation()">

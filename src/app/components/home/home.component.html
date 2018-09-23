@@ -2,11 +2,26 @@
 <div class="visible-lg visible-md">
   <div class="slider-area">
     <div class="slider">
-      <div id="bg-slider" class="owl-carousel owl-theme">
-        <div class="item"><img src="https://iyfdelhi.com/wp-content/uploads/2018/06/Final-23june18.jpg" alt="The Last of us"></div>
-        <div class="item"><img src="../../../assets/img/demo/SurprisingCamps.png" alt=""></div>
+      <div id="bg-slider" class="owl-carousel owl-theme" style="position: absolute">
+        <div class="item">
+          <img src="https://iyfdelhi.com/wp-content/uploads/2018/06/Final-23june18.jpg" >
+          <div class="item-caption">
+            <h3 class="animated fadeInUp">Slider B Caption</h3>
+          </div>
+        </div>
+        <div class="item">
+          <img src="../../../assets/img/demo/SurprisingCamps.png" alt="">
+          <div class="item-caption">
+            <h3 class="animated fadeInUp">Slider B Caption</h3>
+          </div>
+        </div>
         <!--<div class="item"><img src="https://iyfdelhi.com/wp-content/uploads/2018/06/Final-23june18.jpg" alt="The Last of us"></div>-->
-        <div class="item"><img src="https://iyfdelhi.com/wp-content/uploads/2017/10/Imparting-Vedic-Wisdom.jpg" alt="GTA V"></div>
+        <div class="item">
+          <img src="https://iyfdelhi.com/wp-content/uploads/2017/10/Imparting-Vedic-Wisdom.jpg">
+          <div class="item-caption">
+            <h3 class="animated fadeInUp">Slider B Caption</h3>
+          </div>
+        </div>
 
       </div>
     </div>
@@ -95,9 +110,6 @@
               </div>
               <div class="item-entry overflow">
                 <h5><a href="#" > Let's Challenge Blue Whale Challenge </a></h5>
-                <!--<div class="dot-hr"></div>-->
-                <!--<span class="pull-left"><b>Area :</b> 120m </span>-->
-                <!--<span class="proerty-price pull-right">$ 300,000</span>-->
               </div>
             </div>
           </div>
@@ -123,31 +135,6 @@
               </div>
             </div>
           </div>
-
-          <!--<div class="col-sm-6 col-md-3 p0">-->
-            <!--<div class="box-two proerty-item">-->
-              <!--<div class="item-thumb">-->
-                <!--<a href="#" ><img src="assets/img/seminar/1.png"></a>-->
-              <!--</div>-->
-              <!--<div class="item-entry overflow">-->
-                <!--<h5><a href="#" > Practical Applications of Bhagavad Gita</a></h5>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-
-          <!--<div class="col-sm-6 col-md-3 p0">-->
-            <!--<div class="box-tree more-proerty text-center">-->
-              <!--<div class="item-tree-icon">-->
-                <!--<i class="fa fa-th"></i>-->
-              <!--</div>-->
-              <!--<div class="more-entry overflow">-->
-                <!--<h5><a href="property-1.html" >CAN'T DECIDE ? </a></h5>-->
-                <!--<h5 class="tree-sub-ttl">Show all properties</h5>-->
-                <!--<button class="btn border-btn more-black" value="All properties">All properties</button>-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-
         </div>
       </div>
     </div>
@@ -222,36 +209,8 @@
     <div class="container">
       <div class="row">
 
-        <!--<div class="col-md-6 col-sm-10 col-sm-offset-1 col-md-offset-0 col-xs-12">-->
-
-        <!--Static FAQ using Matcard-->
-          <!--<mat-card>-->
-            <!--<mat-card-title>-->
-              <!--Is spirituality practical and relevant in modern world scenario?-->
-            <!--</mat-card-title>-->
-            <!--<mat-card-content>-->
-              <!--Spirituality is complementary to all other endeavors- No matter how fast paced our life becomes, the-->
-              <!--practical purpose of all our activities always remains happiness. Spirituality reveals to us the best form-->
-              <!--of happiness, a happiness that can never be taken away from us.-->
-            <!--</mat-card-content>-->
-          <!--</mat-card>-->
-        <!--<br/>-->
-          <!--<mat-card>-->
-            <!--<mat-card-title>-->
-              <!--Why should I give my time to regular spiritual programs?-->
-            <!--</mat-card-title>-->
-            <!--<mat-card-content>-->
-              <!--Quality time must be devoted for mastering the art of living. Sharpening the axe- Just as a woodcutter-->
-              <!--uses axe to cut the trees but in order to cut the trees efficiently and save time, he must spend some time-->
-              <!--to sharpen the axe. Similarly, when we sharpen our axe of intelligence and learn the words of wisdom by-->
-              <!--regularly coming to spiritual programs, we take a step forward in becoming successful.-->
-            <!--</mat-card-content>-->
-          <!--</mat-card>-->
-
-        <!--Mat-card FAQ ends here-->
-
         <mat-accordion>
-          <mat-expansion-panel>
+          <mat-expansion-panel [expanded]="true" >
             <mat-expansion-panel-header  style="background-color: #FDC600">
               <mat-panel-title>
                 <h3>Is spirituality practical and relevant in modern world scenario?</h3>

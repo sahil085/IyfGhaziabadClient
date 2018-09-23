@@ -6,20 +6,19 @@ import {SharedService} from '../../services/shared.service';
 import {UserRoleMappingService} from '../../services/user-role-mapping.service';
 
 @Component({
-  selector: 'app-attendance-panel',
-  templateUrl: './attendance-panel.component.html',
-  styleUrls: ['./attendance-panel.component.css']
+  selector: 'app-calling-seva-seminar-list',
+  templateUrl: './calling-seva-seminar-list.component.html',
+  styleUrls: ['./calling-seva-seminar-list.component.css']
 })
-export class AttendancePanelComponent implements OnInit {
-
+export class CallingSevaSeminarListComponent implements OnInit {
   public seminars: Seminar[];
   public totalPages: any;
   public isLoading: boolean;
   displayedColumns: string[] = ['sNo', 'seminarTitle', 'speakerName', 'seminarDate', 'category' , 'action'];
   dataSource = new MatTableDataSource();
   currentpage  = 1 ;
-  pageSize= 1;
-  totalpage: number = 2 ;
+  pageSize = 1;
+  totalpage = 2 ;
   Role: string;
   hideView = false;
 
@@ -56,9 +55,9 @@ export class AttendancePanelComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
-  onPaginateChange(event){
+  onPaginateChange(event) {
 
-    this.currentpage = event.pageIndex +1 ;
+    this.currentpage = event.pageIndex + 1 ;
 
     this.pageSize = event.pageSize;
     // this.isLoading = true;
@@ -69,7 +68,7 @@ export class AttendancePanelComponent implements OnInit {
         this.dataSource =  new MatTableDataSource(data['content']);
         this.totalpage = data['totalElements'];
         // this.isLoading = false;
-      },(error1) => {
+      }, (error1) => {
         alert(' OOPS..!! Some Error Occured Please try Again');
         // this.isLoading = false;
       }
@@ -93,7 +92,5 @@ export class AttendancePanelComponent implements OnInit {
 
   }
 
-  selectSeminar(seminar) {
-    console.log('Seminar Selected: ' + JSON.stringify(seminar));
-  }
+
 }
