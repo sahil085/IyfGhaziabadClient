@@ -64,10 +64,12 @@ import { UserProfileListComponent } from './components/user-profile-list/user-pr
 import { ViewAttendancePanelComponent } from './components/view-attendance-panel/view-attendance-panel.component';
 import { CallingSevaSeminarListComponent } from './components/calling-seva-seminar-list/calling-seva-seminar-list.component';
 import {CallingSevaMarkResponseComponent} from './components/calling-seva-mark-response/calling-seva-mark-response.component';
+import { CompilerComponent } from './components/compiler/compiler.component';
+import {MentionModule} from "angular-mentions/mention";
 
 const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
-  {path: '', component: HomeComponent},
+  {path: '', component: CompilerComponent},
   {path: 'aboutUs', component: AboutUsComponent},
   {path: 'admin', component: AdminPanelComponent},
   {path: 'attendancePanel', component: AttendancePanelComponent},
@@ -159,6 +161,7 @@ export class XhrInterceptor implements HttpInterceptor {
     ViewAttendancePanelComponent,
     CallingSevaSeminarListComponent,
     CallingSevaMarkResponseComponent,
+    CompilerComponent,
   ],
   imports: [
     MatIconModule,
@@ -193,6 +196,7 @@ export class XhrInterceptor implements HttpInterceptor {
     MatSortModule,
     MatExpansionModule,
     MatRadioModule,
+    MentionModule,
     RouterModule.forRoot(appRoutes)
   ],
   exports: [RouterModule],
