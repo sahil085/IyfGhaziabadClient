@@ -10,7 +10,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class CompilerComponent implements OnInit {
   public codeForm: FormGroup;
   public output: String;
-  public items: String[] = ["radha", "krishna"];
+  public classes: String[] = ['HashMap' , 'HastSet', 'ArrayList'];
   constructor(public compiler: CompilerService,
               public  fb: FormBuilder) {
     this.codeForm = this.fb.group({
