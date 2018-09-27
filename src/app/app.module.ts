@@ -92,7 +92,8 @@ const appRoutes: Routes = [
   {path: 'userProfile/:id', component: UserProfileComponent},
   {path: 'userList', component: UserProfileListComponent},
   {path: 'seminarsForCallingSeva', component: CallingSevaSeminarListComponent},
-  {path: 'callingSeva/:id', component: CallingSevaMarkResponseComponent}
+  {path: 'callingSeva/:id', component: CallingSevaMarkResponseComponent},
+  {path: 'loginDialog', component: LogindialogComponent}
 
 ];
 

@@ -15,7 +15,7 @@ declare var $: any;
 })
 export class RegisterComponent implements OnInit {
 
-
+  public userRole = localStorage.getItem('role');
   public userform: FormGroup;
   public usr: User;
   public signupProcess = false;
@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
       counslerName: [''],
       seniorFacilitatorName: [''],
       nearestIskconTemple: [''],
-      vedicLevel: [''],
+      classLevel: [''],
       isBrahmchari: [''],
       accept : [''],
       state: ['', Validators.required]
@@ -76,9 +76,9 @@ export class RegisterComponent implements OnInit {
               this.snackBar.open(response, 'Hare krishna', {
                 duration: 2000,
               });
-              // setTimeout(function () {
-              //   window.location.href = ' ';
-              // }, 2000);
+              setTimeout(function () {
+                window.location.href = ' ';
+              }, 2000);
             } else {
               this.isSignupSuccess = false;
               this.signupProcess = false;

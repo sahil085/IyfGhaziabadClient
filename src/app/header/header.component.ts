@@ -67,6 +67,9 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.auth.logout();
+    localStorage.removeItem('role');
+    localStorage.removeItem('user');
+    localStorage.removeItem('isAuthenticated');
     // this.isAuthenticated = false;
   }
 

@@ -108,6 +108,19 @@
                       <!--<option value="meerut">MEERUT</option>-->
                       <!--<option value="shimla">SHIMLA</option>-->
                     <!--</select>-->
+                    <div class="form-group" *ngIf="userRole == 'ADMIN'">
+                      <label>Class Level</label>
+                      <select name="classLevel" formControlName="classLevel" class="selectpicker" title="Select Class Level">
+                        <option value="OTP">ONE TIME PROGRAM</option>
+                        <option value="SPS">Srila Prabhupada Sabha</option>
+                        <option value="DYS">Discover Yourself</option>
+                        <option value="VL 1">VEDIC LEVEL 1</option>
+                        <option value="VL 2">VEDIC LEVEL 2</option>
+                        <option value="VL 3">VEDIC LEVEL 3</option>
+                        <option value="VL 4">VEDIC LEVEL 4</option>
+                        <option value="VL 5">VEDIC LEVEL 5</option>
+                      </select>
+                    </div>
 
                     <div class="form-group">
                       <label>Your City</label>
