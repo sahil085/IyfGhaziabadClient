@@ -38,7 +38,7 @@ export class CallingSevaSeminarListComponent implements OnInit {
     const role = localStorage.getItem('role');
     if (role !== 'ADMIN' ) {
       console.log(role);
-      window.location.href = '';
+      // window.location.href = '';
     }
     this.role = this.sharedService.role;
     this.dataSource.paginator = this.paginator;
