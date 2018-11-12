@@ -18,8 +18,8 @@ export class AttendancePanelComponent implements OnInit {
   displayedColumns: string[] = ['sNo', 'seminarTitle', 'speakerName', 'seminarDate', 'category' , 'action'];
   dataSource = new MatTableDataSource();
   currentpage  = 1 ;
-  pageSize= 1;
-  totalpage: number = 2 ;
+  pageSize = 1;
+  totalpage = 2 ;
   Role: string;
   hideView = false;
 
@@ -56,9 +56,9 @@ export class AttendancePanelComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
-  onPaginateChange(event){
+  onPaginateChange(event) {
 
-    this.currentpage = event.pageIndex +1 ;
+    this.currentpage = event.pageIndex + 1 ;
 
     this.pageSize = event.pageSize;
     // this.isLoading = true;
@@ -69,7 +69,7 @@ export class AttendancePanelComponent implements OnInit {
         this.dataSource =  new MatTableDataSource(data['content']);
         this.totalpage = data['totalElements'];
         // this.isLoading = false;
-      },(error1) => {
+      }, (error1) => {
         alert(' OOPS..!! Some Error Occured Please try Again');
         // this.isLoading = false;
       }
