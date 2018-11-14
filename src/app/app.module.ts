@@ -64,7 +64,7 @@ import { UserProfileListComponent } from './components/user-profile-list/user-pr
 import { ViewAttendancePanelComponent } from './components/view-attendance-panel/view-attendance-panel.component';
 import { CallingSevaSeminarListComponent } from './components/calling-seva-seminar-list/calling-seva-seminar-list.component';
 import {CallingSevaMarkResponseComponent} from './components/calling-seva-mark-response/calling-seva-mark-response.component';
-import {CallingSewaResponseService} from "./services/calling-sewa-response.service";
+import {CallingSewaResponseService} from './services/calling-sewa-response.service';
 
 const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -205,7 +205,7 @@ export class XhrInterceptor implements HttpInterceptor {
       multi: true
     },
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
-    , AuthenticationService,CallingSewaResponseService, UdgaarService],
+    , AuthenticationService, CallingSewaResponseService, UdgaarService],
   bootstrap: [AppComponent],
   entryComponents: [LogindialogComponent, BookSeatForSeminarDialogComponent,
   CancelSeatForSeminarDialogComponent]

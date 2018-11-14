@@ -47,13 +47,17 @@ export class AttendancePanelComponent implements OnInit {
     this.totalpage = 4;
     // this.getAllSeminarOnInit(10,0);
 
-    this.getSeminarListOnInit(2, 0);
+    this.getSeminarListOnInit(10, 0);
   }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
+    // this.dataSource.filterPredicate = (data, filter) =>
+    //   (data.name.indexOf(filter) !== -1 ||
+    //     data.id.indexOf(filter) !== -1 );
+    //
   }
 
   onPaginateChange(event) {
@@ -82,6 +86,7 @@ export class AttendancePanelComponent implements OnInit {
       (res) => {
         console.log(res);
         this.dataSource =  new MatTableDataSource(res['content']);
+        console.log(JSON.stringify('this id datasource' + this.dataSource));
         this.seminars = res['content'];
         this.totalPages = res['totalElements'];
       }, (error1) => {

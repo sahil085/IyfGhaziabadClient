@@ -8,8 +8,8 @@
       <!--</mat-form-field>-->
       <mat-form-field appearance="outline">
         <mat-label>Search User</mat-label>
-        <input matInput placeholder="user@email.com" id="user" type="text" [(ngModel)]=query (keyup)=filter()>
-        <mat-icon matSuffix>search</mat-icon>
+        <input matInput placeholder="user@email.com" id="user" type="text" [(ngModel)]=query (input)=filter()>
+        <!--<mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
         <!--<mat-hint>Hint</mat-hint>-->
       </mat-form-field>
     </div>

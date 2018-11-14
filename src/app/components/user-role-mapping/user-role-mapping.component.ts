@@ -14,13 +14,15 @@ import {Observable} from 'rxjs';
 })
 export class UserRoleMappingComponent implements OnInit {
 
-  displayedColumns: string[] = ['sNo', 'name', 'email', 'currentRole', 'selectRole' , 'classLevel', 'action'];
+  displayedColumns: string[] = ['sNo', 'name', 'email', 'currentRole' , 'classLevel', 'action'];
   dataSource = new MatTableDataSource();
   currentpage  = 1 ;
   pageSize = 1;
   totalpage: number ;
-  Role: string;
+  searchByRole: string;
   hideView = false;
+  userList: any;
+
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -62,6 +64,7 @@ export class UserRoleMappingComponent implements OnInit {
       (data) => {
         console.log( data);
         this.dataSource =  new MatTableDataSource(data.userList);
+        console.log('datasource' + JSON.stringify(this.dataSource));
         this.totalpage = data.totalPage;
         // this.isLoading = false;
       }, (error1) => {
@@ -74,7 +77,7 @@ export class UserRoleMappingComponent implements OnInit {
 
   getAllUserOnInit(userPerpage, pageIndex) {
    this.userRoleService.getAllUsers(userPerpage, pageIndex).subscribe( (data) => {
-
+     this.userList = data.userList;
      this.dataSource =  new MatTableDataSource(data.userList);
      this.totalpage = data.totalPage;
      if (data.userList.length === 0) {

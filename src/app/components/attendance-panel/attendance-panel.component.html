@@ -4,7 +4,7 @@
   <div class="col-md-4 col-lg-4 col-sm-6" *ngIf="!hideView">
     <!--<i class="fa fa-search" aria-hidden="true"></i>&nbsp;-->
     <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search by name">
+      <input matInput (input)="applyFilter($event.target.value)" placeholder="Search by name">
     </mat-form-field>
 
   </div>
@@ -62,7 +62,7 @@
         <tr mat-row *matRowDef="let row ; columns: displayedColumns;"></tr>
       </table>
 
-      <mat-paginator [pageSizeOptions]="[1,2,10]" showFirstLastButtons
+      <mat-paginator [pageSizeOptions]="[5,10,25]" showFirstLastButtons
                      [pageSize]="2"
                      [length]="totalpage"
                      (page)="onPaginateChange($event)"></mat-paginator>
