@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Choose category</h1>
+<div mat-dialog-content>
+  <!--<p>What's your favorite animal?</p>-->
+  <mat-form-field>
+    <mat-select [(value)]="data.category">
+      <mat-option value="OTP">ONE TIME PROGRAM</mat-option>
+      <mat-option value="SPS">Srila Prabhupada Sabha</mat-option>
+      <mat-option value="DYS">Discover Yourself</mat-option>
+      <mat-option value="VL 1">VEDIC LEVEL 1</mat-option>
+      <mat-option value="VL 2">VEDIC LEVEL 2</mat-option>
+      <mat-option value="VL 3">VEDIC LEVEL 3</mat-option>
+      <mat-option value="VL 4">VEDIC LEVEL 4</mat-option>
+      <mat-option value="VL 5">VEDIC LEVEL 5</mat-option>
+    </mat-select>
+    <!--<input matInput [(ngModel)]="data.category">-->
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.category" cdkFocusInitial>OK</button>
+</div>

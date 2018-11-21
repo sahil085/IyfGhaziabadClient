@@ -65,6 +65,7 @@ import { ViewAttendancePanelComponent } from './components/view-attendance-panel
 import { CallingSevaSeminarListComponent } from './components/calling-seva-seminar-list/calling-seva-seminar-list.component';
 import {CallingSevaMarkResponseComponent} from './components/calling-seva-mark-response/calling-seva-mark-response.component';
 import {CallingSewaResponseService} from './services/calling-sewa-response.service';
+import { ReportDialogComponent } from './components/report-dialog/report-dialog.component';
 
 const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
@@ -161,6 +162,7 @@ export class XhrInterceptor implements HttpInterceptor {
     ViewAttendancePanelComponent,
     CallingSevaSeminarListComponent,
     CallingSevaMarkResponseComponent,
+    ReportDialogComponent,
   ],
   imports: [
     MatIconModule,
@@ -208,7 +210,7 @@ export class XhrInterceptor implements HttpInterceptor {
     , AuthenticationService, CallingSewaResponseService, UdgaarService],
   bootstrap: [AppComponent],
   entryComponents: [LogindialogComponent, BookSeatForSeminarDialogComponent,
-  CancelSeatForSeminarDialogComponent]
+  CancelSeatForSeminarDialogComponent, ReportDialogComponent]
 })
 export class AppModule { }
 

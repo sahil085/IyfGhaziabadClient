@@ -4,7 +4,8 @@ import {FormControl} from '@angular/forms';
 import {MarkeAttendanceServiceService} from '../../services/marke-attendance-service.service';
 
 import {UserSeminarAttendanceDTO} from '../../models/user-seminar-attendance-dto';
-import {MatSnackBar} from '@angular/material';
+import {MatDialog, MatDialogConfig, MatSnackBar} from '@angular/material';
+import {ReportDialogComponent} from '../report-dialog/report-dialog.component';
 
 @Component({
   selector: 'app-mark-attendacne-for-seminar',
@@ -15,6 +16,7 @@ export class MarkAttendacneForSeminarComponent implements OnInit {
   public sub: any;
  public seminarId: any;
  public users: UserSeminarAttendanceDTO[];
+ public category = '';
 
   public query = '';
   public filteredList = [];
@@ -23,7 +25,8 @@ export class MarkAttendacneForSeminarComponent implements OnInit {
   displayedColumns: string[] = ['UserName', 'Email', 'MobileNumber', 'Actions'];
   constructor(private route: ActivatedRoute,
               private markAttendanceService: MarkeAttendanceServiceService,
-              private snackBar: MatSnackBar) { }
+              private snackBar: MatSnackBar,
+              public dialog: MatDialog) { }
 
   ngOnInit() {
     const role = localStorage.getItem('role');
@@ -64,6 +67,30 @@ export class MarkAttendacneForSeminarComponent implements OnInit {
     this.filteredList = [];
   }
 
+  openReportDialog() {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    // dialogConfig.position = {
+    //   'top': '0',
+    //   left: '0'
+    // };
+    dialogConfig.data = {
+      category: this.category
+    };
+    const dialogRef = this.dialog.open(ReportDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(inputCategory => {
+      console.log('The dialog was closed' + inputCategory);
+      this.category = inputCategory;
+      this.markAttendanceService.generateMasterData(this.category).subscribe(res => {
+        console.log(res);
+      }, error1 => {
+        console.log(error1);
+      })
+    });
+  }
 
 
 }

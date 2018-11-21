@@ -32,19 +32,19 @@ export class LogindialogComponent implements OnInit {
     });
   }
 
-  login(){
+  login() {
 
     if (this.loginForm.invalid) {
       this.loginForm.get('username').markAsTouched();
       this.loginForm.get('password').markAsTouched();
       return;
-    }else {
+    } else {
       console.log(this.loginForm.invalid);
-      this.auth.logIn(this.loginForm.value).subscribe(data=>{
+      this.auth.logIn(this.loginForm.value).subscribe(data => {
 
           // localStorage.setItem('currentUser', data.json().principal);
           const authorities = data.json().principal.authorities;
-          localStorage.setItem('user',JSON.stringify(data.json().principal));
+          localStorage.setItem('user', JSON.stringify(data.json().principal));
          authorities.forEach(roles => {
            localStorage.setItem('role', roles.authority);
 
@@ -53,11 +53,10 @@ export class LogindialogComponent implements OnInit {
 
         localStorage.setItem('isAuthenticated', 'true');
           window.location.href = localStorage.getItem('loginCallbackURL');
-        },err=>{
+        }, err => {
           console.log(err);
-          if(err.status === 401)
-          {
-            this.invalidMessage = "EmailId Or Password Is Incorrect";
+          if (err.status === 401) {
+            this.invalidMessage = 'EmailId Or Password Is Incorrect';
           }
           // this.errorMessage="error :  Username or password is incorrect";
         }
